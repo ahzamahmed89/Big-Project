@@ -1,0 +1,111 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4;
+}
+
+header {
+    background-color: #004d40;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1vw; /* Dynamically scale the font size with viewport width */
+    transition: color 0.3s;
+}
+
+.top-nav ul li a:hover {
+    color: #a2f2e0; /* Light green for hover effect */
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    background: white;
+    padding: 1vw;
+    border-radius: 8px;
+    box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.1);
+    width: 90%; /* Adjusts width based on screen size */
+    max-width: 960px;
+    margin: auto;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevents wrapping */
+}
+
+.form-group {
+    padding: 0 0.5vw;
+    width: 30%; /* Sets width to 30% for all input groups */
+    
+}
+
+.form-group.small-input {
+    width: 20%; /* Reduced width for Branch Code to 20% */
+}
+
+.form-group.large-input {
+    width: 40%; /* Increased width for Quarter and Month to 40% */
+}
+
+.horizontal-group {
+    display: flex;
+    align-items: center;
+}
+
+.horizontal-group label {
+    margin-right: 5px; /* Adjust space between label and input */
+    white-space: nowrap; /* Prevents label from wrapping */
+}
+
+input[type="text"], input[type="date"], select {
+    width: 100%;
+    padding: 0.5vw;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.8vw; /* Smaller dynamic text size */
+}
+
+input[type="submit"] {
+    padding: 1vw;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1vw; /* Button font size scales with the screen */
+    float: right;
+}
+
+input[type="submit"]:hover {
+    background-color: #005a4f;
+    transform: translateY(-0.2vw);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f3f3f3;
+    font-size: 0.8vw; /* Responsive footer text size */
+}
