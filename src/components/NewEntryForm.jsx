@@ -3,7 +3,6 @@ import axios from 'axios';
 import '../App.css';
 import CategorySection from './CategorySection';
 
-
 const NewEntryForm = () => {
   const [branchCode, setBranchCode] = useState('');
   const [branchName, setBranchName] = useState('');
@@ -13,6 +12,7 @@ const NewEntryForm = () => {
   const [visitDate, setVisitDate] = useState(new Date().toISOString().split('T')[0]);
   const [visitedBy, setVisitedBy] = useState('');
   const [reviewedBy, setReviewedBy] = useState('');
+  const [visitTime, setVisitTime] = useState(new Date().toLocaleTimeString());
   const [formDisabled, setFormDisabled] = useState(true);
   const [data, setData] = useState({});
   const [submitDisabled, setSubmitDisabled] = useState(true);
@@ -148,7 +148,13 @@ const NewEntryForm = () => {
   const handleSubmitFormClick = (event) => {
     event.preventDefault();
     if (validateForm() && validateStatus()) {
-      submitForm();
+      const time = prompt('Please enter the visit time (HH:MM:SS AM/PM)', visitTime);
+      if (time) {
+        setVisitTime(time);
+        submitForm(time); // Pass the visit time to the submitForm function
+      } else {
+        alert('Visit time is required.');
+      }
     }
   };
 
@@ -217,7 +223,7 @@ const NewEntryForm = () => {
     return valid;
   };
 
-  const submitForm = () => {
+  const submitForm = (time) => {
     const formData = {
       Branch_Code: branchCode.trim(),
       Branch_Name: branchName.trim(),
@@ -227,7 +233,7 @@ const NewEntryForm = () => {
       Year: new Date(visitDate).getFullYear(),
       Visited_By: visitedBy.trim(),
       Visit_Date: visitDate.trim(),
-      Visit_Time: new Date().toLocaleTimeString(),
+      Visit_Time: time.trim(),  // Use the passed visit time
       Reviewed_By_OM_BM: reviewedBy.trim(),
       Activities: Object.values(data).flat().map(item => ({
         Code: item.Code,
@@ -236,7 +242,7 @@ const NewEntryForm = () => {
         Remarks: document.querySelector(`[data-code="${item.Code}"] .remarks`).value.trim(),
       })),
     };
-  
+
     axios.post('http://localhost:5000/submit-form', { data: JSON.stringify(formData) })
       .then(response => {
         const data = response.data;
@@ -261,7 +267,6 @@ const NewEntryForm = () => {
         alert('An error occurred while submitting the form. Please try again.');
       });
   };
-  
 
   useEffect(() => {
     const allStatusFieldsFilled = Object.values(data).every(categoryActivities =>
