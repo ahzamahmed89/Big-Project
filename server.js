@@ -1,10 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-const { MongoClient } = require('mongodb');
-const winston = require('winston');
-const fs = require('fs');
-const path = require('path');
-const multer = require('multer');
+import express from 'express';
+import cors from 'cors';
+import { MongoClient } from 'mongodb';
+import winston from 'winston';
+import fs from 'fs';
+import path from 'path';
+import multer from 'multer';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -12,13 +12,23 @@ const dbName = 'PMSF';
 const url = 'mongodb+srv://ahmedahxam:1234@cluster0.3fs3r1f.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const client = new MongoClient(url);
 
-app.use(cors({ origin: 'http://127.0.0.1:5501' }));
+const allowedOrigins = ['http://127.0.0.1:5173', 'http://localhost:5173'];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 app.use(express.json({ limit: '50mb' }));
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const year = new Date().getFullYear();
-    const dir = path.join(__dirname, 'Images', `${year}`);
+    const year = req.body.data ? JSON.parse(req.body.data).Year : new Date().getFullYear();
+    const dir = path.join(process.cwd(), 'Images', `${year}`);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
@@ -43,6 +53,10 @@ async function mongoMiddleware(req, res, next) {
 }
 
 app.use(mongoMiddleware);
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the PMSF API');
+});
 
 app.get('/check-entry', async (req, res) => {
   const { branchCode, year, quarter, month } = req.query;
@@ -114,16 +128,21 @@ app.get('/branch/:code', async (req, res) => {
   }
 });
 
-app.post('/submit-data', upload.array('images'), async (req, res) => {
+app.post('/submit-form', upload.array('images'), async (req, res) => {
   try {
-    // Validate the incoming request
     if (!req.body.data) {
       throw new Error('Missing data in the request');
     }
-    const parsedData = JSON.parse(req.body.data);
-    const { Branch_Code, Branch_Name, Region_Name, Quarter, Month, Year, Visited_By, Visit_Date, Visit_Time, Reviewed_By_OM_BM, Activities } = parsedData;
+    let parsedData;
+    try {
+      parsedData = JSON.parse(req.body.data);
+    } catch (e) {
+      throw new Error('Invalid JSON in the request body');
+    }
 
-    if (!Branch_Code || !Branch_Name || !Region_Name || !Quarter || !Month || !Year || !Visited_By || !Visit_Date || !Visit_Time || !Reviewed_By_OM_BM || !Activities) {
+    const { Branch_Code, Branch_Name, Region_Name, Qtr, Month, Year, Visited_By, Visit_Date, Visit_Time, Reviewed_By_OM_BM, Activities } = parsedData;
+
+    if (!Branch_Code || !Branch_Name || !Region_Name || !Qtr || !Month || !Year || !Visited_By || !Visit_Date || !Visit_Time || !Reviewed_By_OM_BM || !Activities) {
       throw new Error('Missing required fields in the request body');
     }
 
@@ -131,13 +150,13 @@ app.post('/submit-data', upload.array('images'), async (req, res) => {
     const collection = req.db.collection(collectionName);
 
     const newEntries = Activities.map(activity => {
-      const file = req.files.find(file => file.originalname.includes(activity.Code));
+      const file = req.files ? req.files.find(file => file.originalname.includes(activity.Code)) : null;
       return {
         ...activity,
         Branch_Code,
         Branch_Name,
         Region_Name,
-        Qtr: Quarter,
+        Qtr,
         Month,
         Year,
         Visited_By,
@@ -157,7 +176,7 @@ app.post('/submit-data', upload.array('images'), async (req, res) => {
       Branch_Name,
       Region_Name,
       Year,
-      Qtr: Quarter,
+      Qtr,
       Month,
       Entry_Status: 'Enter',
       Last_Edit_By: Visited_By,
@@ -171,7 +190,7 @@ app.post('/submit-data', upload.array('images'), async (req, res) => {
 
     res.json({ success: true, message: 'Data successfully submitted and stored', insertedCount: newEntries.length });
   } catch (err) {
-    winston.error('Error in /submit-data:', err);
+    winston.error('Error in /submit-form:', err);
     res.status(500).json({ success: false, message: 'Error inserting data', error: err.message });
   }
 });
