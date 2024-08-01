@@ -62,6 +62,7 @@ header .branding {
 .menu-icon {
   cursor: pointer;
   display: inline-block;
+  
 }
 
 .right-container {
@@ -73,8 +74,9 @@ header .branding {
   display: flex;
   margin-right: 14px;
   margin-left: auto;
-  font-size: calc(0.3em + 0.7vw);
+  font-size: calc(0.9em + 0.7vw);
   color: white;
+  font-weight: bold;
 }
 
 main {
@@ -232,6 +234,7 @@ input[type="file" i] {
   margin-top: 10px;
   max-width: 100%;
   max-height: 150px;
+ 
 }
 
 .activity-box .activity,
@@ -242,6 +245,7 @@ input[type="file" i] {
   margin-bottom: 10px;
   text-align: center;
   font-size: calc(0.5em + 0.6vw);
+  
 }
 
 .activity-box .status,
@@ -249,6 +253,7 @@ input[type="file" i] {
 .activity-box .remarks,
 .activity-box .image {
   font-size: calc(0.4em + 0.5vw)!important;
+  
 }
 
 .activity-box .status {
@@ -373,29 +378,88 @@ label {
   border-color: aliceblue;
 }
 
-/* Table Styles */
-/* table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-table tr th {
-  border: 1px solid #ddddddf3;
-  padding: 10px;
-  background-color: #004d40;
-  color: white;
-}
-
-table tr td {
-  border: 1.2px solid rgba(0, 0, 0, 0.174);
-  padding: 10px;
-} */
 
 .input-box {
   margin-top: 0px; /* Maintain no margin */
 }
+
+/* App.css */
+.search-bar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  background-color: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
+}
+
+.search-bar.open {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.search-bar-icon {
+  font-size: 24px;
+  color: rgb(27, 0, 77);
+  ;
+}
+
+.search-bar-content {
+  padding: 20px;
+  
+}
+
+.search-bar-content .form-group {
+  margin-bottom: 10px;
+  color: black;
+  font-size: calc(0.5em + 0.5vw);
+  
+}
+
+.search-bar-content label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333; /* Improve text color visibility */
+}
+
+.search-bar-content .css-1okebmr-indicatorSeparator {
+  display: none;
+}
+
+.search-bar-content .css-yk16xz-control {
+  border-color: #ccc !important;
+  color: #333 !important; /* Improve text color visibility */
+}
+
+.search-bar-content .css-1pahdxg-control {
+  border-color: #4CAF50 !important;
+  box-shadow: none !important;
+}
+
+.search-bar-content .css-26l3qy-menu {
+  z-index: 9999;
+}
+
+.search-bar-content .css-1hb7zxy-IndicatorsContainer {
+  color: #333 !important; /* Improve dropdown text color visibility */
+}
+
+.search-bar-content .css-1uccc91-singleValue {
+  color: #333 !important; /* Improve selected value text color visibility */
+}
+
+
 
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {

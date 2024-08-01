@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../App.css';
 import CategorySection from './CategorySection';
+import SearchBar from './SearchBar';
 
 const NewEntryForm = () => {
   const [branchCode, setBranchCode] = useState('');
@@ -12,11 +13,12 @@ const NewEntryForm = () => {
   const [visitDate, setVisitDate] = useState(new Date().toISOString().split('T')[0]);
   const [visitedBy, setVisitedBy] = useState('');
   const [reviewedBy, setReviewedBy] = useState('');
-  const [visitTime, setVisitTime] = useState(new Date().toLocaleTimeString());
   const [formDisabled, setFormDisabled] = useState(true);
   const [data, setData] = useState({});
   const [submitDisabled, setSubmitDisabled] = useState(true);
   const [formGenerated, setFormGenerated] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [selectedActivity, setSelectedActivity] = useState([]);
 
   const currentDate = new Date();
 
@@ -148,12 +150,9 @@ const NewEntryForm = () => {
   const handleSubmitFormClick = (event) => {
     event.preventDefault();
     if (validateForm() && validateStatus()) {
-      const time = prompt('Please enter the visit time (HH:MM:SS AM/PM)', visitTime);
-      if (time) {
-        setVisitTime(time);
-        submitForm(time); // Pass the visit time to the submitForm function
-      } else {
-        alert('Visit time is required.');
+      const visitTime = prompt("Please enter visit time:", new Date().toLocaleTimeString());
+      if (visitTime) {
+        submitForm(visitTime);
       }
     }
   };
@@ -174,13 +173,18 @@ const NewEntryForm = () => {
       valid = false;
       message += 'Region Name is required.\n';
     }
+    
+    if (!visitDate.trim()) {
+      valid = false;
+      message += 'Visit Date is required.\n';
+    }
     if (!visitedBy.trim()) {
       valid = false;
       message += 'Visited By is required.\n';
     }
-    if (!visitDate.trim()) {
+    if (!reviewedBy.trim()) {
       valid = false;
-      message += 'Visit Date is required.\n';
+      message += 'Reviewed By is required.\n';
     }
 
     if (!valid) {
@@ -223,7 +227,7 @@ const NewEntryForm = () => {
     return valid;
   };
 
-  const submitForm = (time) => {
+  const submitForm = (visitTime) => {
     const formData = {
       Branch_Code: branchCode.trim(),
       Branch_Name: branchName.trim(),
@@ -233,7 +237,7 @@ const NewEntryForm = () => {
       Year: new Date(visitDate).getFullYear(),
       Visited_By: visitedBy.trim(),
       Visit_Date: visitDate.trim(),
-      Visit_Time: time.trim(),  // Use the passed visit time
+      Visit_Time: visitTime,
       Reviewed_By_OM_BM: reviewedBy.trim(),
       Activities: Object.values(data).flat().map(item => ({
         Code: item.Code,
@@ -278,6 +282,25 @@ const NewEntryForm = () => {
 
     setSubmitDisabled(!allStatusFieldsFilled);
   }, [data]);
+
+  const categories = Object.keys(data);
+  const activities = categories.flatMap(category => data[category].map(activity => ({ activity: activity.Activity, category })));
+
+  const filteredData = selectedCategory.length === 0 
+    ? data 
+    : Object.keys(data)
+        .filter(category => selectedCategory.includes(category))
+        .reduce((acc, category) => {
+          acc[category] = data[category];
+          return acc;
+        }, {});
+
+  const finalFilteredData = selectedActivity.length === 0
+    ? filteredData
+    : Object.keys(filteredData).reduce((acc, category) => {
+        acc[category] = filteredData[category].filter(activity => selectedActivity.includes(activity.Activity));
+        return acc;
+      }, {});
 
   return (
     <div className="new-entry-form-container">
@@ -378,25 +401,37 @@ const NewEntryForm = () => {
           </button>
         </form>
       </div>
-      <form id="activityForm">
-        {Object.keys(data).length > 0 && (
-          Object.keys(data).map((category) => (
-            <CategorySection
-              key={category}
-              category={category}
-              activities={data[category]}
-            />
-          ))
-        )}
-        <button
-          type="button"
-          className="submit-button"
-          onClick={handleSubmitFormClick}
-          disabled={submitDisabled}
-        >
-          Submit
-        </button>
-      </form>
+      {formGenerated && (
+        <div>
+          <SearchBar 
+            categories={categories} 
+            activities={activities} 
+            selectedCategory={selectedCategory} 
+            setSelectedCategory={setSelectedCategory} 
+            selectedActivity={selectedActivity} 
+            setSelectedActivity={setSelectedActivity} 
+          />
+          <form id="activityForm">
+            {Object.keys(finalFilteredData).length > 0 && (
+              Object.keys(finalFilteredData).map((category) => (
+                <CategorySection
+                  key={category}
+                  category={category}
+                  activities={finalFilteredData[category]}
+                />
+              ))
+            )}
+            <button
+              type="button"
+              className="submit-button"
+              onClick={handleSubmitFormClick}
+              disabled={submitDisabled}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };

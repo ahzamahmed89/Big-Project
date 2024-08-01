@@ -56,7 +56,7 @@ const ActivityBox = ({ activity }) => {
         </select>
       </div>
       <div>
-        <label>Remarks:</label>
+        <label></label>
         <input
           type="text"
           className="remarks"
