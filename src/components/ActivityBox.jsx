@@ -5,7 +5,7 @@ const ActivityBox = ({ activity }) => {
   const statusStyles = {
     Yes: { backgroundColor: 'lightgreen' },
     No: { backgroundColor: 'lightcoral' },
-    NA: { backgroundColor: 'lightyellow' },
+    NA: { backgroundColor: 'rgb(234, 234, 172)' },
   };
 
   const [status, setStatus] = useState(activity.Status);
@@ -43,7 +43,7 @@ const ActivityBox = ({ activity }) => {
         </select>
       </div>
       <div>
-        <label>Responsibility:</label>
+        <label></label>
         <select className="responsibility" defaultValue={activity.Responsibility}>
           <option value="">Select Responsibility</option>
           <option value="Admin">Admin</option>

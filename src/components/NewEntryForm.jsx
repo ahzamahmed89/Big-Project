@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../App.css';
-import CategorySection from './CategorySection';
+import BranchDetails from './BranchDetails';
+import DateSelector from './DateSelector';
+import FormInput from './FormInput';
+import FormButton from './FormButton';
+import ActivityForm from './ActivityForm';
 import SearchBar from './SearchBar';
 
 const NewEntryForm = () => {
@@ -42,10 +46,6 @@ const NewEntryForm = () => {
     const minDateString = minDate.toISOString().split('T')[0];
     const maxDateString = maxDate.toISOString().split('T')[0];
 
-    const visitDateInput = document.getElementById('visitDate');
-    visitDateInput.min = minDateString;
-    visitDateInput.max = maxDateString;
-
     updateMonthAndQuarter(new Date(visitDate));
   };
 
@@ -56,36 +56,6 @@ const NewEntryForm = () => {
 
     setMonth(new Intl.DateTimeFormat('en-US', { month: 'short' }).format(selectedDate));
     setQuarter(quarters[selectedQuarter]);
-  };
-
-  const handleBranchCodeChange = (e) => {
-    const code = e.target.value.trim();
-    setBranchCode(code);
-
-    if (code && code.length === 3) {
-      axios.get(`http://localhost:5000/branch/${code}`)
-        .then(response => {
-          const data = response.data;
-          if (data.success) {
-            setBranchName(data.data.Branch_Name);
-            setRegionName(data.data.Region);
-            setFormDisabled(false); // Enable the "Generate Form" button
-          } else {
-            setBranchName("Branch not found");
-            setRegionName("");
-            setFormDisabled(true); // Disable the "Generate Form" button
-          }
-        })
-        .catch(error => {
-          console.error('Fetch error:', error);
-          alert('An error occurred while fetching branch details. Please try again.');
-          setFormDisabled(true); // Disable the "Generate Form" button
-        });
-    } else {
-      setBranchName("");
-      setRegionName("");
-      setFormDisabled(true); // Disable the "Generate Form" button
-    }
   };
 
   const handleVisitDateChange = (e) => {
@@ -252,7 +222,8 @@ const NewEntryForm = () => {
         const data = response.data;
         if (data.success) {
           alert('Form submitted successfully!');
-          setSubmitDisabled(true);
+          resetForm();
+          
         } else {
           alert('Failed to submit form: ' + data.message);
         }
@@ -270,6 +241,23 @@ const NewEntryForm = () => {
         }
         alert('An error occurred while submitting the form. Please try again.');
       });
+  };
+
+  const resetForm = () => {
+    setBranchCode('');
+    setBranchName('');
+    setRegionName('');
+    setMonth('');
+    setQuarter('');
+    setVisitDate(new Date().toISOString().split('T')[0]);
+    setVisitedBy('');
+    setReviewedBy('');
+    setFormDisabled(true);
+    setData({});
+    setSubmitDisabled(true);
+    setFormGenerated(false);
+    setSelectedCategory([]);
+    setSelectedActivity([]);
   };
 
   useEffect(() => {
@@ -306,39 +294,14 @@ const NewEntryForm = () => {
     <div className="new-entry-form-container">
       <div className="firstForm">
         <form className="new-entry-form" id="entryForm">
-          <div className="form-row">
-            <div className="form-group small-input">
-              <label htmlFor="branchCode">Branch Code</label>
-              <input
-                type="text"
-                id="branchCode"
-                value={branchCode}
-                onChange={handleBranchCodeChange}
-                required
-                disabled={formGenerated}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="branchName">Branch Name</label>
-              <input
-                type="text"
-                id="branchName"
-                value={branchName}
-                readOnly
-                disabled={formGenerated}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="regionName">Region</label>
-              <input
-                type="text"
-                id="regionName"
-                value={regionName}
-                readOnly
-                disabled={formGenerated}
-              />
-            </div>
-          </div>
+          <BranchDetails
+            branchCode={branchCode}
+            setBranchCode={setBranchCode}
+            setBranchName={setBranchName}
+            setRegionName={setRegionName}
+            setFormDisabled={setFormDisabled}
+            formGenerated={formGenerated}
+          />
           <div className="form-row">
             <div className="form-group small-input">
               <label htmlFor="quarter">Quarter</label>
@@ -358,47 +321,43 @@ const NewEntryForm = () => {
                 readOnly
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="visitDate">Visit Date</label>
-              <input
-                type="date"
-                id="visitDate"
-                value={visitDate}
-                onChange={handleVisitDateChange}
-                required
-              />
-            </div>
+            <DateSelector
+              id="visitDate"
+              value={visitDate}
+              onChange={handleVisitDateChange}
+              minDate={new Date().toISOString().split('T')[0]}
+              maxDate={new Date().toISOString().split('T')[0]}
+            />
           </div>
           <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="visitedBy">Visited By</label>
-              <input
-                type="text"
-                id="visitedBy"
-                value={visitedBy}
-                onChange={(e) => setVisitedBy(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="reviewedBy">Reviewed By</label>
-              <input
-                type="text"
-                id="reviewedBy"
-                value={reviewedBy}
-                onChange={(e) => setReviewedBy(e.target.value)}
-                required
-              />
-            </div>
+          <div className="form-group">
+          <FormInput
+            label="Visited By"
+            type="text"
+            id="visitedBy"
+            value={visitedBy}
+            onChange={(e) => setVisitedBy(e.target.value)}
+            readOnly={false}
+            Enabled={formGenerated}
+          />
           </div>
-          <button
-            type="button"
-            className="generate-form-button"
+          <div className="form-group">
+          <FormInput
+            label="Reviewed By"
+            type="text"
+            id="reviewedBy"
+            value={reviewedBy}
+            onChange={(e) => setReviewedBy(e.target.value)}
+            readOnly={false}
+            endabled={formGenerated}
+          />
+          </div>
+          </div>
+          <FormButton
             onClick={handleGenerateFormClick}
             disabled={formDisabled}
-          >
-            Generate Form
-          </button>
+            label="Generate Form"
+          />
         </form>
       </div>
       {formGenerated && (
@@ -411,25 +370,11 @@ const NewEntryForm = () => {
             selectedActivity={selectedActivity} 
             setSelectedActivity={setSelectedActivity} 
           />
-          <form id="activityForm">
-            {Object.keys(finalFilteredData).length > 0 && (
-              Object.keys(finalFilteredData).map((category) => (
-                <CategorySection
-                  key={category}
-                  category={category}
-                  activities={finalFilteredData[category]}
-                />
-              ))
-            )}
-            <button
-              type="button"
-              className="submit-button"
-              onClick={handleSubmitFormClick}
-              disabled={submitDisabled}
-            >
-              Submit
-            </button>
-          </form>
+          <ActivityForm 
+            data={finalFilteredData} 
+            handleSubmitFormClick={handleSubmitFormClick} 
+            submitDisabled={submitDisabled} 
+          />
         </div>
       )}
     </div>
