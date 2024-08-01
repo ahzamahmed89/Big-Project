@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.7.2",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.3",
@@ -20,7 +22,9 @@
     "multer": "^1.4.5-lts.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-draggable": "^4.4.6",
     "react-router-dom": "^6.24.1",
+    "react-select": "^5.8.0",
     "winston": "^3.13.0"
   },
   "devDependencies": {
