@@ -8,6 +8,7 @@ import '../App.css';
 const SearchBar = ({ categories, activities, selectedCategory, setSelectedCategory, selectedActivity, setSelectedActivity }) => {
   const [isOpen, setIsOpen] = useState(false);
   const searchBarRef = useRef(null);
+  const nodeRef = useRef(null); // Added nodeRef
 
   const handleCategoryChange = (selectedOptions) => {
     const values = selectedOptions ? selectedOptions.map(option => option.value) : [];
@@ -45,13 +46,13 @@ const SearchBar = ({ categories, activities, selectedCategory, setSelectedCatego
     : activityOptions.filter(option => selectedCategory.includes(option.category));
 
   return (
-    <Draggable>
-      <div className={`search-bar ${isOpen ? 'open' : ''}`} ref={searchBarRef}>
+    <Draggable nodeRef={nodeRef}>
+      <div className={`search-bar ${isOpen ? 'open' : ''}`} ref={nodeRef}>
         <div className="search-bar-icon" onClick={toggleOpen}>
           <FontAwesomeIcon icon={faSearch} />
         </div>
         {isOpen && (
-          <div className="search-bar-content">
+          <div className="search-bar-content" ref={searchBarRef}>
             <div className="form-group">
               <label htmlFor="category">Category</label>
               <Select
