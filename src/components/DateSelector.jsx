@@ -8,7 +8,7 @@ const DateSelector = ({ id, value, onChange, minDate, maxDate }) => {
   }, [id, minDate, maxDate]);
 
   return (
-    <div className="form-group">
+    <div className="form-group date">
       <label htmlFor={id}>Visit Date</label>
       <input
         type="date"

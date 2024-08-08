@@ -94,9 +94,9 @@ main {
   box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 100%;
-  height: calc(50vh); /* Height proportional to screen size */
+  height: calc(53vh); /* Height proportional to screen size */
   max-height: calc(100vh - 50px); /* Ensure it doesn't exceed the viewport height minus the header */
-  margin-top: 2px;
+  margin-top: 3px;
   margin-right: 2px;
 }
 
@@ -467,8 +467,44 @@ label {
 
 
 /* Media Queries for Responsive Design */
-@media screen and (max-width: 480px){
+/* Mobile devices */
+@media screen and (max-width: 480px) {
   .new-entry-form-container {
     height: 26vh;
-  } 
+  }
+}
+
+/* Small tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .new-entry-form-container {
+    height: 30vh;
+  }
+}
+
+/* Large tablets and small laptops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .new-entry-form-container {
+    height: 35vh;
+  }
+}
+
+/* Typical laptops and desktops */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .new-entry-form-container {
+    height: 51vh;
+  }
+}
+
+/* Large desktops */
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+  .new-entry-form-container {
+    height: 55vh;
+  }
+}
+
+/* Extra large desktops */
+@media screen and (min-width: 1921px) {
+  .new-entry-form-container {
+    height: 55vh;
+  }
 }
