@@ -465,4 +465,10 @@ label {
 
 
 
+
 /* Media Queries for Responsive Design */
+@media screen and (max-width: 480px){
+  .new-entry-form-container {
+    height: 26vh;
+  } 
+}

@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/newentry" element={<NewEntryForm />} />
           <Route path="/" element={<Carousel />} />
-          {/* <Route path="/activities" element={<ActivityDashboard />} /> Add this route */}
+          
         </Routes>
       </div>
     </Router>

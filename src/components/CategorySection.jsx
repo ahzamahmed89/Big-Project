@@ -4,7 +4,7 @@ import '../App.css';
 
 const CategorySection = ({ category, activities }) => {
   return (
-    <div>
+    <div className="category">
       <h2 className="category-header">{category}</h2>
       <div className="activities-container">
         {activities.map((activity) => (

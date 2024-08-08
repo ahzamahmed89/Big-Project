@@ -198,7 +198,9 @@ const NewEntryForm = () => {
   };
 
   const submitForm = (visitTime) => {
-    const formData = {
+    const formData = new FormData();
+
+    const formDetails = {
       Branch_Code: branchCode.trim(),
       Branch_Name: branchName.trim(),
       Region_Name: regionName.trim(),
@@ -217,30 +219,45 @@ const NewEntryForm = () => {
       })),
     };
 
-    axios.post('http://localhost:5000/submit-form', { data: JSON.stringify(formData) })
-      .then(response => {
-        const data = response.data;
-        if (data.success) {
-          alert('Form submitted successfully!');
-          resetForm();
-          
-        } else {
-          alert('Failed to submit form: ' + data.message);
-        }
-      })
-      .catch(error => {
-        console.error('Submit error:', error);
-        if (error.response) {
-          console.error('Data:', error.response.data);
-          console.error('Status:', error.response.status);
-          console.error('Headers:', error.response.headers);
-        } else if (error.request) {
-          console.error('Request:', error.request);
-        } else {
-          console.error('Error message:', error.message);
-        }
-        alert('An error occurred while submitting the form. Please try again.');
-      });
+    // Append form details as JSON
+    formData.append('data', JSON.stringify(formDetails));
+
+    // Append images to FormData
+    Object.values(data).flat().forEach(item => {
+      const fileInput = document.querySelector(`[data-code="${item.Code}"] .image-upload`);
+      if (fileInput && fileInput.files[0]) {
+        formData.append('images', fileInput.files[0], fileInput.files[0].name);
+      }
+    });
+
+    axios.post('http://localhost:5000/submit-form', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(response => {
+      const data = response.data;
+      if (data.success) {
+        alert('Form submitted successfully!');
+        resetForm();
+        
+      } else {
+        alert('Failed to submit form: ' + data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Submit error:', error);
+      if (error.response) {
+        console.error('Data:', error.response.data);
+        console.error('Status:', error.response.status);
+        console.error('Headers:', error.response.headers);
+      } else if (error.request) {
+        console.error('Request:', error.request);
+      } else {
+        console.error('Error message:', error.message);
+      }
+      alert('An error occurred while submitting the form. Please try again.');
+    });
   };
 
   const resetForm = () => {
