@@ -202,19 +202,20 @@ input[type="file" i] {
 }
 
 .category-header{
-  background-color: #022347; /* Deep blue background */
-  color: #ffffff; /* White text color */
-  padding: 4px 4px; /* Padding around the text */
-  margin: 20px 0; /* Margin to separate from other elements */
-  text-align: center; /* Center the text */
-  font-size: 1.5em; /* Larger font size */
-  font-weight: bold; /* Bold font */
-  text-transform: uppercase; /* Uppercase text */
-  letter-spacing: 2px; /* Letter spacing for more elegant look */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
-  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effect */
-  text-shadow: 0 2px 3px #e4d55ce8;
+  background-color: #ffffff; 
+  color: #202a95; 
+  
+  padding: 4px 4px; 
+  margin: 20px 0; 
+  text-align: center; 
+  font-size: 1.5em; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  border-radius: 5px; 
+ box-shadow: 2px 2px 4px #4444dd;
+  transition: transform 0.3s ease, background-color 0.3s ease; 
+  text-shadow: 2px 2px 4px #e4d55ce8;
 }
 
 .activity {
@@ -462,6 +463,59 @@ label {
 .search-bar-content .css-1uccc91-singleValue {
   color: #333 !important; /* Improve selected value text color visibility */
 }
+
+.previous-quarter-data {
+  /* display: none; */
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+.previous-quarter-data h6{
+  text-align: center ;
+  text-decoration: underline;
+  text-shadow:2px 2px 2px #00000291  ;
+  color: rgba(0, 0, 0, 0.735);
+font-weight: bold;
+font-size: calc(0.5em + 1vw);
+}
+
+.previous-quarter-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.prev-activity{
+  text-align: center ;
+}
+.prev-activity, .prev-status, .prev-responsibility,.prev-remarks{
+  text-align: center ;
+border: 2px solid rgba(255, 255, 255, 0.283);
+background-color: #ffffff ;
+border-radius: 8px;
+margin: 4px;
+box-shadow:2px 2px 10px #022347;
+font-size: calc(0.5em + 0.5vw);
+}
+.prev-activity{
+  text-decoration: underline;
+  font-weight: bold;
+}
+.previous-quarter-data.active {
+  display: block;
+}
+
+.prev-img .image-preview{
+  max-width: 100%; 
+   max-height: 100%;
+ 
+  
+}
+
 
 
 

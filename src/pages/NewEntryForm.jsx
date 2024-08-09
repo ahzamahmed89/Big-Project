@@ -199,7 +199,7 @@ const NewEntryForm = () => {
 
   const submitForm = (visitTime) => {
     const formData = new FormData();
-
+  
     const formDetails = {
       Branch_Code: branchCode.trim(),
       Branch_Name: branchName.trim(),
@@ -216,12 +216,14 @@ const NewEntryForm = () => {
         Status: document.querySelector(`[data-code="${item.Code}"] .status`).value,
         Responsibility: document.querySelector(`[data-code="${item.Code}"] .responsibility`).value.trim(),
         Remarks: document.querySelector(`[data-code="${item.Code}"] .remarks`).value.trim(),
+        Activity: item.Activity,  
+        Category: item.Category  
       })),
     };
-
+  
     // Append form details as JSON
     formData.append('data', JSON.stringify(formDetails));
-
+  
     // Append images to FormData
     Object.values(data).flat().forEach(item => {
       const fileInput = document.querySelector(`[data-code="${item.Code}"] .image-upload`);
@@ -229,7 +231,7 @@ const NewEntryForm = () => {
         formData.append('images', fileInput.files[0], fileInput.files[0].name);
       }
     });
-
+  
     axios.post('http://localhost:5000/submit-form', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -259,13 +261,13 @@ const NewEntryForm = () => {
       alert('An error occurred while submitting the form. Please try again.');
     });
   };
+  
 
   const resetForm = () => {
     setBranchCode('');
     setBranchName('');
     setRegionName('');
-    setMonth('');
-    setQuarter('');
+    
     setVisitDate(new Date().toISOString().split('T')[0]);
     setVisitedBy('');
     setReviewedBy('');

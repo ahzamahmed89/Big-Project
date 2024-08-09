@@ -6,6 +6,9 @@ import fs from 'fs';
 import path from 'path';
 import multer from 'multer';
 
+// Import your route handler
+import checkEntryRoutes from './Routes/checkEntryRoute.js'; // Adjust the path accordingly
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 const dbName = 'PMSF';
@@ -46,6 +49,21 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+app.get('/images/:year/:imageName', (req, res) => {
+  const { year, imageName } = req.params;
+
+  const imagePath = path.join(process.cwd(), 'Images', year, imageName);
+  console.log('Full Image Path:', imagePath);
+
+  if (fs.existsSync(imagePath)) {
+    console.log('Image exists.');
+    res.sendFile(imagePath);
+  } else {
+    console.log('Image does not exist.');
+    res.status(404).send('Image not found');
+  }
+});
+
 async function mongoMiddleware(req, res, next) {
   try {
     const db = await client.connect();
@@ -59,52 +77,11 @@ async function mongoMiddleware(req, res, next) {
 
 app.use(mongoMiddleware);
 
+// Use the imported routes for /check-entry
+app.use('/check-entry', checkEntryRoutes);
+
 app.get('/', (req, res) => {
   res.send('Welcome to the PMSF API');
-});
-
-app.get('/check-entry', async (req, res) => {
-  const { branchCode, year, quarter, month } = req.query;
-  const collection = req.db.collection('Logs');
-  const pmsfCollection = req.db.collection('PMSF_Main_File');
-
-  const query = {
-    Branch_Code: branchCode,
-    Year: parseInt(year, 10),
-    Qtr: quarter,
-    Month: month,
-    Entry_Status: { $in: ['Enter', 'Authorize'] }
-  };
-
-  const options = { sort: { Last_Edit_Date: -1, Last_Edit_Time: -1 }, limit: 1 };
-
-  try {
-    const logs = await collection.find(query, options).toArray();
-    if (logs.length > 0) {
-      res.json({
-        success: true,
-        message: `Branch entry already done by ${logs[0].Last_Edit_By} on ${logs[0].Last_Edit_Date} at ${logs[0].Last_Edit_Time}`
-      });
-    } else {
-      const pmsfDocs = await pmsfCollection.find({}, { projection: { Code: 1, Category: 1, Activity: 1, Weightage: 1, Status: 1 } }).toArray();
-
-      const processedDocs = pmsfDocs.map(doc => ({
-        Code: doc.Code,
-        Category: doc.Category,
-        Activity: doc.Activity,
-        Weightage: doc.Weightage ? doc.Weightage.toString() : null,
-        Status: doc.Status
-      }));
-
-      res.json({
-        success: false,
-        data: processedDocs
-      });
-    }
-  } catch (err) {
-    winston.error('Error in /check-entry:', err);
-    res.status(500).json({ success: false, message: 'Internal Server Error' });
-  }
 });
 
 app.get('/branch/:code', async (req, res) => {
@@ -157,13 +134,6 @@ app.post('/submit-form', upload.array('images'), async (req, res) => {
     const newEntries = Activities.map(activity => {
       const file = req.files ? req.files.find(file => file.originalname.includes(activity.Code)) : null;
       const imagePath = file ? file.path : null;
-      
-      // Log the final path used to store the image
-      if (imagePath) {
-        console.log(`Image stored at: ${imagePath}`);
-      } else {
-        console.log(`No image found for activity code: ${activity.Code}`);
-      }
 
       return {
         ...activity,
