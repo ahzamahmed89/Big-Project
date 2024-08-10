@@ -26,6 +26,19 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+
+app.use((req, res, next) => {
+  const origin = req.get('Origin'); // Get the origin of the request
+  const port = req.get('Host'); // Get the host (which includes the port)
+  const ip = req.ip; // Get the IP address of the client
+  
+  console.log(`Origin: ${origin}`);
+  console.log(`Host (Port): ${port}`);
+  console.log(`IP Address: ${ip}`);
+  
+  next(); // Continue to the next middleware or route
+});
+
 app.use(express.json({ limit: '50mb' }));
 
 const storage = multer.diskStorage({
