@@ -90,14 +90,8 @@ async function mongoMiddleware(req, res, next) {
 
 app.use(mongoMiddleware);
 
-// Use the imported routes for /check-entry
-app.use('/check-entry', checkEntryRoutes);
-
-app.get('/', (req, res) => {
-  res.send('Welcome to the PMSF API');
-});
-
-app.get('/branch/:code', async (req, res) => {
+// Reusable function to handle branch code lookups
+async function fetchBranchByCode(req, res) {
   const branchCode = req.params.code;
   console.log('Received branch code:', branchCode);
 
@@ -121,84 +115,13 @@ app.get('/branch/:code', async (req, res) => {
     winston.error('Error in /branch/:code:', err);
     res.status(500).json({ success: false, message: err.message });
   }
-});
+}
 
-app.post('/submit-form', upload.array('images'), async (req, res) => {
-  try {
-    if (!req.body.data) {
-      throw new Error('Missing data in the request');
-    }
-    let parsedData;
-    try {
-      parsedData = JSON.parse(req.body.data);
-    } catch (e) {
-      throw new Error('Invalid JSON in the request body');
-    }
+// Use the fetchBranchByCode function for branch route handler
+app.get('/branch/:code', fetchBranchByCode);
 
-    const { Branch_Code, Branch_Name, Region_Name, Qtr, Month, Year, Visited_By, Visit_Date, Visit_Time, Reviewed_By_OM_BM, Activities } = parsedData;
-
-    if (!Branch_Code || !Branch_Name || !Region_Name || !Qtr || !Month || !Year || !Visited_By || !Visit_Date || !Visit_Time || !Reviewed_By_OM_BM || !Activities) {
-      throw new Error('Missing required fields in the request body');
-    }
-
-    const collectionName = `PMSF_Collection_${Year}`;
-    const collection = req.db.collection(collectionName);
-
-    const newEntries = Activities.map(activity => {
-      const file = req.files ? req.files.find(file => file.originalname.includes(activity.Code)) : null;
-      const imagePath = file ? file.path : null;
-
-      return {
-        ...activity,
-        Branch_Code,
-        Branch_Name,
-        Region_Name,
-        Qtr,
-        Month,
-        Year,
-        Visited_By,
-        Visit_Date,
-        Visit_Time,
-        Reviewed_By_OM_BM,
-        Images: imagePath
-      };
-    });
-
-    await collection.insertMany(newEntries);
-
-    const logCollection = req.db.collection('Logs');
-    const currentDate = new Date();
-    const logEntry = {
-      Branch_Code,
-      Branch_Name,
-      Region_Name,
-      Year,
-      Qtr,
-      Month,
-      Entry_Status: 'Enter',
-      Last_Edit_By: Visited_By,
-      Last_Edit_Date: currentDate.toLocaleDateString('en-US'),
-      Last_Edit_Time: currentDate.toLocaleTimeString('en-US'),
-      Reviewer_Name: Reviewed_By_OM_BM,
-      Review_Status: 'Yes'
-    };
-
-    await logCollection.insertOne(logEntry);
-
-    // Include the image paths in the response
-    const imagePaths = req.files ? req.files.map(file => file.path) : [];
-
-    res.json({ 
-      success: true, 
-      message: 'Data successfully submitted and stored', 
-      insertedCount: newEntries.length,
-      imagePaths: imagePaths
-    });
-  } catch (err) {
-    winston.error('Error in /submit-form:', err);
-    res.status(500).json({ success: false, message: 'Error inserting data', error: err.message });
-  }
-});
+// Use the imported routes for /check-entry, where /submit-form logic now resides
+app.use('/check-entry', checkEntryRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
