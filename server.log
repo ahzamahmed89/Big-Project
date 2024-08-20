@@ -450,3 +450,15 @@
 {"accept":"application/json, text/plain, */*","accept-encoding":"gzip, deflate, br, zstd","accept-language":"en-US,en;q=0.9","connection":"keep-alive","host":"localhost:5000","if-none-match":"W/\"5f4c-4Tr+ErbUMyYx6pYDh5TVs0AGKnM\"","level":"info","message":"Request received with the following headers:","origin":"http://localhost:5173","referer":"http://localhost:5173/","sec-ch-ua":"\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Opera\";v=\"112\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\"","sec-fetch-dest":"empty","sec-fetch-mode":"cors","sec-fetch-site":"same-site","timestamp":"2024-08-16T16:34:29.707Z","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0"}
 {"level":"warn","message":"X-Forwarded-For header is missing","timestamp":"2024-08-16T16:34:29.711Z"}
 {"level":"info","message":"Request received: \n    Referer: http://localhost:5173/\n    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 OPR/112.0.0.0\n    X-Forwarded-For: N/A\n    Client IP: ::1","timestamp":"2024-08-16T16:34:29.712Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-08-16T18:11:24.282Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-08-16T18:11:24.301Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-08-16T18:11:54.874Z"}
+{"Branch_Code":"127","Branch_Name":"Korangi Industrial Area 2 ","Region":"Trade South","_id":"668d12baefd179289617f84c","level":"info","message":"Branch found:","timestamp":"2024-08-16T18:11:55.137Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-08-18T09:21:16.005Z"}
+{"Branch_Code":"128","Branch_Name":"Hassan Square","Region":"South 3","_id":"668d12baefd179289617f849","level":"info","message":"Branch found:","timestamp":"2024-08-18T09:21:16.455Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-08-18T09:26:48.913Z"}
+{"Branch_Code":"111","Branch_Name":"Al – Tijarah Branch","Region":"Trade South","_id":"668d12baefd179289617f845","level":"info","message":"Branch found:","timestamp":"2024-08-18T09:26:48.963Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-08-20T12:21:30.435Z"}
+{"Branch_Code":"128","Branch_Name":"Hassan Square","Region":"South 3","_id":"668d12baefd179289617f849","level":"info","message":"Branch found:","timestamp":"2024-08-20T12:21:31.693Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-08-20T12:21:52.983Z"}
+{"Branch_Code":"128","Branch_Name":"Hassan Square","Region":"South 3","_id":"668d12baefd179289617f849","level":"info","message":"Branch found:","timestamp":"2024-08-20T12:21:53.097Z"}

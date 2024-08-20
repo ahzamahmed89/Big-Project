@@ -32,27 +32,7 @@ app.use(cors({
   }
 }));
 
-// Logging Middleware
-app.use((req, res, next) => {
-  logger.info('Request received with the following headers:', req.headers);
 
-  const referer = req.get('Referer') || 'N/A';
-  const userAgent = req.get('User-Agent') || 'N/A';
-  const forwardedFor = req.get('X-Forwarded-For') || 'N/A';
-  const clientIp = req.ip || 'N/A';
-
-  if (referer === 'N/A') logger.warn('Referer header is missing');
-  if (userAgent === 'N/A') logger.warn('User-Agent header is missing');
-  if (forwardedFor === 'N/A') logger.warn('X-Forwarded-For header is missing');
-
-  logger.info(`Request received: 
-    Referer: ${referer}
-    User-Agent: ${userAgent}
-    X-Forwarded-For: ${forwardedFor}
-    Client IP: ${clientIp}`);
-
-  next();
-});
 
 app.use(express.json({ limit: '50mb' }));
 
