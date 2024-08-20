@@ -28,9 +28,19 @@ const BranchDetails = ({ branchCode, setBranchCode, setBranchName, setRegionName
         })
         .catch(error => {
           console.error('Fetch error:', error);
+          if (error.response) {
+            console.error('Data:', error.response.data);
+            console.error('Status:', error.response.status);
+            console.error('Headers:', error.response.headers);
+          } else if (error.request) {
+            console.error('Request:', error.request);
+          } else {
+            console.error('Error message:', error.message);
+          }
           alert('An error occurred while fetching branch details. Please try again.');
           setFormDisabled(true);
         });
+        
     } else {
       setLocalBranchName("");
       setLocalRegionName("");

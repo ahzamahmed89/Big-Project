@@ -3,6 +3,7 @@ import logo from '../../public/Images/Logo.png';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar'; // Adjust the import path as necessary
 import '../App.css';
+
 const Header = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
