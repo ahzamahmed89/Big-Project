@@ -1,6 +1,8 @@
 import express from 'express';
-const router = express.Router();
 import winston from 'winston';
+import path from 'path';
+
+const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
@@ -9,9 +11,9 @@ router.post('/', async (req, res) => {
     }
 
     const parsedData = JSON.parse(req.body.data);
-    const { Branch_Code, Branch_Name, Region_Name, Quarter, Month, Year, Visited_By, Visit_Date, Visit_Time, Reviewed_By_OM_BM, Activities } = parsedData;
+    const { Branch_Code, Branch_Name, Region_Name, Qtr, Month, Year, Visited_By, Visit_Date, Visit_Time, Reviewed_By_OM_BM, Activities } = parsedData;
 
-    if (!Branch_Code || !Branch_Name || !Region_Name || !Quarter || !Month || !Year || !Visited_By || !Visit_Date || !Visit_Time || !Reviewed_By_OM_BM || !Activities) {
+    if (!Branch_Code || !Branch_Name || !Region_Name || !Qtr || !Month || !Year || !Visited_By || !Visit_Date || !Visit_Time || !Reviewed_By_OM_BM || !Activities) {
       throw new Error('Missing required fields in the request body');
     }
 
@@ -19,25 +21,35 @@ router.post('/', async (req, res) => {
     const collection = req.db.collection(collectionName);
 
     const newEntries = Activities.map(activity => {
-      const file = req.files ? req.files.find(file => file.originalname.includes(activity.Code)) : null;
+      // Match the file to the specific activity code
+      const file = req.files.find(f => {
+          const [fileCode] = f.filename.split('_'); // Extract the code from the file name
+          return fileCode === activity.Code; // Ensure an exact match
+      });
+  
+      const filePath = file ? file.filename : null;
+  
+      // console.log(`Activity Code: ${activity.Code} - Matched File: ${filePath || "No file"}`);
+  
       return {
-        ...activity,
-        Branch_Code,
-        Branch_Name,
-        Region_Name,
-        Qtr: Quarter,
-        Month,
-        Year,
-        Visited_By,
-        Visit_Date,
-        Visit_Time,
-        Reviewed_By_OM_BM,
-        Images: file ? file.path : null
+          ...activity,
+          Branch_Code,
+          Branch_Name,
+          Region_Name,
+          Qtr,
+          Month,
+          Year,
+          Visited_By,
+          Visit_Date,
+          Visit_Time,
+          Reviewed_By_OM_BM,
+          Images: filePath, // Save the correct file path to the Images field
       };
-    });
-
-    await collection.insertMany(newEntries);
-
+  });
+  
+  // Insert the new entries into the database
+  await collection.insertMany(newEntries);
+  
     const logCollection = req.db.collection('Logs');
     const currentDate = new Date();
     const logEntry = {
@@ -45,14 +57,16 @@ router.post('/', async (req, res) => {
       Branch_Name,
       Region_Name,
       Year,
-      Qtr: Quarter,
+      Qtr,
       Month,
       Entry_Status: 'Enter',
       Last_Edit_By: Visited_By,
       Last_Edit_Date: currentDate.toLocaleDateString('en-US'),
       Last_Edit_Time: currentDate.toLocaleTimeString('en-US'),
       Reviewer_Name: Reviewed_By_OM_BM,
-      Review_Status: 'Yes'
+      Review_Status: 'No',
+      SnQ_Reviewer: '',
+      SnQ_Review_Status: 'No',
     };
 
     await logCollection.insertOne(logEntry);
@@ -63,5 +77,6 @@ router.post('/', async (req, res) => {
     res.status(500).json({ success: false, message: 'Error inserting data', error: err.message });
   }
 });
+
 
 export default router;

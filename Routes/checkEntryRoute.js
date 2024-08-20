@@ -26,7 +26,6 @@ router.get('/', async (req, res) => {
     console.log(`Logs found: ${logs.length}`);
 
     if (logs.length > 0) {
-      
       res.json({
         success: true,
         message: `Branch entry already done by ${logs[0].Last_Edit_By} on ${logs[0].Last_Edit_Date} at ${logs[0].Last_Edit_Time}`
@@ -49,21 +48,24 @@ router.get('/', async (req, res) => {
 
       console.log(`Found ${previousQuarterData.length} records in the previous quarter collection.`);
 
-      const currentPmsfDocs = await mainFileCollection.find({}, { projection: { Code: 1, Category: 1, Activity: 1, Weightage: 1, Status: 1 } }).toArray();
+      const currentPmsfDocs = await mainFileCollection.find({}, { projection: { Code: 1, Category: 1, Activity: 1, Weightage: 1, Status: 1, seq: 1 } }).toArray();
 
-      const processedDocs = currentPmsfDocs.map(currentDoc => {
+      // Sort documents by the 'seq' field
+      const sortedDocs = currentPmsfDocs.sort((a, b) => a.seq - b.seq);
+
+      const processedDocs = sortedDocs.map(currentDoc => {
         const previousDoc = previousQuarterData.find(prev => {
           const isMatch = String(prev.Code) === String(currentDoc.Code) && String(prev.Branch_Code) === String(branchCode);
-                    return isMatch;
+          return isMatch;
         });
 
-        
         return {
           Code: currentDoc.Code,
           Category: currentDoc.Category,
           Activity: currentDoc.Activity,
           Weightage: currentDoc.Weightage ? currentDoc.Weightage.toString() : null,
           Status: currentDoc.Status,
+          seq: currentDoc.seq,
           PreviousQuarterData: previousDoc ? {
             Status: previousDoc.Status,
             Responsibility: previousDoc.Responsibility,
@@ -72,8 +74,6 @@ router.get('/', async (req, res) => {
           } : null
         };
       });
-
-     
 
       res.json({
         success: false,
