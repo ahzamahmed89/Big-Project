@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../App.css';
 import BranchDetails from '../components/BranchDetails';
 import DateSelector from '../components/DateSelector';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
-import ActivityForm from '../components/ActivityForm';
 import SearchBar from '../components/SearchBar';
+import ActivityForm from '../components/ActivityForm';
 
 const NewEntryForm = () => {
   const [branchCode, setBranchCode] = useState('');
@@ -23,6 +22,7 @@ const NewEntryForm = () => {
   const [formGenerated, setFormGenerated] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState([]);
+  const [images, setImages] = useState({});
 
   const currentDate = new Date();
 
@@ -41,10 +41,6 @@ const NewEntryForm = () => {
     } else {
       minDate = new Date(currentYear, currentMonth - 1, 1);
     }
-
-    const maxDate = currentDate;
-    const minDateString = minDate.toISOString().split('T')[0];
-    const maxDateString = maxDate.toISOString().split('T')[0];
 
     updateMonthAndQuarter(new Date(visitDate));
   };
@@ -71,7 +67,8 @@ const NewEntryForm = () => {
   };
 
   const groupActivitiesByCategory = (data) => {
-    return data.reduce((acc, activity) => {
+    const sortedData = data.sort((a, b) => a.seq - b.seq);
+    const grouped = sortedData.reduce((acc, activity) => {
       const { Category } = activity;
       if (!acc[Category]) {
         acc[Category] = [];
@@ -79,6 +76,7 @@ const NewEntryForm = () => {
       acc[Category].push(activity);
       return acc;
     }, {});
+    return grouped;
   };
 
   const handleGenerateFormClick = (event) => {
@@ -98,7 +96,6 @@ const NewEntryForm = () => {
       return;
     }
 
-    console.log(`Checking entry for branch code: ${branchCodeValue}, year: ${year}, quarter: ${quarterValue}, month: ${monthValue}`);
     axios.get(`http://localhost:5000/check-entry?branchCode=${branchCodeValue}&year=${year}&quarter=${quarterValue}&month=${monthValue}`)
       .then(response => {
         const data = response.data;
@@ -107,8 +104,8 @@ const NewEntryForm = () => {
         } else {
           const groupedData = groupActivitiesByCategory(data.data);
           setData(groupedData);
-          setFormGenerated(true); // Form generated successfully
-          setFormDisabled(true); // Disable the generate form button
+          setFormGenerated(true);
+          setFormDisabled(true);
         }
       })
       .catch(error => {
@@ -127,6 +124,13 @@ const NewEntryForm = () => {
     }
   };
 
+  const handleImageChange = (file, code) => {
+    setImages((prevImages) => ({
+      ...prevImages,
+      [code]: file,
+    }));
+  };
+
   const validateForm = () => {
     let valid = true;
     let message = '';
@@ -143,7 +147,6 @@ const NewEntryForm = () => {
       valid = false;
       message += 'Region Name is required.\n';
     }
-    
     if (!visitDate.trim()) {
       valid = false;
       message += 'Visit Date is required.\n';
@@ -198,85 +201,80 @@ const NewEntryForm = () => {
   };
 
   const submitForm = (visitTime) => {
-    const formData = new FormData();
-  
     const formDetails = {
-      Branch_Code: branchCode.trim(),
-      Branch_Name: branchName.trim(),
-      Region_Name: regionName.trim(),
-      Month: month.trim(),
-      Qtr: quarter.trim(),
-      Year: new Date(visitDate).getFullYear(),
-      Visited_By: visitedBy.trim(),
-      Visit_Date: visitDate.trim(),
-      Visit_Time: visitTime,
-      Reviewed_By_OM_BM: reviewedBy.trim(),
-      Activities: Object.values(data).flat().map(item => ({
-        Code: item.Code,
-        Status: document.querySelector(`[data-code="${item.Code}"] .status`).value,
-        Responsibility: document.querySelector(`[data-code="${item.Code}"] .responsibility`).value.trim(),
-        Remarks: document.querySelector(`[data-code="${item.Code}"] .remarks`).value.trim(),
-        Activity: item.Activity,  
-        Category: item.Category  
-      })),
+        Branch_Code: branchCode.trim(),
+        Branch_Name: branchName.trim(),
+        Region_Name: regionName.trim(),
+        Month: month.trim(),
+        Qtr: quarter.trim(),
+        Year: new Date(visitDate).getFullYear(),
+        Visited_By: visitedBy.trim(),
+        Visit_Date: visitDate.trim(),
+        Visit_Time: visitTime,
+        Reviewed_By_OM_BM: reviewedBy.trim(),
+        Activities: Object.values(data).flat().map(item => ({
+            Code: item.Code,
+            Status: document.querySelector(`[data-code="${item.Code}"] .status`).value,
+            Responsibility: document.querySelector(`[data-code="${item.Code}"] .responsibility`).value.trim(),
+            Remarks: document.querySelector(`[data-code="${item.Code}"] .remarks`).value.trim(),
+            Weightage: item.Weightage,
+            Activity: item.Activity,
+            Category: item.Category,
+        })),
     };
-  
-    // Append form details as JSON
+
+    const formData = new FormData();
     formData.append('data', JSON.stringify(formDetails));
-  
+
     // Append images to FormData
     Object.values(data).flat().forEach(item => {
       const fileInput = document.querySelector(`[data-code="${item.Code}"] .image-upload`);
       if (fileInput && fileInput.files[0]) {
-        formData.append('images', fileInput.files[0], fileInput.files[0].name);
+        formData.append(`Images-${item.Code}`, fileInput.files[0], fileInput.files[0].name); // Ensure the field name includes the activity code
       }
     });
-  
+    
+
     axios.post('http://localhost:5000/submit-form', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
     })
     .then(response => {
-      const data = response.data;
-      if (data.success) {
-        alert('Form submitted successfully!');
-        resetForm();
-        
-      } else {
-        alert('Failed to submit form: ' + data.message);
-      }
+        if (response.data.success) {
+            alert('Form submitted successfully!');
+            resetForm();
+        } else {
+            alert('Failed to submit form: ' + response.data.message);
+        }
     })
     .catch(error => {
-      console.error('Submit error:', error);
-      if (error.response) {
-        console.error('Data:', error.response.data);
-        console.error('Status:', error.response.status);
-        console.error('Headers:', error.response.headers);
-      } else if (error.request) {
-        console.error('Request:', error.request);
-      } else {
-        console.error('Error message:', error.message);
-      }
-      alert('An error occurred while submitting the form. Please try again.');
+        console.error('Submit error:', error);
+        if (error.response) {
+            console.error('Data:', error.response.data);
+            console.error('Status:', error.response.status);
+            console.error('Headers:', error.response.headers);
+        }
+        alert('An error occurred while submitting the form. Please try again.');
     });
-  };
-  
+};
+
+
 
   const resetForm = () => {
     setBranchCode('');
     setBranchName('');
     setRegionName('');
-    
     setVisitDate(new Date().toISOString().split('T')[0]);
     setVisitedBy('');
     setReviewedBy('');
-    setFormDisabled(true);
     setData({});
-    setSubmitDisabled(true);
     setFormGenerated(false);
     setSelectedCategory([]);
     setSelectedActivity([]);
+    setSubmitDisabled(true);
+    setFormDisabled(true);
+    setImages({});
   };
 
   useEffect(() => {
@@ -293,21 +291,21 @@ const NewEntryForm = () => {
   const categories = Object.keys(data);
   const activities = categories.flatMap(category => data[category].map(activity => ({ activity: activity.Activity, category })));
 
-  const filteredData = selectedCategory.length === 0 
-    ? data 
+  const filteredData = selectedCategory.length === 0
+    ? data
     : Object.keys(data)
-        .filter(category => selectedCategory.includes(category))
-        .reduce((acc, category) => {
-          acc[category] = data[category];
-          return acc;
-        }, {});
+      .filter(category => selectedCategory.includes(category))
+      .reduce((acc, category) => {
+        acc[category] = data[category];
+        return acc;
+      }, {});
 
   const finalFilteredData = selectedActivity.length === 0
     ? filteredData
     : Object.keys(filteredData).reduce((acc, category) => {
-        acc[category] = filteredData[category].filter(activity => selectedActivity.includes(activity.Activity));
-        return acc;
-      }, {});
+      acc[category] = filteredData[category].filter(activity => selectedActivity.includes(activity.Activity));
+      return acc;
+    }, {});
 
   return (
     <div className="new-entry-form-container">
@@ -321,7 +319,7 @@ const NewEntryForm = () => {
             setFormDisabled={setFormDisabled}
             formGenerated={formGenerated}
           />
-          <div className="form-row">
+          <div className="form-row quarter-month-date">
             <div className="form-group small-input">
               <label htmlFor="quarter">Quarter</label>
               <input
@@ -349,50 +347,51 @@ const NewEntryForm = () => {
             />
           </div>
           <div className="form-row">
-          <div className="form-group">
-          <FormInput
-            label="Visited By"
-            type="text"
-            id="visitedBy"
-            value={visitedBy}
-            onChange={(e) => setVisitedBy(e.target.value)}
-            readOnly={false}
-            Enabled={formGenerated}
-          />
+            <div className="form-group">
+              <FormInput
+                label="Visited By"
+                type="text"
+                id="visitedBy"
+                value={visitedBy}
+                onChange={(e) => setVisitedBy(e.target.value)}
+                readOnly={false}
+                Enabled={formGenerated}
+              />
+            </div>
+            <div className="form-group">
+              <FormInput
+                label="Reviewed By"
+                type="text"
+                id="reviewedBy"
+                value={reviewedBy}
+                onChange={(e) => setReviewedBy(e.target.value)}
+                readOnly={false}
+                enabled={formGenerated}
+              />
+            </div>
+            <FormButton
+              onClick={handleGenerateFormClick}
+              disabled={formDisabled}
+              label="Generate Form"
+            />
           </div>
-          <div className="form-group">
-          <FormInput
-            label="Reviewed By"
-            type="text"
-            id="reviewedBy"
-            value={reviewedBy}
-            onChange={(e) => setReviewedBy(e.target.value)}
-            readOnly={false}
-            endabled={formGenerated}
-          />
-          </div>
-          </div>
-          <FormButton
-            onClick={handleGenerateFormClick}
-            disabled={formDisabled}
-            label="Generate Form"
-          />
         </form>
       </div>
       {formGenerated && (
         <div>
-          <SearchBar 
-            categories={categories} 
-            activities={activities} 
-            selectedCategory={selectedCategory} 
-            setSelectedCategory={setSelectedCategory} 
-            selectedActivity={selectedActivity} 
-            setSelectedActivity={setSelectedActivity} 
+          <SearchBar
+            categories={categories}
+            activities={activities}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            selectedActivity={selectedActivity}
+            setSelectedActivity={setSelectedActivity}
           />
-          <ActivityForm 
-            data={finalFilteredData} 
-            handleSubmitFormClick={handleSubmitFormClick} 
-            submitDisabled={submitDisabled} 
+          <ActivityForm
+            data={finalFilteredData}
+            handleImageChange={handleImageChange} // Pass the image change handler
+            handleSubmitFormClick={handleSubmitFormClick}
+            submitDisabled={submitDisabled}
           />
         </div>
       )}
