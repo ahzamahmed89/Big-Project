@@ -29,8 +29,7 @@ router.post('/', async (req, res) => {
   
       const filePath = file ? file.filename : null;
   
-      // console.log(`Activity Code: ${activity.Code} - Matched File: ${filePath || "No file"}`);
-  
+    
       return {
           ...activity,
           Branch_Code,
