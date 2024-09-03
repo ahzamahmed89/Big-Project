@@ -4,9 +4,9 @@ import Header from './components/Header.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import Carousel from './components/Carousel';
 import NewEntryForm from './pages/NewEntryForm.jsx';
+import DisplayReviewForm from './pages/DisplayReviewForm';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-// import ActivityDashboard from './components/ActivityDashboard'; // Import the new component
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function App() {
   return (
@@ -16,6 +16,8 @@ function App() {
         <Sidebar />
         <Routes>
           <Route path="/newentry" element={<NewEntryForm />} />
+          <Route path="/display-review" element={<DisplayReviewForm />} /> {/* New Route */}
+
           <Route path="/" element={<Carousel />} />
           
         </Routes>

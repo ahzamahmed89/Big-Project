@@ -1,10 +1,3 @@
-/* General styles */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f4f4f4;
-}
 
 header {
   display: flex;
@@ -14,9 +7,13 @@ header {
   background-color: #004d40;
   color: white;
   height: 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000; 
 }
 
-header .branding {
+.branding {
   margin-left: auto;
   margin-right: auto;
   text-decoration-line: underline;
@@ -62,7 +59,6 @@ header .branding {
 .menu-icon {
   cursor: pointer;
   display: inline-block;
-  
 }
 
 .right-container {
@@ -81,99 +77,191 @@ header .branding {
 
 main {
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-top: 60px; /* Ensure content is not hidden behind the fixed header */
 }
 
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 50px; /* Positioned just below the header */
+  left: -250px; /* Initially hide the sidebar off-screen */
+  height: 100%;
+  width: 250px;
+  background-color: #ffffff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding-top: 20px;
+  z-index: 999; /* Higher z-index to ensure it appears above other elements */
+  transition: left 0.3s ease; /* Smooth transition */
+}
+
+.sidebar.open {
+  left: 0; /* Move the sidebar into view */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: calc(0.6em + 0.5vw);
+  color: rgb(0, 0, 0);
+  cursor: pointer; /* Pointer cursor for clickable items */
+  transition: background-color 0.3s ease;
+  
+}
+
+
+.sidebar ul .submenu {
+  display: none; /* Initially hide submenu */
+  padding-left: 20px; /* Indent submenu items */
+}
+
+.sidebar ul .submenu.show {
+  display: block; /* Show submenu when .show class is applied */
+  list-style-type:square;
+}
+
+
+.sidebar ul .submenu li a{
+  padding: 5px 0;
+  font-weight: normal;
+  font-size: calc(0.5em + 0.8vw);
+  color: #000000; 
+  text-decoration:none;
+  border: rgb(255, 255, 255) solid 1px;
+  border-radius: 7px;
+  box-shadow: #33a609 1px 1px;
+}
+
+/* Additional Sidebar Style Adjustments */
+.sidebar ul li .submenu-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar ul li .submenu-toggle::after {
+  content: '\25B6'; /* Right-pointing arrow */
+  font-size: 0.8em;
+  transition: transform 0.3s ease;
+}
+
+.sidebar ul li .submenu-toggle.show::after {
+  transform: rotate(90deg); /* Rotate arrow when submenu is open */
+}
+
+
 .new-entry-form-container {
-  background: rgb(84, 162, 126);
+  background: NONE;
   padding: 1vw;
-  border-radius: 8px;
-  box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
   width: 100%;
   max-width: 100%;
-  height: calc(53vh); /* Height proportional to screen size */
-  max-height: calc(100vh - 50px); /* Ensure it doesn't exceed the viewport height minus the header */
-  margin-top: 3px;
+  margin-top: 52px;
   margin-right: 2px;
+  text-align: center; /* Center align the content */
+ 
 }
 
 .form-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center align the row content */
   align-items: center;
   flex-wrap: nowrap;
-  margin-bottom: 2vw;
+  margin-bottom: 1vw;
 }
 
 .form-group {
   padding: 0 8px;
-  flex: 1 1 calc(33.333% - 20px);
   box-sizing: border-box;
   font-size: calc(0.3em + 1vw);
   font-weight: bold;
-  color: whitesmoke;
+  color: rgba(3, 5, 3, 0.936);
   margin-left: 2px;
+  text-align: center; /* Center align the text inside the form group */
 }
 
 .form-group.small-input {
-  min-width: 64px;
+  min-width: 54px;
   max-width: calc(25.333% - 20px);
 }
 
 .form-group.large-input {
-  flex: 0 0 50%;
   max-width: 100%;
 }
 
-.horizontal-group {
+.form-group.date {
   display: flex;
   align-items: center;
-  margin-left: 14px;
+  justify-content: center;
+  margin-left: 8px;
+  width: 20%;
 }
 
-.horizontal-group label {
-  padding-right: 0px;
+.form-group.date label {
   margin-right: 10px;
-  white-space: nowrap;
   font-size: calc(0.5em + 1vw);
   font-weight: bold;
+  white-space: nowrap; /* Prevent the label from wrapping */
 }
 
 input[type="date"] {
-  max-width: 70%;
+  max-width: 90%;
 }
 
 input[type="text"], 
 input[type="date"], 
-#branchCode, 
 select {
   width: 100%;
   padding: 0.5vw;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: calc(0.3em + 1vw);
+  font-size: calc(0.4em + 1vw);
   height: 30px;
+  text-align: center;
 }
 
-input[type="submit"] {
-  padding: 0.8vw 1.6vw;
-  background-color: #00796b;
+.form-group.quarter-month-date {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center align the Quarter, Month, and Date fields */
+  width: 100%;
+}
+
+.generate-form-button {
+  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 4px;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
   font-size: calc(0.5em + 1vw);
-  float: right;
+  margin-left: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-start; /* Keep the button aligned to the left */
+  
 }
 
-input[type="submit"]:hover {
-  background-color: #005a4f;
-  transform: translateY(-0.2vw);
+.generate-form-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
 }
+
+.form-row .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="text"], 
+input[type="date"], 
+select {
+  text-align: center;
+}
+
 
 input[type="file" i] {
   appearance: none;
@@ -197,9 +285,7 @@ input[type="file" i] {
   border-color: black;
 }
 
-.firstForm{
-  height: 280px;
-}
+
 
 .category-header{
   background-color: #ffffff; 
@@ -213,7 +299,7 @@ input[type="file" i] {
   text-transform: uppercase; 
   letter-spacing: 2px; 
   border-radius: 5px; 
- box-shadow: 2px 2px 4px #4444dd;
+ box-shadow: 0px 0px 1px 1px #00000055;
   transition: transform 0.3s ease, background-color 0.3s ease; 
   text-shadow: 2px 2px 4px #e4d55ce8;
 }
@@ -261,7 +347,7 @@ input[type="file" i] {
 
 .activity-box .status {
   width: 40% !important;
-  margin-right: auto;
+  margin-right: 25px;
 }
 
 .activity-box .responsibility {
@@ -307,71 +393,6 @@ label {
   margin-top: 30px;
 }
 
-.generate-form-button {
-  background-color: #f3f3f3ce;
-  color: rgb(26, 171, 16);
-  border: none;
-  border-radius: 4px;
-  padding: 5px 20px;
-  cursor: pointer;
-  float: right;
-  height: 35px;
-  width: 150px;
-}
-
-.generate-form-button:disabled {
-  background-color: #ccc;
-}
-
-/* Sidebar Styles */
-.sidebar {
-  position: fixed;
-  top: auto;
-  left: -123%; /* Initially hide the sidebar off-screen */
-  height: 100%;
-  width: 23%;
-  background-color: #5a9a7f;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  padding-top: 20px;
-  z-index: 1000; /* Higher z-index to ensure it appears above other elements */
-  transition: left 0.3s ease; /* Smooth transition */
-}
-
-.sidebar.open {
-  left: 0; /* Move the sidebar into view */
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  padding: 10px;
-  text-align: left;
-  font-weight: bold;
-  font-size: calc(0.6em + 0.5vw);
-  text-decoration-line: underline;
-  color: white;
-  cursor: pointer; /* Pointer cursor for clickable items */
-}
-
-.sidebar ul .submenu {
-  display: none; /* Initially hide submenu */
-  padding-left: 35px; /* Indent submenu items */
-}
-
-.sidebar ul .submenu.show {
-  display: block; /* Show submenu when .show class is applied */
-}
-
-.sidebar ul .submenu li {
-  padding: 5% 5%;
-  font-weight: bold;
-  font-size: calc(0.5em + 0.5vw);
-  list-style-type: disc;
-  margin-left: 10%; /* Adjust margin for submenu items */
-}
 
 /* Carousel Item */
 .carousel-item img {
@@ -384,9 +405,6 @@ label {
 }
 
 
-.input-box {
-  margin-top: 0px; /* Maintain no margin */
-}
 
 /* App.css */
 .search-bar {
@@ -487,7 +505,7 @@ font-size: calc(0.5em + 1vw);
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  margin-left: 10px;
+  margin-bottom: 12px;
 }
 .prev-activity{
   text-align: center ;
@@ -560,5 +578,17 @@ font-size: calc(0.5em + 0.5vw);
 @media screen and (min-width: 1921px) {
   .new-entry-form-container {
     height: 55vh;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .sidebar {
+    width: 80%;
+  }
+}
+
+/* Large tablets and small laptops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 60%;
   }
 }
