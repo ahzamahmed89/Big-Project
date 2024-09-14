@@ -1,6 +1,9 @@
 import winston from 'winston';
+import path from 'path';
 
-export const logger = winston.createLogger({
+const logPath = path.join(process.cwd(), 'server.log');
+
+const logger = winston.createLogger({
   level: 'info',
   format: winston.format.combine(
     winston.format.timestamp(),
@@ -8,6 +11,8 @@ export const logger = winston.createLogger({
   ),
   transports: [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: 'combined.log' })
+    new winston.transports.File({ filename: logPath })
   ]
 });
+
+export default logger;

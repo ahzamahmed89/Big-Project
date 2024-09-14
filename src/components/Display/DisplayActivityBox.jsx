@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ActivityDetails from '../Display/DisplayActivityDetails';
 
+
 const ActivityBox = ({ activity }) => {
   const statusStyles = {
     Yes: 'green',

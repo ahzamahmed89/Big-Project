@@ -21,16 +21,24 @@ router.get('/', async (req, res) => {
 
     const options = { sort: { Last_Edit_Date: -1, Last_Edit_Time: -1 }, limit: 1 };
 
+    // Fetch logs for the current query
     const logs = await logsCollection.find(query, options).toArray();
 
     console.log(`Logs found: ${logs.length}`);
 
     if (logs.length > 0) {
-      res.json({
+      console.log(`Returning log for branch code ${branchCode} with review status ${logs[0].Review_Status}`);
+
+        res.json({
         success: true,
-        message: `Branch entry already done by ${logs[0].Last_Edit_By} on ${logs[0].Last_Edit_Date} at ${logs[0].Last_Edit_Time}`
+        message: `Branch entry already done by ${logs[0].Last_Edit_By} on ${logs[0].Last_Edit_Date} at ${logs[0].Last_Edit_Time}`,
+        data: logs,
+        reviewStatus: logs[0].Review_Status // Including Review_Status in the response
       });
+      
     } else {
+      console.log(`No logs found for Branch_Code: ${branchCode}, fetching previous quarter data...`);
+      
       const previousQuarter = (parseInt(quarter.charAt(1)) - 1) || 4;
       const previousYear = previousQuarter === 4 ? year - 1 : year;
 
@@ -75,6 +83,7 @@ router.get('/', async (req, res) => {
         };
       });
 
+      console.log('Returning processed documents from previous quarter');
       res.json({
         success: false,
         data: processedDocs

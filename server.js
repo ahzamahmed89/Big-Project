@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 5000;
 const dbName = 'PMSF';
 const url = 'mongodb+srv://ahmedahxam:1234@cluster0.3fs3r1f.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const client = new MongoClient(url);
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 logger.info('Logger initialized successfully');
 
@@ -32,6 +36,7 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 

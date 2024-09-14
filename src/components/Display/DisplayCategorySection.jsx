@@ -1,10 +1,10 @@
 import React from 'react';
 import ActivityBox from './DisplayActivityBox';
-import '../../../src/App.css';
+import '../../App.css';
 
 const CategorySection = ({ category, activities }) => {
   return (
-    <div className="category">
+    <div className="category" >
       <h2 className="category-header">{category}</h2>
       <div className="activities-container">
         {activities.map((activity) => (

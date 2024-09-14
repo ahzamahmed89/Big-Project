@@ -9,13 +9,7 @@ const ActivityDetails = ({ activity, handleStatusChange, togglePreviousQuarterVi
 
   const [status, setStatus] = useState(activity.Status);
 
-  const onStatusChange = (e) => {
-    setStatus(e.target.value);
-    handleStatusChange(e.target.value);
-  };
-
-
-
+  
   // Adjust path construction based on what the Images field contains
   const imagePath = activity.Images
     ? `/images/${activity.Year}/${activity.Images.split('\\').pop().replace(/\\/g, '/')}`
@@ -30,7 +24,7 @@ const ActivityDetails = ({ activity, handleStatusChange, togglePreviousQuarterVi
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <label className="status" style={{ marginRight: '0px' }}>Status: {status}</label>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          {/* Add any additional controls or information here */}
+          
         </div>
       </div>
       <div>
