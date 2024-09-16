@@ -1,11 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import { MongoClient } from 'mongodb';
-import logger from './Utils/logger.js'; // Importing the configured logger
-import upload from './upload.js'; // Import the Multer configuration
+import logger from './Utils/logger.js'; 
+import upload from './upload.js'; 
 import submitFormRoute from './Routes/submitDataRoutes.js';
 import checkEntryRoutes from './Routes/checkEntryRoute.js';
 import displayRoutes from './Routes/displayRoutes.js';
+import updateReviewStatus from './Routes/updateReviewStatus.js'
 const app = express();
 const PORT = process.env.PORT || 5000;
 const dbName = 'PMSF';
@@ -99,7 +100,7 @@ async function fetchBranchByCode(req, res) {
 }
 
 app.get('/branch/:code', fetchBranchByCode);
-
+app.use('/update-review-status', updateReviewStatus); 
 // Use the imported routes for /check-entry and /submit-form
 app.use('/check-entry', checkEntryRoutes);
 app.use('/submit-form', upload, submitFormRoute);

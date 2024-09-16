@@ -7,6 +7,7 @@ import '../App.css';
 const Header = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
+  // Toggle the sidebar open/close
   const toggleSidebar = () => setShowSidebar(!showSidebar);
 
   return (
@@ -14,7 +15,11 @@ const Header = () => {
       <div className="right-container">
         <nav className="top-nav">
           <ul>
-            <li><a href="#" id="menu-toggle" onClick={toggleSidebar}><i className="bi bi-list"></i></a></li>
+            <li>
+              <a href="#" id="menu-toggle" onClick={toggleSidebar}>
+                <i className="bi bi-list"></i> {/* Button to toggle sidebar */}
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -22,7 +27,9 @@ const Header = () => {
       <div className="right-container">
         <Link to="/"><img src={logo} alt="Logo" id="navbar-logo" /></Link>
       </div>
-      <Sidebar showSidebar={showSidebar} toggleSidebar={toggleSidebar} />
+
+      {/* Sidebar Component */}
+      <Sidebar showSidebar={showSidebar} toggleSidebar={setShowSidebar} />
     </header>
   );
 };

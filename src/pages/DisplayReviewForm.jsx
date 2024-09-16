@@ -99,7 +99,7 @@ const DisplayReviewForm = () => {
 
               title="Display/Review"
               description="Display or Review branch data here!"
-              accentColor="Green"
+              accentColor="blue"
             />
           </div>
           
