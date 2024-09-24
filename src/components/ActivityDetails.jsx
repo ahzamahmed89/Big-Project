@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-const ActivityDetails = ({ activity, handleStatusChange, handleImageChange, togglePreviousQuarterVisibility, previousStatusStyles }) => {
+const ActivityDetails = ({ 
+  activity, 
+  handleStatusChange, 
+  handleImageChange, 
+  togglePreviousQuarterVisibility, 
+  previousStatusStyles = { Yes: 'green', No: 'red', NA: 'yellow', NotFound: 'yellow' }, // Ensure NotFound is always present
+  isNewEntryForm,       // Prop to indicate if it's NewEntryForm
+  isDisplayReviewForm   // Prop to indicate if it's DisplayReviewForm
+}) => {
   const statusStyles = {
     Yes: { backgroundColor: 'lightgreen' },
     No: { backgroundColor: 'lightcoral' },
@@ -31,15 +39,25 @@ const ActivityDetails = ({ activity, handleStatusChange, handleImageChange, togg
     }
   };
 
+  // Construct image path from activity data (assuming image paths are stored correctly in activity.Images)
+  const currentImagePath = activity.Images 
+  
+  ? `/images/${activity.Images.split('Images\\')[1]?.replace(/\\/g, '/')}`
+  : null;
+
+  
+
   return (
-    <div>
+    <div className="activity-details">
       <h3 className="activity" style={{ ...statusStyles[status], padding: '6px', fontWeight: 'bold' }}>
         {activity.Activity}
       </h3>
+
+      {/* Status Section */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <label style={{ marginRight: '0px' }}>Status:</label>
+        <label>Status:</label>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <select className="status" value={status} onChange={onStatusChange} style={{ textAlign: 'center' }}>
+          <select className="status" value={status} onChange={onStatusChange} disabled={isDisplayReviewForm} style={{ textAlign: 'center' }}>
             <option value="">Select Status</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -49,8 +67,7 @@ const ActivityDetails = ({ activity, handleStatusChange, handleImageChange, togg
             className="previous-quarter-button"
             onClick={togglePreviousQuarterVisibility}
             style={{
-              backgroundColor: previousStatusStyles[activity.PreviousQuarterData?.Status || 'NotFound'],
-              
+              backgroundColor: previousStatusStyles[activity.PreviousQuarterData?.Status || 'NotFound'], // Ensure fallback is 'NotFound'
               cursor: 'pointer',
             }}
           >
@@ -58,9 +75,11 @@ const ActivityDetails = ({ activity, handleStatusChange, handleImageChange, togg
           </button>
         </div>
       </div>
+
+      {/* Responsibility Selection */}
       <div>
-        <label></label>
-        <select className="responsibility" defaultValue={activity.Responsibility}>
+        <label>Responsibility:</label>
+        <select className="responsibility" defaultValue={activity.Responsibility} disabled={isDisplayReviewForm}>
           <option value="">Select Responsibility</option>
           <option value="Admin">Admin</option>
           <option value="Branch Operations">Branch Operations</option>
@@ -71,24 +90,44 @@ const ActivityDetails = ({ activity, handleStatusChange, handleImageChange, togg
           <option value="Others">Others</option>
         </select>
       </div>
+
+      {/* Remarks Input */}
       <div>
-        <label></label>
+        <label>Remarks:</label>
         <input
           type="text"
           className="remarks"
           placeholder="Enter Remarks"
           defaultValue={activity.Remarks}
+          disabled={isDisplayReviewForm}
         />
       </div>
-      <div>
-        <label>Image:</label>
-        <input 
-          type="file" 
-          className="image-upload" 
-          onChange={onImageChange} 
-        />
-        {image && <img src={image} alt="Uploaded Preview" className="image-preview" />}
-      </div>
+
+      {/* Image Handling: Capture for New Entry Form */}
+      {isNewEntryForm && (
+        <div className="image-upload-section">
+          <label></label>
+          <input 
+            type="file" 
+            className="image-upload" 
+            onChange={onImageChange} 
+          />
+          {image && <img src={image} alt="Uploaded Preview" className="image-preview" />}
+        </div>
+      )}
+
+      {/* Image Handling: Display for Display Review Form */}
+      {isDisplayReviewForm && (
+        
+        <div className="image-display-section">
+          
+          {currentImagePath ? (
+            <img src={currentImagePath} alt="No image available for this activity." className="image-preview" />
+          ) : (
+            <p>No image available for this activity.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

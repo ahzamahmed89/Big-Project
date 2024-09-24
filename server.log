@@ -853,3 +853,438 @@
 {"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-14T17:18:20.019Z"}
 {"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-14T17:21:36.644Z"}
 {"level":"info","message":"Server started on port 5000","timestamp":"2024-09-14T17:21:36.661Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T09:39:07.518Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T09:39:08.522Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T10:39:21.913Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T10:39:21.930Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T10:39:38.173Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T10:39:38.317Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T10:40:52.054Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T10:40:52.081Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T10:42:49.730Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T10:42:49.752Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T10:43:01.073Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T10:43:01.402Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T10:54:13.346Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T10:54:13.356Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T10:54:21.697Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T10:54:21.982Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T10:57:09.483Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T10:57:09.497Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T10:57:30.086Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T10:57:30.228Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T10:58:34.427Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T10:58:34.440Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T10:58:43.598Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T10:58:43.755Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T10:58:43.761Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T10:58:44.094Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T10:59:46.614Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T10:59:46.625Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:01:30.203Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:01:30.216Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:03:18.064Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:03:18.076Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:05:40.336Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:05:40.345Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:05:58.655Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:05:58.790Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:07:06.550Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:07:06.561Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:10:53.540Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:10:53.684Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:14:30.482Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:14:30.644Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:15:37.112Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:15:37.285Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:24:34.160Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:24:34.170Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:24:43.409Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:24:43.556Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:26:26.105Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:26:26.115Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:26:33.244Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:26:33.409Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:33:51.442Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:33:51.454Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:34:03.703Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:34:03.846Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:35:40.046Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:35:40.058Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:35:46.727Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:35:46.730Z"}
+{"Branch_Code":"133","Branch_Name":"Abdullah Haroon Road","Region":"Trade South","_id":"668d12baefd179289617f852","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:35:46.853Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:35:47.533Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:42:31.702Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:42:31.712Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:42:43.631Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:42:43.790Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:46:18.713Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:46:20.940Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-16T11:58:09.021Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-16T11:58:09.040Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T11:58:22.038Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T11:58:22.218Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:08:10.147Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:08:35.520Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:09:01.045Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:09:02.862Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:21:45.393Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:21:45.589Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:22:38.844Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:22:39.042Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:25:27.243Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:25:27.412Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:29:37.295Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:29:37.420Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:38:12.816Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:38:13.031Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:50:44.416Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:50:44.650Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:50:50.169Z"}
+{"Branch_Code":"132","Branch_Name":"S.M.C.H.S","Region":"South 2","_id":"668d12baefd179289617f84e","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:50:50.383Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:54:45.691Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:54:45.903Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:56:04.697Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:56:04.851Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T12:58:25.807Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T12:58:25.959Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T13:00:17.145Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T13:00:17.292Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T13:11:23.058Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T13:11:24.607Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T13:23:36.867Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T13:24:07.540Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-16T13:25:36.714Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-16T13:25:36.857Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T06:32:23.608Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T06:32:23.623Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T06:35:48.104Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T06:35:48.120Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T06:35:59.640Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T06:35:59.771Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T06:38:24.308Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-19T06:38:24.503Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T07:10:18.068Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T07:10:22.033Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T07:11:07.595Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T07:11:07.613Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T07:11:30.341Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T07:11:30.514Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T07:21:04.040Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T07:21:04.057Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T07:21:20.670Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T07:21:20.876Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T07:22:19.427Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T07:22:19.453Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T07:22:26.031Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T07:22:26.218Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T07:38:43.163Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T07:38:43.310Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T07:46:55.684Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T07:46:55.700Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T07:49:37.554Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T07:49:37.768Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T07:51:20.243Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T07:51:20.259Z"}
+{"code":"ETIMEOUT","hostname":"_mongodb._tcp.cluster0.3fs3r1f.mongodb.net","level":"error","message":"Database connection error: querySrv ETIMEOUT _mongodb._tcp.cluster0.3fs3r1f.mongodb.net","stack":"Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.3fs3r1f.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv","timestamp":"2024-09-19T07:51:56.834Z"}
+{"code":"ETIMEOUT","hostname":"_mongodb._tcp.cluster0.3fs3r1f.mongodb.net","level":"error","message":"Database connection error: querySrv ETIMEOUT _mongodb._tcp.cluster0.3fs3r1f.mongodb.net","stack":"Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.3fs3r1f.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv","timestamp":"2024-09-19T07:52:36.112Z"}
+{"level":"error","message":"Database connection error: Server selection timed out after 30000 ms","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{"ac-ppa3fis-shard-00-00.3fs3r1f.mongodb.net:27017":{"$clusterTime":null,"address":"ac-ppa3fis-shard-00-00.3fs3r1f.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":[],"lastUpdateTime":56443849,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxWireVersion":0,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"ac-ppa3fis-shard-00-01.3fs3r1f.mongodb.net:27017":{"$clusterTime":null,"address":"ac-ppa3fis-shard-00-01.3fs3r1f.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":[],"lastUpdateTime":56443849,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxWireVersion":0,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net:27017":{"$clusterTime":null,"address":"ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":[],"lastUpdateTime":56443849,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxWireVersion":0,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":"atlas-12enom-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongoServerSelectionError: Server selection timed out after 30000 ms\n    at Topology.selectServer (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\sdam\\topology.js:303:38)\n    at async Topology._connect (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\sdam\\topology.js:196:28)\n    at async Topology.connect (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\sdam\\topology.js:158:13)\n    at async topologyConnect (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\mongo_client.js:204:17)\n    at async MongoClient._connect (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\mongo_client.js:217:13)\n    at async MongoClient.connect (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\mongo_client.js:142:13)\n    at async mongoMiddleware (file:///C:/Users/User/Desktop/Big%20Project%20-%20Copy/BigProject/server.js:65:16)","timestamp":"2024-09-19T07:54:25.048Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:10:50.072Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T08:10:50.282Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:17:22.513Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T08:17:22.677Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T08:24:56.131Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T08:24:56.148Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:25:10.132Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T08:25:10.338Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T08:28:08.781Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T08:28:08.796Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:30:24.408Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T08:30:24.643Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T08:32:04.392Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T08:32:04.406Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:32:17.357Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T08:32:17.587Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T08:33:00.481Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T08:33:00.505Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:33:10.080Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:33:10.088Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T08:33:13.981Z"}
+{"level":"info","message":"Branch found:","timestamp":"2024-09-19T08:33:20.116Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T08:33:57.521Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T08:33:57.538Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:34:03.981Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T08:34:04.157Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:36:04.081Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T08:36:04.277Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T08:39:04.709Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T08:39:04.902Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T11:43:41.901Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T11:43:41.918Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T11:44:14.468Z"}
+{"Branch_Code":"133","Branch_Name":"Abdullah Haroon Road","Region":"Trade South","_id":"668d12baefd179289617f852","level":"info","message":"Branch found:","timestamp":"2024-09-19T11:44:16.252Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T11:45:51.082Z"}
+{"Branch_Code":"099","Branch_Name":"Buffer Zone","Region":"South 3","_id":"668d12baefd179289617f848","level":"info","message":"Branch found:","timestamp":"2024-09-19T11:45:51.257Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T11:48:16.255Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T11:48:16.272Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T11:48:24.793Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-19T11:48:24.916Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T12:06:08.078Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T12:06:08.096Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T12:06:27.913Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-19T12:06:28.043Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-19T13:20:52.702Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-19T13:20:52.723Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:20:59.359Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:20:59.457Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:21:01.695Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:21:01.805Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:27:09.071Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:27:10.976Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:47:42.552Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:47:42.644Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:48:00.435Z"}
+{"Branch_Code":"132","Branch_Name":"S.M.C.H.S","Region":"South 2","_id":"668d12baefd179289617f84e","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:48:00.596Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:48:52.139Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:48:52.221Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:49:48.575Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:49:48.831Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:53:45.849Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:53:45.989Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:54:56.893Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:54:57.007Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:55:35.118Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:55:35.220Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:56:13.163Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:56:13.247Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:56:51.145Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:56:51.332Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T13:57:57.709Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T13:57:58.176Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-19T14:05:02.944Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-19T14:05:07.943Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:16:55.988Z"}
+{"Branch_Code":"132","Branch_Name":"S.M.C.H.S","Region":"South 2","_id":"668d12baefd179289617f84e","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:16:57.256Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:16:57.384Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:16:57.801Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:17:31.769Z"}
+{"Branch_Code":"133","Branch_Name":"Abdullah Haroon Road","Region":"Trade South","_id":"668d12baefd179289617f852","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:17:32.584Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-20T13:18:05.609Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-20T13:18:05.627Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:18:17.946Z"}
+{"Branch_Code":"133","Branch_Name":"Abdullah Haroon Road","Region":"Trade South","_id":"668d12baefd179289617f852","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:18:18.318Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:18:59.619Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:18:59.824Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:22:04.264Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:22:04.547Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:24:26.524Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:24:26.681Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:24:51.519Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:24:51.661Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-20T13:30:06.639Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-20T13:30:06.741Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:30:11.882Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:30:12.088Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:32:51.589Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:32:51.830Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:38:58.782Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:38:58.910Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-20T13:39:22.077Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-20T13:39:22.241Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T10:43:28.965Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T10:43:30.473Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T10:44:09.554Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T10:44:09.701Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T10:45:17.400Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T10:45:17.685Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T10:46:48.927Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T10:46:49.123Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T10:52:28.892Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T10:52:30.002Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-23T11:00:22.697Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-23T11:00:22.720Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-23T11:02:13.265Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-23T11:02:13.287Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:03:51.098Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:03:51.238Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:09:55.425Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:09:55.616Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:10:50.747Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:10:51.836Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:14:29.845Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:14:30.045Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:15:11.637Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:15:11.823Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:17:12.814Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:17:13.064Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:36:33.105Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:36:33.361Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:36:48.811Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:36:49.023Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:37:15.858Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:37:16.023Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:38:47.248Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:38:47.508Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:41:25.594Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:41:26.422Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:41:47.324Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:41:47.516Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:42:45.928Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:42:46.211Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T11:43:59.338Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-23T11:43:59.615Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:02:46.006Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:02:47.448Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:04:47.957Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:04:48.177Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:05:09.165Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:05:09.373Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:05:15.124Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:05:15.416Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:12:29.274Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:12:29.426Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:31:02.762Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:31:04.217Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:39:41.076Z"}
+{"Branch_Code":"132","Branch_Name":"S.M.C.H.S","Region":"South 2","_id":"668d12baefd179289617f84e","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:39:41.338Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:39:42.970Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:39:43.177Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:43:23.148Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:43:23.472Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:44:43.014Z"}
+{"Branch_Code":"132","Branch_Name":"S.M.C.H.S","Region":"South 2","_id":"668d12baefd179289617f84e","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:44:43.212Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:44:55.906Z"}
+{"Branch_Code":"133","Branch_Name":"Abdullah Haroon Road","Region":"Trade South","_id":"668d12baefd179289617f852","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:44:56.112Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:49:14.976Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:49:15.286Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T12:51:13.846Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-23T12:51:14.175Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T13:01:27.299Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-23T13:01:27.551Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T13:19:35.520Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-23T13:19:35.660Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T13:24:54.496Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-23T13:24:54.726Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T13:26:50.998Z"}
+{"Branch_Code":"136","Branch_Name":"Hussainabad","Region":"South 3","_id":"668d12baefd179289617f855","level":"info","message":"Branch found:","timestamp":"2024-09-23T13:26:51.138Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T13:28:04.289Z"}
+{"Branch_Code":"136","Branch_Name":"Hussainabad","Region":"South 3","_id":"668d12baefd179289617f855","level":"info","message":"Branch found:","timestamp":"2024-09-23T13:28:04.576Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-23T14:07:59.628Z"}
+{"Branch_Code":"136","Branch_Name":"Hussainabad","Region":"South 3","_id":"668d12baefd179289617f855","level":"info","message":"Branch found:","timestamp":"2024-09-23T14:08:00.772Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:00:31.298Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:00:33.139Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:13:10.493Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:13:12.083Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:13:30.542Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:13:31.435Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:21:47.838Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:21:48.025Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:52:52.022Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:52:52.215Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:53:00.957Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:53:01.740Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:54:31.690Z"}
+{"Branch_Code":"130","Branch_Name":"Bukhari Commercial","Region":"Trade South","_id":"668d12baefd179289617f859","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:54:31.951Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:54:43.403Z"}
+{"Branch_Code":"104","Branch_Name":"Cloth Market ","Region":"Trade South","_id":"668d12baefd179289617f844","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:54:43.622Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:54:49.482Z"}
+{"Branch_Code":"105","Branch_Name":"Gulshan e Maymar","Region":"South 4","_id":"668d12baefd179289617f83e","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:54:49.667Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:54:57.390Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:54:57.752Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:55:01.865Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:55:02.055Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:55:13.118Z"}
+{"Branch_Code":"133","Branch_Name":"Abdullah Haroon Road","Region":"Trade South","_id":"668d12baefd179289617f852","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:55:13.278Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:56:21.591Z"}
+{"Branch_Code":"100","Branch_Name":"Gulbahar","Region":"South 3","_id":"668d12baefd179289617f83b","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:56:21.745Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:56:26.403Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:56:26.640Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:56:33.711Z"}
+{"Branch_Code":"102","Branch_Name":"Sharfabad","Region":"South 2","_id":"668d12baefd179289617f83f","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:56:34.390Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:56:41.014Z"}
+{"Branch_Code":"135","Branch_Name":"Fortune Tower","Region":"Trade South","_id":"668d12baefd179289617f85b","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:56:41.158Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:56:45.994Z"}
+{"Branch_Code":"136","Branch_Name":"Hussainabad","Region":"South 3","_id":"668d12baefd179289617f855","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:56:46.203Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:57:19.657Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:57:19.891Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T06:59:44.145Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T06:59:44.372Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:04:36.275Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:04:36.433Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:04:58.555Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:05:00.449Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:06:15.615Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:06:15.746Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:07:48.862Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:07:49.020Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:16:53.837Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:16:53.990Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:18:39.798Z"}
+{"Branch_Code":"134","Branch_Name":"Lucky One/F.B  Industrial Area","Region":"Trade South","_id":"668d12baefd179289617f851","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:18:39.950Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:19:12.081Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:19:12.229Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:21:28.194Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:21:28.359Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:36:53.518Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:36:55.524Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T07:56:01.323Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T07:56:16.485Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T08:09:09.908Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T08:09:10.024Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T08:10:36.490Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T08:10:42.276Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T08:41:31.922Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T08:41:32.966Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T08:54:50.720Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T08:54:51.938Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T08:58:57.433Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T08:58:57.591Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T09:43:47.498Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T09:43:49.024Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T09:45:26.824Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T09:45:26.992Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:06:50.629Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:06:50.909Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:12:21.703Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:12:21.828Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:12:39.875Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:12:40.093Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:15:39.317Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:15:39.607Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:19:37.703Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:19:37.998Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:20:24.423Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:20:24.579Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:21:24.118Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:21:28.318Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:25:28.839Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:25:29.020Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:26:13.565Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:26:13.742Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:27:02.637Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:27:02.924Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:29:20.293Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:29:20.693Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:31:41.359Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:31:41.717Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:32:42.591Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:32:42.779Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:38:49.007Z"}
+{"Branch_Code":"136","Branch_Name":"Hussainabad","Region":"South 3","_id":"668d12baefd179289617f855","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:38:49.268Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:38:50.111Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:38:50.545Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:41:30.490Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:41:30.754Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:42:09.028Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:42:09.268Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:43:30.326Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:43:30.814Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:43:57.666Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:43:58.443Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:45:59.926Z"}
+{"Branch_Code":"136","Branch_Name":"Hussainabad","Region":"South 3","_id":"668d12baefd179289617f855","level":"info","message":"Branch found:","timestamp":"2024-09-24T10:46:00.096Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T10:51:11.326Z"}
+{"level":"error","message":"Error in /branch/:code: getaddrinfo ENOTFOUND ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":{"$oid":"7fffffff0000000000000327"},"maxSetVersion":174,"servers":{"ac-ppa3fis-shard-00-00.3fs3r1f.mongodb.net:27017":{"$clusterTime":null,"address":"ac-ppa3fis-shard-00-00.3fs3r1f.mongodb.net:27017","arbiters":[],"electionId":null,"error":{},"hosts":[],"lastUpdateTime":499126490,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxWireVersion":0,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"ac-ppa3fis-shard-00-01.3fs3r1f.mongodb.net:27017":{"$clusterTime":null,"address":"ac-ppa3fis-shard-00-01.3fs3r1f.mongodb.net:27017","arbiters":[],"electionId":null,"error":{},"hosts":[],"lastUpdateTime":499126489,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxWireVersion":0,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net:27017":{"$clusterTime":null,"address":"ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net:27017","arbiters":[],"electionId":null,"error":{},"hosts":[],"lastUpdateTime":499126490,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxWireVersion":0,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":"atlas-12enom-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net\n    at Topology.selectServer (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\sdam\\topology.js:303:38)\n    at async executeOperation (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\operations\\execute_operation.js:101:20)\n    at async FindCursor._initialize (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\cursor\\find_cursor.js:58:26)\n    at async [kInit] (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\cursor\\abstract_cursor.js:463:27)\n    at async next (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\cursor\\abstract_cursor.js:520:13)\n    at async FindCursor.next (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\cursor\\abstract_cursor.js:237:16)\n    at async Collection.findOne (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\collection.js:275:21)\n    at async fetchBranchByCode (file:///C:/Users/User/Desktop/Big%20Project%20-%20Copy/BigProject/server.js:90:20)","timestamp":"2024-09-24T10:51:41.356Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T11:43:04.015Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T11:43:04.676Z"}

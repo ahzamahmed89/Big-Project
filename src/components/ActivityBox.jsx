@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ActivityDetails from './ActivityDetails';
 
-const ActivityBox = ({ activity }) => {
+const ActivityBox = ({ activity, isNewEntryForm, isDisplayReviewForm, handleImageChange }) => {
   const previousStatusStyles = {
     Yes: 'green',
     No: 'red',
@@ -17,15 +17,12 @@ const ActivityBox = ({ activity }) => {
   };
 
   const handleStatusChange = (newStatus) => {
-    // Handle status change logic here
+    // Handle status change logic here, e.g., update status in parent component
   };
 
-  const handleImageChange = (newImage) => {
-    // Handle image upload logic here
-  };
-
+  // If activity has previous quarter images, construct the image path
   const imagePath = activity.PreviousQuarterData?.Images
-    ? `/images/${activity.PreviousQuarterData.Images.split('Images\\')[1].replace(/\\/g, '/')}`
+    ? `/images/${activity.PreviousQuarterData.Images.split('Images\\')[1]?.replace(/\\/g, '/')}`
     : null;
 
   return (
@@ -34,9 +31,13 @@ const ActivityBox = ({ activity }) => {
         activity={activity}
         handleStatusChange={handleStatusChange}
         handleImageChange={handleImageChange}
-        togglePreviousQuarterVisibility={togglePreviousQuarterVisibility} // Pass down the toggle function
-        previousStatusStyles={previousStatusStyles} // Pass down the styles
+        togglePreviousQuarterVisibility={togglePreviousQuarterVisibility}
+        previousStatusStyles={previousStatusStyles}
+        isNewEntryForm={isNewEntryForm}            
+        isDisplayReviewForm={isDisplayReviewForm} 
+        
       />
+     
       {previousQuarterVisible && activity.PreviousQuarterData && (
         <div className="previous-quarter-data">
           <h6>Last Visit Status</h6>

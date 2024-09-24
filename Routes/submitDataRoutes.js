@@ -27,9 +27,10 @@ router.post('/', async (req, res) => {
           return fileCode === activity.Code; // Ensure an exact match
       });
   
-      const filePath = file ? file.filename : null;
-  
-    
+      // Construct the full file path
+      const year = Year.toString();  // Convert Year to string
+      const filePath = file ? path.join(process.cwd(), 'Images', year, file.filename) : null;
+      
       return {
           ...activity,
           Branch_Code,
@@ -42,10 +43,10 @@ router.post('/', async (req, res) => {
           Visit_Date,
           Visit_Time,
           Reviewed_By_OM_BM,
-          Images: filePath, // Save the correct file path to the Images field
+          Images: filePath,  // Save the full file path to the Images field
       };
   });
-  
+    
   // Insert the new entries into the database
   await collection.insertMany(newEntries);
   

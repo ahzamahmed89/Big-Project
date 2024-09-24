@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css'; // Import your sidebar CSS file where styles are defined
 
 const Sidebar = ({ showSidebar, toggleSidebar }) => {
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false); // State for submenu open/close
   const sidebarRef = useRef(null);
 
   // Close the sidebar if clicked outside of it
@@ -22,15 +23,19 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
     };
   }, [showSidebar, toggleSidebar]);
 
+  const toggleSubmenu = () => {
+    setIsSubmenuOpen(!isSubmenuOpen); // Toggle submenu open/close state
+  };
+
   return (
     <div 
       className={`sidebar ${showSidebar ? 'open' : ''}`} 
       ref={sidebarRef} 
     >
       <ul>
-        <li className="submenu-toggle">
+        <li className="submenu-toggle" onClick={toggleSubmenu}>
           Physical Mystery Shopping Form
-          <ul className="submenu">
+          <ul className={`submenu ${isSubmenuOpen ? 'show' : ''}`}>
             <li><Link to="/newentry" onClick={() => toggleSidebar(false)}>New Entry</Link></li>
             <li><Link to="/edit" onClick={() => toggleSidebar(false)}>Edit</Link></li>
             <li><Link to="/display-review" onClick={() => toggleSidebar(false)}>Display/Review</Link></li>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import axios from 'axios';
 import BranchDetails from '../components/BranchDetails';
 import DateSelector from '../components/DateSelector';
@@ -6,7 +6,9 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SearchBar from '../components/SearchBar';
 import ActivityForm from '../components/ActivityForm';
-import FeatureItem from '../components/Banner'
+import FeatureItem from '../components/Banner';
+
+
 const NewEntryForm = () => {
   const [branchCode, setBranchCode] = useState('');
   const [branchName, setBranchName] = useState('');
@@ -20,6 +22,7 @@ const NewEntryForm = () => {
   const [data, setData] = useState({});
   const [submitDisabled, setSubmitDisabled] = useState(true);
   const [formGenerated, setFormGenerated] = useState(false);
+  const [filteredActivities, setFilteredActivities] = useState({});
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState([]);
   const [images, setImages] = useState({});
@@ -34,16 +37,32 @@ const NewEntryForm = () => {
     const currentDay = currentDate.getDate();
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
-
+  
     let minDate;
     if (currentDay >= 11) {
+      // Allow the first day of the current month as min date if the current day is greater than or equal to the 11th
       minDate = new Date(currentYear, currentMonth, 1);
     } else {
+     if(currentMonth  == 1){
+      // Otherwise, allow the first day of the previous month as the min date
+      minDate = new Date(currentYear -1, 12, 1);
+     }else{
       minDate = new Date(currentYear, currentMonth - 1, 1);
     }
-
+    }
+  
+    // Convert minDate to the proper format (YYYY-MM-DD) for the input field
+    const formattedMinDate = minDate.toISOString().split('T')[0];
+    const formattedMaxDate = currentDate.toISOString().split('T')[0];
+  
+    // Set min and max dates for DateSelector
+    document.querySelector('#visitDate').min = formattedMinDate;
+    document.querySelector('#visitDate').max = formattedMaxDate;
+  
+    // Set the initial month and quarter based on the selected date
     updateMonthAndQuarter(new Date(visitDate));
   };
+  
 
   const updateMonthAndQuarter = (selectedDate) => {
     const selectedMonth = selectedDate.getMonth();
@@ -202,25 +221,25 @@ const NewEntryForm = () => {
 
   const submitForm = (visitTime) => {
     const formDetails = {
-        Branch_Code: branchCode.trim(),
-        Branch_Name: branchName.trim(),
-        Region_Name: regionName.trim(),
-        Month: month.trim(),
-        Qtr: quarter.trim(),
-        Year: new Date(visitDate).getFullYear(),
-        Visited_By: visitedBy.trim(),
-        Visit_Date: visitDate.trim(),
-        Visit_Time: visitTime,
-        Reviewed_By_OM_BM: reviewedBy.trim(),
-        Activities: Object.values(data).flat().map(item => ({
-            Code: item.Code,
-            Status: document.querySelector(`[data-code="${item.Code}"] .status`).value,
-            Responsibility: document.querySelector(`[data-code="${item.Code}"] .responsibility`).value.trim(),
-            Remarks: document.querySelector(`[data-code="${item.Code}"] .remarks`).value.trim(),
-            Weightage: item.Weightage,
-            Activity: item.Activity,
-            Category: item.Category,
-        })),
+      Branch_Code: branchCode.trim(),
+      Branch_Name: branchName.trim(),
+      Region_Name: regionName.trim(),
+      Month: month.trim(),
+      Qtr: quarter.trim(),
+      Year: new Date(visitDate).getFullYear(),
+      Visited_By: visitedBy.trim(),
+      Visit_Date: visitDate.trim(),
+      Visit_Time: visitTime,
+      Reviewed_By_OM_BM: reviewedBy.trim(),
+      Activities: Object.values(data).flat().map(item => ({
+        Code: item.Code,
+        Status: document.querySelector(`[data-code="${item.Code}"] .status`).value,
+        Responsibility: document.querySelector(`[data-code="${item.Code}"] .responsibility`).value.trim(),
+        Remarks: document.querySelector(`[data-code="${item.Code}"] .remarks`).value.trim(),
+        Weightage: item.Weightage,
+        Activity: item.Activity,
+        Category: item.Category,
+      })),
     };
 
     const formData = new FormData();
@@ -233,31 +252,31 @@ const NewEntryForm = () => {
         formData.append(`Images-${item.Code}`, fileInput.files[0], fileInput.files[0].name); // Ensure the field name includes the activity code
       }
     });
-    
+
 
     axios.post('http://localhost:5000/submit-form', formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     })
-    .then(response => {
+      .then(response => {
         if (response.data.success) {
-            alert('Form submitted successfully!');
-            resetForm();
+          alert('Form submitted successfully!');
+          resetForm();
         } else {
-            alert('Failed to submit form: ' + response.data.message);
+          alert('Failed to submit form: ' + response.data.message);
         }
-    })
-    .catch(error => {
+      })
+      .catch(error => {
         console.error('Submit error:', error);
         if (error.response) {
-            console.error('Data:', error.response.data);
-            console.error('Status:', error.response.status);
-            console.error('Headers:', error.response.headers);
+          console.error('Data:', error.response.data);
+          console.error('Status:', error.response.status);
+          console.error('Headers:', error.response.headers);
         }
         alert('An error occurred while submitting the form. Please try again.');
-    });
-};
+      });
+  };
 
 
 
@@ -300,122 +319,119 @@ const NewEntryForm = () => {
         return acc;
       }, {});
 
-  const finalFilteredData = selectedActivity.length === 0
-    ? filteredData
-    : Object.keys(filteredData).reduce((acc, category) => {
-      acc[category] = filteredData[category].filter(activity => selectedActivity.includes(activity.Activity));
-      return acc;
-    }, {});
-
  
-    return (
-      <div className="new-entry-form-container" style={{ flex: '2', display: 'flex', flexDirection: 'column', position: 'fixed' }}>
-        {/* Container for the form (including banner and form fields) */}
-        <div className="form-container" style={{ marginBottom: '5px' }}>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            {/* Left side with the banner or feature item */}
-            <div style={{ flex: '1' }}>
-              <FeatureItem 
-                title="New Entry Form"
-                description="Enter new branch data here!"
-                accentColor="Green"
-              />
-            </div>
-    
-            {/* Right side with the form */}
-            <div className="new-entry-form-wrapper">
-              <div className="firstForm" style={{ flex: '1 0 auto' }}>
-                <form className="new-entry-form" id="entryForm">
-                  <BranchDetails
-                    branchCode={branchCode}
-                    setBranchCode={setBranchCode}
-                    setBranchName={setBranchName}
-                    setRegionName={setRegionName}
-                    setFormDisabled={setFormDisabled}
-                    formGenerated={formGenerated}
+  return (
+    <div className="new-entry-form-container" style={{ flex: '2', display: 'flex', flexDirection: 'column', position: 'fixed' }}>
+      {/* Container for the form (including banner and form fields) */}
+      <div className="form-container" style={{ marginBottom: '5px' }}>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          {/* Left side with the banner or feature item */}
+          <div style={{ flex: '1' }}>
+            <FeatureItem
+              title="New Entry Form"
+              description="Enter new branch data here!"
+              accentColor="Green"
+            />
+          </div>
+
+          {/* Right side with the form */}
+          <div className="new-entry-form-wrapper">
+            <div className="firstForm" style={{ flex: '1 0 auto' }}>
+              <form className="new-entry-form" id="entryForm">
+                <BranchDetails
+                  branchCode={branchCode}
+                  setBranchCode={setBranchCode}
+                  setBranchName={setBranchName}
+                  setRegionName={setRegionName}
+                  setFormDisabled={setFormDisabled}
+                  formGenerated={formGenerated}
+                />
+                <div className="form-row quarter-month-date">
+                  <div className="form-group small-input">
+                    <label htmlFor="quarter">Quarter</label>
+                    <input
+                      type="text"
+                      id="quarter"
+                      value={quarter}
+                      readOnly
+                    />
+                  </div>
+                  <div className="form-group small-input">
+                    <label htmlFor="month">Month</label>
+                    <input
+                      type="text"
+                      id="month"
+                      value={month}
+                      readOnly
+                    />
+                  </div>
+                  <DateSelector
+                    id="visitDate"
+                    value={visitDate}
+                    onChange={handleVisitDateChange}
+                    minDate={new Date().toISOString().split('T')[0]}
+                    maxDate={new Date().toISOString().split('T')[0]}
                   />
-                  <div className="form-row quarter-month-date">
-                    <div className="form-group small-input">
-                      <label htmlFor="quarter">Quarter</label>
-                      <input
-                        type="text"
-                        id="quarter"
-                        value={quarter}
-                        readOnly
-                      />
-                    </div>
-                    <div className="form-group small-input">
-                      <label htmlFor="month">Month</label>
-                      <input
-                        type="text"
-                        id="month"
-                        value={month}
-                        readOnly
-                      />
-                    </div>
-                    <DateSelector
-                      id="visitDate"
-                      value={visitDate}
-                      onChange={handleVisitDateChange}
-                      minDate={new Date().toISOString().split('T')[0]}
-                      maxDate={new Date().toISOString().split('T')[0]}
+                </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <FormInput
+                      label="Visited By"
+                      type="text"
+                      id="visitedBy"
+                      value={visitedBy}
+                      onChange={(e) => setVisitedBy(e.target.value)}
+                      readOnly={false}
+                      enabled={formGenerated}
                     />
                   </div>
-                  <div className="form-row">
-                    <div className="form-group">
-                      <FormInput
-                        label="Visited By"
-                        type="text"
-                        id="visitedBy"
-                        value={visitedBy}
-                        onChange={(e) => setVisitedBy(e.target.value)}
-                        readOnly={false}
-                        enabled={formGenerated}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <FormInput
-                        label="Reviewed By"
-                        type="text"
-                        id="reviewedBy"
-                        value={reviewedBy}
-                        onChange={(e) => setReviewedBy(e.target.value)}
-                        readOnly={false}
-                        enabled={formGenerated}
-                      />
-                    </div>
-                    <FormButton
-                      onClick={handleGenerateFormClick}
-                      disabled={formDisabled}
-                      label="Generate Form"
+                  <div className="form-group">
+                    <FormInput
+                      label="Reviewed By"
+                      type="text"
+                      id="reviewedBy"
+                      value={reviewedBy}
+                      onChange={(e) => setReviewedBy(e.target.value)}
+                      readOnly={false}
+                      enabled={formGenerated}
                     />
                   </div>
-                </form>
-              </div>
+                  <FormButton
+                    onClick={handleGenerateFormClick}
+                    disabled={formDisabled}
+                    label="Generate Form"
+                  />
+                </div>
+              </form>
             </div>
           </div>
         </div>
-    
-        {/* Separate container for activities below the form */}
-        {formGenerated && (
-          <div className="activities-container">
-            <SearchBar
-              categories={categories}
-              activities={activities}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-              selectedActivity={selectedActivity}
-              setSelectedActivity={setSelectedActivity}
-            />
-            <ActivityForm 
-              data={finalFilteredData}
-              handleImageChange={handleImageChange}
-              handleSubmitFormClick={handleSubmitFormClick}
-              submitDisabled={submitDisabled}
-            />
-          </div>
-        )}
       </div>
-    );
-      };
-  export default NewEntryForm;
+
+      {/* Separate container for activities below the form */}
+      {formGenerated && (
+        <div className="activities-container">
+          <SearchBar
+            categories={categories}
+            activities={activities}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            selectedActivity={selectedActivity}
+            setSelectedActivity={setSelectedActivity}
+             
+          />
+
+          <ActivityForm
+            data={filteredData}
+            handleImageChange={handleImageChange}
+            handleSubmitFormClick={handleSubmitFormClick}
+            submitDisabled={submitDisabled}
+            isNewEntryForm={true}  // New Entry Form flag passed here
+            
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+export default NewEntryForm;

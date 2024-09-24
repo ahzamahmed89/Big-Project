@@ -7,6 +7,8 @@ import submitFormRoute from './Routes/submitDataRoutes.js';
 import checkEntryRoutes from './Routes/checkEntryRoute.js';
 import displayRoutes from './Routes/displayRoutes.js';
 import updateReviewStatus from './Routes/updateReviewStatus.js'
+import fs from 'fs';
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 const dbName = 'PMSF';
@@ -59,16 +61,22 @@ app.get('/images/:year/:imageName', (req, res) => {
 });
 
 // MongoDB Middleware
+let dbInstance = null;
+
 async function mongoMiddleware(req, res, next) {
-  try {
-    const db = await client.connect();
-    req.db = db.db(dbName);
-    next();
-  } catch (err) {
-    logger.error('Database connection error:', err);
-    res.status(500).json({ success: false, message: err.message });
+  if (!dbInstance) {
+    try {
+      const db = await client.connect();
+      dbInstance = db.db(dbName);  // Cache the database instance
+    } catch (err) {
+      logger.error('Database connection error:', err);
+      return res.status(500).json({ success: false, message: err.message });
+    }
   }
+  req.db = dbInstance;
+  next();
 }
+
 
 app.use(mongoMiddleware);
 
