@@ -8,6 +8,7 @@ import checkEntryRoutes from './Routes/checkEntryRoute.js';
 import displayRoutes from './Routes/displayRoutes.js';
 import updateReviewStatus from './Routes/updateReviewStatus.js'
 import fs from 'fs';
+import fetchAllActivitiesRoutes from './Routes/fetchAllActivitiesRoutes.js'; // Ensure file name matches the actual file
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -106,7 +107,7 @@ async function fetchBranchByCode(req, res) {
     res.status(500).json({ success: false, message: err.message });
   }
 }
-
+app.use(fetchAllActivitiesRoutes);
 app.get('/branch/:code', fetchBranchByCode);
 app.use('/update-review-status', updateReviewStatus); 
 // Use the imported routes for /check-entry and /submit-form

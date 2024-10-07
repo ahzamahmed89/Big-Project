@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import BranchDetails from '../components/BranchDetails';
 import DateSelector from '../components/DateSelector';
@@ -7,7 +7,6 @@ import FormButton from '../components/FormButton';
 import SearchBar from '../components/SearchBar';
 import ActivityForm from '../components/ActivityForm';
 import FeatureItem from '../components/Banner';
-
 
 const NewEntryForm = () => {
   const [branchCode, setBranchCode] = useState('');
@@ -19,16 +18,21 @@ const NewEntryForm = () => {
   const [visitedBy, setVisitedBy] = useState('');
   const [reviewedBy, setReviewedBy] = useState('');
   const [formDisabled, setFormDisabled] = useState(true);
-  const [data, setData] = useState({});
+  const [data, setData] = useState({}); // Stores the grouped activities by category
   const [submitDisabled, setSubmitDisabled] = useState(true);
   const [formGenerated, setFormGenerated] = useState(false);
-  const [filteredActivities, setFilteredActivities] = useState({});
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState([]);
+  const [selectedStatus, setSelectedStatus] = useState([]);
+  const [selectedResponsibility, setSelectedResponsibility] = useState([]);
   const [images, setImages] = useState({});
-
+  const [activityState, setActivityState] = useState({});  // Persist activity states (status, responsibility, remarks)
   const currentDate = new Date();
+  const [statusOptions, setStatusOptions] = useState(['Yes', 'No', 'NA']);  // Default initial status options
+  const [responsibilityOptions, setResponsibilityOptions] = useState(['Admin', 'HR', 'IT', 'Operations']);  // Default initial responsibility options
+  const [categories, setCategories] = useState([]);
 
+  // Initialize the selectors for visit date, quarter, and month
   useEffect(() => {
     initializeSelectors();
   }, []);
@@ -40,29 +44,19 @@ const NewEntryForm = () => {
   
     let minDate;
     if (currentDay >= 11) {
-      // Allow the first day of the current month as min date if the current day is greater than or equal to the 11th
       minDate = new Date(currentYear, currentMonth, 1);
     } else {
-     if(currentMonth  == 1){
-      // Otherwise, allow the first day of the previous month as the min date
-      minDate = new Date(currentYear -1, 12, 1);
-     }else{
-      minDate = new Date(currentYear, currentMonth - 1, 1);
-    }
+      minDate = currentMonth === 0 ? new Date(currentYear - 1, 11, 1) : new Date(currentYear, currentMonth - 1, 1);
     }
   
-    // Convert minDate to the proper format (YYYY-MM-DD) for the input field
     const formattedMinDate = minDate.toISOString().split('T')[0];
     const formattedMaxDate = currentDate.toISOString().split('T')[0];
   
-    // Set min and max dates for DateSelector
     document.querySelector('#visitDate').min = formattedMinDate;
     document.querySelector('#visitDate').max = formattedMaxDate;
   
-    // Set the initial month and quarter based on the selected date
     updateMonthAndQuarter(new Date(visitDate));
   };
-  
 
   const updateMonthAndQuarter = (selectedDate) => {
     const selectedMonth = selectedDate.getMonth();
@@ -87,7 +81,7 @@ const NewEntryForm = () => {
 
   const groupActivitiesByCategory = (data) => {
     const sortedData = data.sort((a, b) => a.seq - b.seq);
-    const grouped = sortedData.reduce((acc, activity) => {
+    return sortedData.reduce((acc, activity) => {
       const { Category } = activity;
       if (!acc[Category]) {
         acc[Category] = [];
@@ -95,7 +89,6 @@ const NewEntryForm = () => {
       acc[Category].push(activity);
       return acc;
     }, {});
-    return grouped;
   };
 
   const handleGenerateFormClick = (event) => {
@@ -122,9 +115,31 @@ const NewEntryForm = () => {
           alert(data.message);
         } else {
           const groupedData = groupActivitiesByCategory(data.data);
+          
+          // Initialize activityState from the fetched data
+          const initialActivityState = {};
+          data.data.forEach(activity => {
+            initialActivityState[activity.Code] = {
+              status: activity.Status || '',  // Set initial status
+              responsibility: activity.Responsibility || '',  // Set initial responsibility
+              remarks: activity.Remarks || '',  // Set initial remarks
+              image: activity.Images || '',  // Set image if available
+            };
+          });
+
           setData(groupedData);
+          setActivityState(initialActivityState);  // Persist fetched data in the activityState
           setFormGenerated(true);
           setFormDisabled(true);
+
+          // Extract unique status, responsibility, and category options from fetched data
+          const categoriesList = Array.from(new Set(data.data.map(activity => activity.Category)));
+          const statusesList = Array.from(new Set(data.data.map(activity => activity.Status)));
+          const responsibilitiesList = Array.from(new Set(data.data.map(activity => activity.Responsibility)));
+
+          setCategories(categoriesList);
+          setStatusOptions(prev => [...new Set([...prev, ...statusesList])]);  // Dynamically update status options
+          setResponsibilityOptions(prev => [...new Set([...prev, ...responsibilitiesList])]);  // Dynamically update responsibility options
         }
       })
       .catch(error => {
@@ -149,6 +164,25 @@ const NewEntryForm = () => {
       [code]: file,
     }));
   };
+
+  // Handle status, responsibility, remarks updates in activityState
+  const updateActivityState = useCallback((code, field, value) => {
+    setActivityState((prevState) => ({
+      ...prevState,
+      [code]: {
+        ...prevState[code],
+        [field]: value,
+      },
+    }));
+
+    // **Dynamically update status and responsibility options if a new value is added:**
+    if (field === 'status' && value && !statusOptions.includes(value)) {
+      setStatusOptions(prev => [...prev, value]);
+    }
+    if (field === 'responsibility' && value && !responsibilityOptions.includes(value)) {
+      setResponsibilityOptions(prev => [...prev, value]);
+    }
+  }, [statusOptions, responsibilityOptions]);
 
   const validateForm = () => {
     let valid = true;
@@ -233,9 +267,9 @@ const NewEntryForm = () => {
       Reviewed_By_OM_BM: reviewedBy.trim(),
       Activities: Object.values(data).flat().map(item => ({
         Code: item.Code,
-        Status: document.querySelector(`[data-code="${item.Code}"] .status`).value,
-        Responsibility: document.querySelector(`[data-code="${item.Code}"] .responsibility`).value.trim(),
-        Remarks: document.querySelector(`[data-code="${item.Code}"] .remarks`).value.trim(),
+        Status: activityState[item.Code]?.status || '',  // Use persisted state for status
+        Responsibility: activityState[item.Code]?.responsibility || '',  // Use persisted state for responsibility
+        Remarks: activityState[item.Code]?.remarks || '',  // Use persisted state for remarks
         Weightage: item.Weightage,
         Activity: item.Activity,
         Category: item.Category,
@@ -252,7 +286,6 @@ const NewEntryForm = () => {
         formData.append(`Images-${item.Code}`, fileInput.files[0], fileInput.files[0].name); // Ensure the field name includes the activity code
       }
     });
-
 
     axios.post('http://localhost:5000/submit-form', formData, {
       headers: {
@@ -278,8 +311,6 @@ const NewEntryForm = () => {
       });
   };
 
-
-
   const resetForm = () => {
     setBranchCode('');
     setBranchName('');
@@ -291,41 +322,61 @@ const NewEntryForm = () => {
     setFormGenerated(false);
     setSelectedCategory([]);
     setSelectedActivity([]);
+    setSelectedStatus([]);
+    setSelectedResponsibility([]);
     setSubmitDisabled(true);
     setFormDisabled(true);
     setImages({});
   };
 
-  useEffect(() => {
-    const allStatusFieldsFilled = Object.values(data).every(categoryActivities =>
-      categoryActivities.every(item => {
-        const statusElement = document.querySelector(`[data-code="${item.Code}"] .status`);
-        return statusElement && statusElement.value && statusElement.value !== '';
-      })
-    );
-
-    setSubmitDisabled(!allStatusFieldsFilled);
+  // **Define flatActivities:**
+  const flatActivities = useMemo(() => {
+    return Object.keys(data).flatMap(category => data[category].map(activity => ({
+      activity: activity.Activity,
+      category
+    })));
   }, [data]);
 
-  const categories = Object.keys(data);
-  const activities = categories.flatMap(category => data[category].map(activity => ({ activity: activity.Activity, category })));
+  // **Update filteredData to include status and responsibility filtering:**
+  const filteredData = useMemo(() => {
+    return Object.keys(data).reduce((acc, category) => {
+      if (selectedCategory.length === 0 || selectedCategory.includes(category)) {
+        const filteredActivities = data[category].filter(activity => {
+          const matchesCategory = selectedActivity.length === 0 || selectedActivity.includes(activity.Activity);
+          
+          // Check updated status from activityState, fallback to initial status from data
+          const updatedStatus = activityState[activity.Code]?.status || activity.Status;
+          const matchesStatus = selectedStatus.length === 0 || selectedStatus.includes(updatedStatus);
+  
+          const assignedResponsibility = activityState[activity.Code]?.responsibility || '';
+          const matchesResponsibility = selectedResponsibility.length === 0 || 
+                                        (assignedResponsibility && selectedResponsibility.includes(assignedResponsibility));
+  
+          return matchesCategory && matchesStatus && matchesResponsibility;
+        });
+        if (filteredActivities.length > 0) {
+          acc[category] = filteredActivities;
+        }
+      }
+      return acc;
+    }, {});
+  }, [data, selectedCategory, selectedActivity, selectedStatus, selectedResponsibility, activityState]);
 
-  const filteredData = selectedCategory.length === 0
-    ? data
-    : Object.keys(data)
-      .filter(category => selectedCategory.includes(category))
-      .reduce((acc, category) => {
-        acc[category] = data[category];
-        return acc;
-      }, {});
+  const handleResponsibilityChange = (responsibility, code) => {
+    setActivityState(prevState => ({
+      ...prevState,
+      [code]: {
+        ...prevState[code],
+        responsibility,
+      },
+    }));
+  };  
+  
 
- 
   return (
-    <div className="new-entry-form-container" style={{ flex: '2', display: 'flex', flexDirection: 'column', position: 'fixed' }}>
-      {/* Container for the form (including banner and form fields) */}
+    <div className="new-entry-form-container" >
       <div className="form-container" style={{ marginBottom: '5px' }}>
         <div style={{ display: 'flex', gap: '10px' }}>
-          {/* Left side with the banner or feature item */}
           <div style={{ flex: '1' }}>
             <FeatureItem
               title="New Entry Form"
@@ -334,7 +385,6 @@ const NewEntryForm = () => {
             />
           </div>
 
-          {/* Right side with the form */}
           <div className="new-entry-form-wrapper">
             <div className="firstForm" style={{ flex: '1 0 auto' }}>
               <form className="new-entry-form" id="entryForm">
@@ -408,17 +458,21 @@ const NewEntryForm = () => {
         </div>
       </div>
 
-      {/* Separate container for activities below the form */}
       {formGenerated && (
         <div className="activities-container">
           <SearchBar
             categories={categories}
-            activities={activities}
+            activities={flatActivities}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
             selectedActivity={selectedActivity}
             setSelectedActivity={setSelectedActivity}
-             
+            statusOptions={statusOptions}  // Dynamic status options
+            selectedStatus={selectedStatus}
+            setSelectedStatus={setSelectedStatus}
+            responsibilityOptions={responsibilityOptions}  // Dynamic responsibility options
+            selectedResponsibility={selectedResponsibility}
+            setSelectedResponsibility={setSelectedResponsibility}
           />
 
           <ActivityForm
@@ -426,12 +480,17 @@ const NewEntryForm = () => {
             handleImageChange={handleImageChange}
             handleSubmitFormClick={handleSubmitFormClick}
             submitDisabled={submitDisabled}
-            isNewEntryForm={true}  // New Entry Form flag passed here
-            
+            isNewEntryForm={true}
+            activityState={activityState}  // Pass the activity state to ActivityForm
+            updateActivityState={updateActivityState} 
+            statusOptions={statusOptions}  // Pass status options
+            responsibilityOptions={responsibilityOptions} 
+            handleResponsibilityChange={handleResponsibilityChange}  
           />
         </div>
       )}
     </div>
   );
 };
+
 export default NewEntryForm;

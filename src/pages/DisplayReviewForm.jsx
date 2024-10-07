@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import axios from 'axios';
-import '../App.css';
 import BranchDetails from '../components/BranchDetails';
 import DateSelector from '../components/DateSelector';
 import FormInput from '../components/FormInput';
@@ -38,17 +37,31 @@ const DisplayReviewForm = () => {
   const [visitDate, setVisitDate] = useState('');
   const [visitedBy, setVisitedBy] = useState('');
   const [reviewedBy, setReviewedBy] = useState('');
-  const [formDisabled, setFormDisabled] = useState(true);
   const [data, setData] = useState({});
   const [formGenerated, setFormGenerated] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState([]);
-  const [submitDisabled, setSubmitDisabled] = useState(true);
+  const [formDisabled, setFormDisabled] = useState(true);
+  const [activityState, setActivityState] = useState({});  // Track activity state for status, responsibility, remarks
+  const [statusOptions, setStatusOptions] = useState(['Yes', 'No', 'NA']);
+  const [responsibilityOptions, setResponsibilityOptions] = useState(['Admin', 'HR', 'IT', 'Operations']);
+  const [selectedStatus, setSelectedStatus] = useState([]);
+  const [selectedResponsibility, setSelectedResponsibility] = useState([]);
+
+
+  // Dynamically update activityState
+  const updateActivityState = useCallback((code, field, value) => {
+    setActivityState((prevState) => ({
+      ...prevState,
+      [code]: {
+        ...prevState[code],
+        [field]: value,
+      },
+    }));
+  }, []);
 
   const handleVisitDateChange = (e) => setVisitDate(e.target.value || '');
-
   const handleYearChange = (newYear) => setYear(newYear || new Date().getFullYear());
-
   const handleQuarterChange = (newQuarter) => setQuarter(newQuarter || '');
 
   const handleGenerateFormClick = async (event) => {
@@ -67,9 +80,22 @@ const DisplayReviewForm = () => {
 
       const { success, message, data } = response.data;
       if (success) {
-        setData(groupActivitiesByCategory(data));
+        const groupedData = groupActivitiesByCategory(data);
+       
+        // Initialize activityState
+        const initialActivityState = {};
+        data.forEach((activity) => {
+          initialActivityState[activity.Code] = {
+            status: activity.Status || '',
+            responsibility: activity.Responsibility || '',
+            remarks: activity.Remarks || '',
+            image: activity.Images || '',  // Fetch image URL from database
+          };
+        });
+        
+        setData(groupedData);
+        setActivityState(initialActivityState);
         setFormGenerated(true);
-        setFormDisabled(true);
 
         if (data.length > 0) {
           setVisitDate(data[0]?.Visit_Date || '');
@@ -95,7 +121,14 @@ const DisplayReviewForm = () => {
       reviewedBy,
       year,
       quarter,
-      activities: Object.values(data).flat(), // Assuming activities are flat arrays in data object
+      activities: Object.values(data).flat().map(item => ({
+        Code: item.Code,
+        Status: activityState[item.Code]?.status || '',
+        Responsibility: activityState[item.Code]?.responsibility || '',
+        Remarks: activityState[item.Code]?.remarks || '',
+        Activity: item.Activity,
+        Category: item.Category,
+      }))
     };
 
     try {
@@ -111,17 +144,31 @@ const DisplayReviewForm = () => {
     }
   };
 
-  const filteredData = Object.keys(data)
-    .filter((category) => selectedCategory.length === 0 || selectedCategory.includes(category))
-    .reduce((acc, category) => {
-      acc[category] = data[category].filter((activity) =>
-        selectedActivity.length === 0 || selectedActivity.includes(activity.Activity)
-      );
+  const filteredData = useMemo(() => {
+    return Object.keys(data).reduce((acc, category) => {
+      if (selectedCategory.length === 0 || selectedCategory.includes(category)) {
+        const filteredActivities = data[category].filter((activity) => {
+          const matchesCategory = selectedActivity.length === 0 || selectedActivity.includes(activity.Activity);
+
+          // Use updated state for status, responsibility, and remarks
+          const updatedStatus = activityState[activity.Code]?.status || activity.Status;
+          const updatedResponsibility = activityState[activity.Code]?.responsibility || activity.Responsibility || '';
+          
+          const matchesStatus = selectedStatus.length === 0 || selectedStatus.includes(updatedStatus);
+          const matchesResponsibility = selectedResponsibility.length === 0 || selectedResponsibility.includes(updatedResponsibility);
+
+          return matchesCategory && matchesStatus && matchesResponsibility;
+        });
+        if (filteredActivities.length > 0) {
+          acc[category] = filteredActivities;
+        }
+      }
       return acc;
     }, {});
+  }, [data, selectedCategory, selectedActivity, selectedStatus, selectedResponsibility, activityState]);
 
   return (
-    <div className="new-entry-form-container" style={{ flex: '2', display: 'flex', flexDirection: 'column', position: 'fixed' }}>
+    <div className="new-entry-form-container" >
       <div className="form-container" style={{ marginBottom: '5px' }}>
         <div style={{ display: 'flex', gap: '10px' }}>
           <div style={{ flex: '1' }}>
@@ -131,7 +178,6 @@ const DisplayReviewForm = () => {
               accentColor="blue"
             />
           </div>
-
           <div className="new-entry-form-wrapper">
             <div className="firstForm" style={{ flex: '1 0 auto' }}>
               <form className="new-entry-form" id="entryForm">
@@ -152,15 +198,9 @@ const DisplayReviewForm = () => {
                     selectedQuarter={quarter}
                     onQuarterChange={handleQuarterChange}
                   />
-
                   <div className="form-group small-input">
                     <label htmlFor="month">Month</label>
-                    <input
-                      type="text"
-                      id="month"
-                      value={month || ''}
-                      readOnly
-                    />
+                    <input type="text" id="month" value={month || ''} readOnly />
                   </div>
                   <DateSelector
                     id="visitDate"
@@ -175,7 +215,6 @@ const DisplayReviewForm = () => {
                     type="text"
                     id="visitedBy"
                     value={visitedBy || ''}
-                    onChange={(e) => setVisitedBy(e.target.value)}
                     readOnly={true}
                   />
                   <FormInput
@@ -183,7 +222,6 @@ const DisplayReviewForm = () => {
                     type="text"
                     id="reviewedBy"
                     value={reviewedBy || ''}
-                    onChange={(e) => setReviewedBy(e.target.value)}
                     readOnly={true}
                   />
                   <FormButton
@@ -207,23 +245,32 @@ const DisplayReviewForm = () => {
             setSelectedCategory={setSelectedCategory}
             selectedActivity={selectedActivity}
             setSelectedActivity={setSelectedActivity}
+            statusOptions={statusOptions}
+            selectedStatus={selectedStatus}
+            setSelectedStatus={setSelectedStatus}
+            responsibilityOptions={responsibilityOptions}
+            selectedResponsibility={selectedResponsibility}
+            setSelectedResponsibility={setSelectedResponsibility}
           />
           <ActivityForm
             data={filteredData}
-            handleSubmitFormClick={handleSubmitFormClick}  // Pass handleSubmitFormClick
-            submitDisabled={submitDisabled}
-            isDisplayReviewForm={true}  // For Display Review Form
+            handleSubmitFormClick={handleSubmitFormClick}
+            activityState={activityState}
+            updateActivityState={updateActivityState}
+            isDisplayReviewForm={true}
           />
-          {/* Render ReviewButton */}
-          <ReviewButton 
-            branchCode={branchCode} 
-            year={year} 
-            quarter={quarter} 
-            month={month} 
-            handleSubmitFormClick={handleSubmitFormClick} 
-          />
+          
         </div>
-      )}
+        )}
+      <div className="reviewbutton">
+          <ReviewButton
+            branchCode={branchCode}
+            year={year}
+            quarter={quarter}
+            month={month}
+            handleSubmitFormClick={handleSubmitFormClick}
+          />
+          </div>
     </div>
   );
 };

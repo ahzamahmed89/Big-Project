@@ -87,9 +87,9 @@ main {
 .sidebar {
   position: fixed;
   top: 50px;
-  /* Positioned just below the header */
+
   left: -250px;
-  /* Initially hide the sidebar off-screen */
+
   height: 100%;
   width: 250px;
   background-color: #ffffff;
@@ -176,16 +176,21 @@ main {
   background: none;
   padding: 1vw;
   border-radius: 4px;
+  overflow-y: auto;
   width: 100%;
-  max-width: 100%;
-  overflow-y: auto;  /* Allows scrolling vertically */
-  max-height: calc(100vh - 100px);
+
+  max-height: 100%;
   text-align: center;
   margin-top: 55px;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
 }
 
 .form-container {
   margin-bottom: 10px;
+  display: block;
 }
 
 .form-row {
@@ -290,12 +295,17 @@ input[type="file" i] {
   text-align: start !important;
   overflow: hidden !important;
   font-size: calc(0.2em + 0.5vw);
-  
+
+}
+
+.category-section {
+  width: 100%;
+  display: inline-block;
 }
 
 .activities-container {
   margin-top: 0px;
-  
+  width: 100%;
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -305,7 +315,11 @@ input[type="file" i] {
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1;
-  /* Ensure that it is behind the form */
+  flex-basis: 300px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  min-width: 300px;
+
 }
 
 
@@ -322,9 +336,7 @@ input[type="file" i] {
   letter-spacing: 2px;
   border-radius: 5px;
   box-shadow: 0px 0px 1px 1px #00000055;
-  transition: transform 0.3s ease, background-color 0.3s ease;
   text-shadow: 2px 2px 4px #e4d55ce8;
-
 }
 
 .activity {
@@ -344,7 +356,7 @@ input[type="file" i] {
 
 .activity-box img.image-preview {
   margin-top: 10px;
-  max-width: 100%;
+  width: 100%;
   max-height: 150px;
 
 }
@@ -417,7 +429,7 @@ label {
   text-align: center;
   margin-top: 30px;
   height: 6vh;
-  width:10vw;
+  width: 10vw;
   font-size: calc(0.5em + 0.4vw);
   font-weight: bold;
   color: whitesmoke;
@@ -576,8 +588,6 @@ label {
 .prev-img .image-preview {
   max-width: 100%;
   max-height: 100%;
-
-
 }
 
 
@@ -699,4 +709,42 @@ body {
 
 .banner li .descr {
   font-size: 0.7rem;
+}
+
+.image-preview-container {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.image-preview {
+
+  height: auto;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  z-index: 0;
+  /* Ensure the image stays behind the cross */
+}
+
+.remove-image-cross {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  background: none;
+  color: red;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.remove-image-cross:hover {
+  background-color: darkred;
 }

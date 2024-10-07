@@ -1,8 +1,8 @@
 import express from 'express';
 const router = express.Router();
 
-// Route to fetch activities based on branch code, year, and quarter
-router.get('/fetch-activities', async (req, res) => {
+// New Route to fetch all activities for EditForm based on branch code, year, and quarter
+router.get('/fetch-all-activities', async (req, res) => {
   const { branchCode, year, quarter } = req.query;
   const collectionName = `PMSF_Collection_${year}`; // Create collection name dynamically
 
@@ -10,12 +10,11 @@ router.get('/fetch-activities', async (req, res) => {
     const db = req.db;
     const collection = db.collection(collectionName);
 
-    // Fetch current quarter data
+    // Fetch current quarter data without filtering by status
     const activities = await collection.find({
       Year: parseInt(year, 10),
       Qtr: quarter,
       Branch_Code: branchCode,
-      Status: "No" // Filter by status "No"
     }).toArray();
 
     // If current quarter data is found, fetch previous quarter data
@@ -42,7 +41,6 @@ router.get('/fetch-activities', async (req, res) => {
       // Combine current and previous quarter data
       const processedDocs = activities.map(currentDoc => {
         // Match current quarter docs with previous quarter based on Code
-        
         const previousDoc = previousQuarterData.find(prev => {
           return String(prev.Code) === String(currentDoc.Code);
         });
@@ -59,8 +57,6 @@ router.get('/fetch-activities', async (req, res) => {
           Visited_By: currentDoc.Visited_By,
           Reviewed_By_OM_BM: currentDoc.Reviewed_By_OM_BM,
           Visit_Date: currentDoc.Visit_Date,
-          Remarks: currentDoc.Remarks,
-          Responsibility:currentDoc.Responsibility,
           PreviousQuarterData: previousDoc ? {
             Status: previousDoc.Status,
             Responsibility: previousDoc.Responsibility,

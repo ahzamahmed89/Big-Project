@@ -1,23 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const ActivityDetails = ({ 
   activity, 
+  status, 
   handleStatusChange, 
+  responsibility, 
+  handleResponsibilityChange, 
+  remarks, 
+  image,  // Use the image prop passed from the parent
+  handleRemarksChange, 
   handleImageChange, 
   togglePreviousQuarterVisibility, 
-  previousStatusStyles = { Yes: 'green', No: 'red', NA: 'yellow', NotFound: 'yellow' }, // Ensure NotFound is always present
-  isNewEntryForm,       // Prop to indicate if it's NewEntryForm
-  isDisplayReviewForm   // Prop to indicate if it's DisplayReviewForm
+  previousStatusStyles = { Yes: 'green', No: 'red', NA: 'yellow', NotFound: 'grey' }, 
+  isNewEntryForm, 
+  isDisplayReviewForm,
+  isEditForm
 }) => {
+  
+  // Status styles
   const statusStyles = {
     Yes: { backgroundColor: 'lightgreen' },
     No: { backgroundColor: 'lightcoral' },
     NA: { backgroundColor: 'rgb(234, 234, 172)' },
   };
 
-  const [status, setStatus] = useState(activity.Status);
-  const [image, setImage] = useState(null);
-
+  // Clean up object URL when the component unmounts
   useEffect(() => {
     return () => {
       if (image) {
@@ -26,27 +33,27 @@ const ActivityDetails = ({
     };
   }, [image]);
 
-  const onStatusChange = (e) => {
-    setStatus(e.target.value);
-    handleStatusChange(e.target.value);
-  };
-
   const onImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImage(URL.createObjectURL(file));
       handleImageChange(file, activity.Code); // Pass the file and activity code to the parent handler
     }
   };
+  const onResponsibilityChange = (e) => {
+    handleResponsibilityChange(e.target.value, activity.Code);  // Pass responsibility and activity code
+  };
+  const onStatusChange = (e) => {
+  handleStatusChange(e.target.value, activity.Code);  // Ensure correct activity.Code is passed
+};
 
-  // Construct image path from activity data (assuming image paths are stored correctly in activity.Images)
+
+  // Construct image path for review form from activity data (assuming image paths are stored correctly in activity.Images)
   const currentImagePath = activity.Images 
-  
-  ? `/images/${activity.Images.split('Images\\')[1]?.replace(/\\/g, '/')}`
+  ? `/images/${activity.Images.split('Images\\')[1]?.replace(/\\/g, '/')}` 
   : null;
 
-  
-
+    
+   
   return (
     <div className="activity-details">
       <h3 className="activity" style={{ ...statusStyles[status], padding: '6px', fontWeight: 'bold' }}>
@@ -57,7 +64,13 @@ const ActivityDetails = ({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <label>Status:</label>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <select className="status" value={status} onChange={onStatusChange} disabled={isDisplayReviewForm} style={{ textAlign: 'center' }}>
+          <select 
+            className="status" 
+            value={status} 
+            onChange={onStatusChange}
+            disabled={isDisplayReviewForm} 
+            style={{ textAlign: 'center' }}
+          >
             <option value="">Select Status</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -76,10 +89,15 @@ const ActivityDetails = ({
         </div>
       </div>
 
-      {/* Responsibility Selection */}
+      {/* Responsibility Section */}
       <div>
         <label>Responsibility:</label>
-        <select className="responsibility" defaultValue={activity.Responsibility} disabled={isDisplayReviewForm}>
+        <select 
+          className="responsibility" 
+          value={responsibility} 
+          onChange={onResponsibilityChange}
+          disabled={isDisplayReviewForm}
+        >
           <option value="">Select Responsibility</option>
           <option value="Admin">Admin</option>
           <option value="Branch Operations">Branch Operations</option>
@@ -98,31 +116,45 @@ const ActivityDetails = ({
           type="text"
           className="remarks"
           placeholder="Enter Remarks"
-          defaultValue={activity.Remarks}
-          disabled={isDisplayReviewForm}
+          value={remarks}
+          onChange={(e) => handleRemarksChange(e.target.value)} 
+          disabled={isDisplayReviewForm} 
         />
       </div>
 
-      {/* Image Handling: Capture for New Entry Form */}
+      {/* Image Handling: Upload for New Entry Form */}
       {isNewEntryForm && (
         <div className="image-upload-section">
-          <label></label>
+          <label>Upload Image:</label>
           <input 
             type="file" 
             className="image-upload" 
             onChange={onImageChange} 
           />
-          {image && <img src={image} alt="Uploaded Preview" className="image-preview" />}
+          {image && <img src={URL.createObjectURL(image)} alt="Uploaded Preview" className="image-preview" />}
+        </div>
+      )}
+      {isEditForm && (
+        <div className="image-upload-section">
+          <label>Upload Image:</label>
+          <input 
+            type="file" 
+            className="image-upload" 
+            onChange={onImageChange} 
+          />
+          {currentImagePath ? (
+            <img src={currentImagePath} alt="Image for this activity." className="image-preview" />
+          ) : (
+            <p>No image available for this activity.</p>
+          )}
         </div>
       )}
 
       {/* Image Handling: Display for Display Review Form */}
       {isDisplayReviewForm && (
-        
         <div className="image-display-section">
-          
           {currentImagePath ? (
-            <img src={currentImagePath} alt="No image available for this activity." className="image-preview" />
+            <img src={currentImagePath} alt="Image for this activity." className="image-preview" />
           ) : (
             <p>No image available for this activity.</p>
           )}

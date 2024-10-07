@@ -1288,3 +1288,384 @@
 {"level":"error","message":"Error in /branch/:code: getaddrinfo ENOTFOUND ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":{"$oid":"7fffffff0000000000000327"},"maxSetVersion":174,"servers":{"ac-ppa3fis-shard-00-00.3fs3r1f.mongodb.net:27017":{"$clusterTime":null,"address":"ac-ppa3fis-shard-00-00.3fs3r1f.mongodb.net:27017","arbiters":[],"electionId":null,"error":{},"hosts":[],"lastUpdateTime":499126490,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxWireVersion":0,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"ac-ppa3fis-shard-00-01.3fs3r1f.mongodb.net:27017":{"$clusterTime":null,"address":"ac-ppa3fis-shard-00-01.3fs3r1f.mongodb.net:27017","arbiters":[],"electionId":null,"error":{},"hosts":[],"lastUpdateTime":499126489,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxWireVersion":0,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net:27017":{"$clusterTime":null,"address":"ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net:27017","arbiters":[],"electionId":null,"error":{},"hosts":[],"lastUpdateTime":499126490,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxWireVersion":0,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":"atlas-12enom-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongoServerSelectionError: getaddrinfo ENOTFOUND ac-ppa3fis-shard-00-02.3fs3r1f.mongodb.net\n    at Topology.selectServer (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\sdam\\topology.js:303:38)\n    at async executeOperation (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\operations\\execute_operation.js:101:20)\n    at async FindCursor._initialize (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\cursor\\find_cursor.js:58:26)\n    at async [kInit] (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\cursor\\abstract_cursor.js:463:27)\n    at async next (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\cursor\\abstract_cursor.js:520:13)\n    at async FindCursor.next (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\cursor\\abstract_cursor.js:237:16)\n    at async Collection.findOne (C:\\Users\\User\\Desktop\\Big Project - Copy\\BigProject\\node_modules\\mongodb\\lib\\collection.js:275:21)\n    at async fetchBranchByCode (file:///C:/Users/User/Desktop/Big%20Project%20-%20Copy/BigProject/server.js:90:20)","timestamp":"2024-09-24T10:51:41.356Z"}
 {"level":"info","message":"Received branch code:","timestamp":"2024-09-24T11:43:04.015Z"}
 {"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T11:43:04.676Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T12:14:02.441Z"}
+{"Branch_Code":"178","Branch_Name":"Kamran Chowrangi","Region":"Trade South","_id":"668d12baefd179289617f8cc","level":"info","message":"Branch found:","timestamp":"2024-09-24T12:14:03.525Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T12:31:20.449Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T12:31:20.610Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T13:00:12.243Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-24T13:00:28.037Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T13:27:40.752Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-24T13:27:41.584Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-24T13:42:08.312Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-24T13:42:08.323Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T13:42:20.651Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-24T13:42:20.760Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-24T14:06:29.211Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-24T14:06:30.273Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T09:22:07.894Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-25T09:22:10.303Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T09:46:44.157Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T09:46:45.219Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T09:47:23.147Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T09:47:23.242Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T09:48:07.040Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T09:48:07.423Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T09:48:50.653Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T09:48:50.731Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T10:06:00.634Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T10:06:00.712Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T10:14:24.977Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-25T10:14:25.121Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T10:19:23.145Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T10:19:23.313Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T10:53:28.800Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T10:53:30.639Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T11:08:28.546Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T11:08:28.896Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T11:11:05.112Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T11:11:08.739Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T11:19:44.597Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T11:19:44.698Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T11:20:05.025Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T11:20:26.932Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T11:23:12.019Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T11:23:12.130Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T11:23:56.091Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T11:23:56.170Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T12:54:28.050Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T12:54:34.404Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T13:18:26.143Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T13:18:26.856Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T13:21:08.783Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T13:21:08.857Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T13:24:14.898Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T13:24:14.972Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T13:35:59.031Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T13:35:59.155Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T13:43:01.229Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T13:44:06.829Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T13:44:07.665Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T13:44:43.420Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T13:47:46.874Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T13:47:46.965Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T14:09:24.278Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T14:09:25.109Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T14:15:51.744Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T14:15:51.822Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T14:18:15.056Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T14:18:15.136Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T14:21:30.532Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T14:21:30.619Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T14:23:10.307Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T14:23:10.390Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T14:29:33.791Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T14:29:33.870Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T14:31:50.420Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T14:31:50.499Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-25T14:33:55.495Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-25T14:33:55.582Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-26T13:31:54.370Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-26T13:31:57.584Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-26T13:35:20.754Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-26T13:35:20.939Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-26T14:04:07.810Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-26T14:04:08.041Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-26T14:11:55.766Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-26T14:11:55.894Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-26T14:15:37.289Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-26T14:15:37.489Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-26T14:21:33.662Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-26T14:21:33.777Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-27T08:34:50.984Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-27T08:35:03.382Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-27T13:52:22.200Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-27T13:52:23.601Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-27T13:53:50.260Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-27T13:53:50.441Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-27T13:58:46.042Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-27T13:58:46.148Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-27T14:02:23.656Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-27T14:02:23.680Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-27T14:02:32.156Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-27T14:02:32.268Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-27T14:02:33.954Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-27T14:02:34.062Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-27T14:03:17.467Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-27T14:03:17.637Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-27T14:04:11.019Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-27T14:04:11.185Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-27T14:18:35.181Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-27T14:18:35.336Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T05:16:27.689Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-30T05:16:37.732Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T13:56:16.807Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-30T13:56:17.610Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T13:56:51.826Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-30T13:56:52.042Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T13:57:00.104Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T13:57:01.412Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T14:07:01.780Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T14:07:01.918Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T14:09:54.175Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T14:09:54.381Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T14:11:01.964Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-30T14:11:02.339Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T14:11:07.135Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T14:11:07.277Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T14:14:23.337Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T14:14:23.441Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T14:18:40.047Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T14:18:40.770Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T14:35:35.461Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T14:35:35.598Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T14:38:33.852Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T14:38:33.975Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T14:56:37.061Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T14:56:37.166Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-30T15:02:07.915Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-30T15:02:07.935Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T15:02:22.440Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T15:02:22.554Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T15:02:32.698Z"}
+{"Branch_Code":"200","Branch_Name":"Techno City","Region":"South 2","_id":"668d12baefd179289617f8f2","level":"info","message":"Branch found:","timestamp":"2024-09-30T15:02:32.782Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T15:02:51.930Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-09-30T15:02:52.000Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-30T15:06:18.463Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-30T15:06:18.482Z"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.3fs3r1f.mongodb.net","level":"error","message":"Database connection error: querySrv EREFUSED _mongodb._tcp.cluster0.3fs3r1f.mongodb.net","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.3fs3r1f.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv","timestamp":"2024-09-30T15:06:25.586Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T15:07:02.278Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T15:07:02.476Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-09-30T15:07:11.921Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-09-30T15:07:11.944Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-09-30T15:07:16.766Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-09-30T15:07:16.880Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T12:53:27.923Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T12:53:33.637Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T12:54:38.660Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T12:54:38.749Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T13:11:22.277Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T13:11:22.384Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T13:12:10.105Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T13:12:10.228Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T13:12:47.555Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T13:12:47.648Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T13:12:58.830Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T13:12:58.945Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T13:13:47.127Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T13:13:47.211Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T13:31:56.640Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T13:31:56.745Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-10-01T13:33:48.801Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-10-01T13:33:48.810Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T13:34:00.655Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T13:34:00.749Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T13:37:23.781Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T13:37:23.909Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T14:08:02.077Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T14:08:03.121Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T14:19:16.497Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T14:19:16.599Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T14:20:08.463Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T14:20:08.575Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-01T14:22:27.633Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-01T14:22:27.742Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T12:21:33.339Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T12:21:34.811Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T12:35:08.347Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T12:35:08.548Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T12:35:24.618Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T12:35:24.928Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T12:37:02.739Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T12:37:02.861Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T12:37:37.662Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T12:37:39.511Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T12:43:41.718Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T12:43:42.064Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T12:54:31.260Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T12:54:31.766Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T12:58:47.434Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T12:58:47.606Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T13:01:41.261Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T13:01:41.889Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T13:02:24.811Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T13:02:25.191Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T13:07:45.486Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T13:07:45.948Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T13:08:10.359Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T13:08:10.713Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T13:14:21.500Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T13:14:22.076Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T13:22:55.617Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T13:22:55.856Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T13:23:32.696Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T13:23:32.913Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-02T13:24:32.431Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-02T13:24:32.614Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T04:30:41.077Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T04:30:42.430Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T05:25:52.539Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T05:25:53.950Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T05:28:17.612Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T05:28:17.870Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T06:47:02.150Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T06:47:04.088Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T06:47:08.449Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T06:47:08.599Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T07:38:14.756Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T07:38:16.746Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T07:50:14.234Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T07:50:14.378Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T07:53:49.048Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T07:53:49.219Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T07:58:24.640Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T07:58:24.777Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T07:59:02.905Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T07:59:03.027Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T08:11:46.921Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T08:11:47.081Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T08:37:48.201Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T08:37:49.841Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T08:39:02.446Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T08:39:02.642Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T08:41:49.687Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T08:41:49.836Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T13:20:17.148Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T13:20:18.332Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-03T13:24:34.336Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-03T13:24:34.540Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T10:07:12.585Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-04T10:07:13.919Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T10:07:19.622Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T10:07:19.857Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T10:21:40.377Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T10:21:40.639Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T10:21:59.230Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T10:21:59.362Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T10:26:31.829Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T10:26:32.058Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T10:42:31.041Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T10:42:31.242Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T10:42:42.940Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T10:42:43.222Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T10:47:23.520Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T10:47:23.802Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T11:34:46.680Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T11:34:49.324Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T11:40:06.403Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T11:40:06.572Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T11:40:18.920Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T11:40:19.038Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T11:41:36.376Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T11:41:36.533Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T11:48:39.836Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T11:48:39.970Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T11:50:04.468Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T11:50:04.604Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T11:51:58.851Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-04T11:51:59.005Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T11:52:37.348Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-04T11:52:37.529Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T11:53:24.437Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T11:53:24.602Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T12:13:29.778Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T12:13:30.930Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T12:19:57.207Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T12:19:57.351Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T12:20:09.767Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T12:20:09.913Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-10-04T12:23:05.248Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-10-04T12:23:05.261Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T12:23:13.807Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-04T12:23:13.947Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T12:23:25.712Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T12:23:25.866Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T12:26:38.562Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T12:26:38.710Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T12:58:35.877Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T12:58:38.062Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-10-04T13:01:24.592Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-10-04T13:01:24.604Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:01:37.846Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:01:38.001Z"}
+{"level":"info","message":"Logger initialized successfully","timestamp":"2024-10-04T13:02:32.849Z"}
+{"level":"info","message":"Server started on port 5000","timestamp":"2024-10-04T13:02:32.861Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:02:45.937Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:02:46.098Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:10:46.286Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:10:46.646Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:12:43.624Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:12:43.742Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:14:06.410Z"}
+{"Branch_Code":"137","Branch_Name":"DHA Office Phase 1","Region":"South 1","_id":"668d12baefd179289617f853","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:14:06.546Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:14:15.613Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:14:15.754Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:31:37.004Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:31:38.082Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:46:11.875Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:46:12.077Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:46:52.796Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:46:52.931Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:53:00.550Z"}
+{"Branch_Code":"102","Branch_Name":"Sharfabad","Region":"South 2","_id":"668d12baefd179289617f83f","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:53:00.751Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:55:08.432Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:55:08.652Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T13:55:10.439Z"}
+{"Branch_Code":"102","Branch_Name":"Sharfabad","Region":"South 2","_id":"668d12baefd179289617f83f","level":"info","message":"Branch found:","timestamp":"2024-10-04T13:55:10.568Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T14:14:34.987Z"}
+{"Branch_Code":"102","Branch_Name":"Sharfabad","Region":"South 2","_id":"668d12baefd179289617f83f","level":"info","message":"Branch found:","timestamp":"2024-10-04T14:14:36.985Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T18:32:32.990Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-04T18:32:33.437Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T18:32:35.687Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T18:32:35.747Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T18:34:31.871Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T18:34:32.485Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T18:35:52.252Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T18:35:52.310Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T18:37:08.684Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T18:37:08.743Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T18:45:59.504Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T18:45:59.557Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T18:47:51.241Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T18:47:51.308Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T18:48:26.538Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T18:48:26.588Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-04T18:50:49.720Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-04T18:50:49.775Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T12:42:08.645Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-07T12:42:09.840Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T12:42:17.441Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T12:42:17.656Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T12:48:04.664Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T12:48:04.933Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T12:49:28.668Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T12:49:28.928Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T12:49:57.707Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T12:49:57.920Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T12:52:42.547Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T12:52:42.746Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T12:56:20.062Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T12:56:20.219Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T12:59:38.569Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T12:59:38.778Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:04:17.212Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:04:17.352Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:10:14.507Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:10:14.660Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:18:07.727Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:18:07.902Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:22:56.871Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:22:57.093Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:25:17.767Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:25:18.158Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:33:06.254Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:33:06.380Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:34:40.703Z"}
+{"Branch_Code":"131","Branch_Name":"North Nazimabad L Block","Region":"South 3","_id":"668d12baefd179289617f84d","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:34:40.853Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:34:42.364Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:34:42.507Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:37:27.368Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:37:27.588Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:38:12.108Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:38:12.326Z"}
+{"level":"info","message":"Received branch code:","timestamp":"2024-10-07T13:38:23.776Z"}
+{"Branch_Code":"101","Branch_Name":"Islamia CollegeKarachi","Region":"South 2","_id":"668d12baefd179289617f842","level":"info","message":"Branch found:","timestamp":"2024-10-07T13:38:23.924Z"}

@@ -48,8 +48,9 @@ const getStatusColor = (status) => {
     case 'No':
       return 'red';
     case 'NA':
-    default:
       return 'yellow';
+    default:
+      return 'Grey';
   }
 };
 
