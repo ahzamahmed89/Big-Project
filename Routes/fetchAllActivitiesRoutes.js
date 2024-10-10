@@ -51,10 +51,13 @@ router.get('/fetch-all-activities', async (req, res) => {
           Activity: currentDoc.Activity,
           Weightage: currentDoc.Weightage ? currentDoc.Weightage.toString() : null,
           Status: currentDoc.Status,
+          Responsibility: currentDoc.Responsibility,
+          Remarks: currentDoc.Remarks,
           seq: currentDoc.seq,
           Images: currentDoc.Images,
           Month: currentDoc.Month,
           Visited_By: currentDoc.Visited_By,
+          Visit_Time: currentDoc.Visit_Time,
           Reviewed_By_OM_BM: currentDoc.Reviewed_By_OM_BM,
           Visit_Date: currentDoc.Visit_Date,
           PreviousQuarterData: previousDoc ? {

@@ -8,7 +8,10 @@ const CategorySection = ({
   updateActivityState, 
   isNewEntryForm, 
   isDisplayReviewForm, 
-  handleImageChange 
+  handleImageChange,
+  handleImageRemove,
+  isEditForm,
+  
 }) => {
   // Memoize activities to avoid unnecessary re-renders
   const memoizedActivities = useMemo(() => activities, [activities]);
@@ -33,6 +36,7 @@ const CategorySection = ({
                 activity={activity}
                 isNewEntryForm={isNewEntryForm}
                 isDisplayReviewForm={isDisplayReviewForm}
+                isEditForm={isEditForm}
                 status={activityDetails.status}
                 setStatus={(newStatus) => updateActivityState(activity.Code, 'status', newStatus)}
                 responsibility={activityDetails.responsibility}
@@ -42,6 +46,7 @@ const CategorySection = ({
                 image={activityDetails.image}
                 setImage={(newImage) => updateActivityState(activity.Code, 'image', newImage)}
                 handleImageChange={handleImageChange}
+                handleImageRemove={handleImageRemove}
               />
             );
           })

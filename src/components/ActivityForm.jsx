@@ -1,7 +1,7 @@
 import React from 'react';
 import CategorySection from './CategorySection';
 
-const ActivityForm = ({ data, handleSubmitFormClick, activityState, updateActivityState, handleImageChange, isNewEntryForm,isDisplayReviewForm }) => {
+const ActivityForm = ({ data, handleImageRemove, handleSubmitFormClick, activityState, updateActivityState,isEditForm, handleImageChange, isNewEntryForm,isDisplayReviewForm }) => {
   return (
     <form id="activityForm" style={{ width: '100%' }}>
       {Object.keys(data).length > 0 ? (
@@ -10,10 +10,12 @@ const ActivityForm = ({ data, handleSubmitFormClick, activityState, updateActivi
           key={category}
           category={category}
           activities={data[category]}
+          handleImageRemove={handleImageRemove}
           activityState={activityState}  // Pass activityState (including responsibility and remarks)
           updateActivityState={updateActivityState}  // Pass the update function
           isNewEntryForm={isNewEntryForm}
           isDisplayReviewForm={isDisplayReviewForm}
+          isEditForm={isEditForm}
           handleImageChange={handleImageChange}
         />
       )) 

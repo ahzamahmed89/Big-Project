@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect,useState } from 'react';
 
-const ActivityDetails = ({ 
-  activity, 
-  status, 
-  handleStatusChange, 
-  responsibility, 
-  handleResponsibilityChange, 
-  remarks, 
-  image,  // Use the image prop passed from the parent
-  handleRemarksChange, 
-  handleImageChange, 
-  togglePreviousQuarterVisibility, 
-  previousStatusStyles = { Yes: 'green', No: 'red', NA: 'yellow', NotFound: 'grey' }, 
-  isNewEntryForm, 
+const ActivityDetails = ({
+  activity,
+  status,
+  handleStatusChange,
+  responsibility,
+  handleResponsibilityChange,
+  remarks,
+  image, // Use the image prop passed from the parent
+  handleRemarksChange,
+  handleImageChange,
+  togglePreviousQuarterVisibility,
+  previousStatusStyles = { Yes: 'green', No: 'red', NA: 'yellow', NotFound: 'grey' },
+  isNewEntryForm,
   isDisplayReviewForm,
-  isEditForm
+  isEditForm,
+  handleImageRemove, // New prop for handling image removal
 }) => {
-  
   // Status styles
   const statusStyles = {
     Yes: { backgroundColor: 'lightgreen' },
@@ -32,6 +32,7 @@ const ActivityDetails = ({
       }
     };
   }, [image]);
+  const [isImageRemoved, setIsImageRemoved] = useState(false); // New state
 
   const onImageChange = (e) => {
     const file = e.target.files[0];
@@ -39,24 +40,31 @@ const ActivityDetails = ({
       handleImageChange(file, activity.Code); // Pass the file and activity code to the parent handler
     }
   };
+
   const onResponsibilityChange = (e) => {
-    handleResponsibilityChange(e.target.value, activity.Code);  // Pass responsibility and activity code
+    handleResponsibilityChange(e.target.value, activity.Code); // Pass responsibility and activity code
   };
+
   const onStatusChange = (e) => {
-  handleStatusChange(e.target.value, activity.Code);  // Ensure correct activity.Code is passed
-};
+    handleStatusChange(e.target.value, activity.Code); // Ensure correct activity.Code is passed
+  };
+  // console.log(handleImageRemove); // Add this line to check if the function is passed
 
-
-  // Construct image path for review form from activity data (assuming image paths are stored correctly in activity.Images)
-  const currentImagePath = activity.Images 
-  ? `/images/${activity.Images.split('Images\\')[1]?.replace(/\\/g, '/')}` 
-  : null;
-
-    
-   
+  const currentImagePath = activity.Images
+    ? `/images/${activity.Images.split('Images\\')[1]?.replace(/\\/g, '/')}`
+    : null;
+    const handleImageRemoveClick = (e) => {
+      e.preventDefault(); // Prevent form submit or page refresh
+  e.stopPropagation(); // Stop the event from bubbling up
+  setIsImageRemoved(true);
+      handleImageRemove(activity.Code); // Call the function to remove the image
+    };
   return (
     <div className="activity-details">
-      <h3 className="activity" style={{ ...statusStyles[status], padding: '6px', fontWeight: 'bold' }}>
+      <h3
+        className="activity"
+        style={{ ...statusStyles[status], padding: '6px', fontWeight: 'bold' }}
+      >
         {activity.Activity}
       </h3>
 
@@ -64,11 +72,11 @@ const ActivityDetails = ({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <label>Status:</label>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <select 
-            className="status" 
-            value={status} 
+          <select
+            className="status"
+            value={status}
             onChange={onStatusChange}
-            disabled={isDisplayReviewForm} 
+            disabled={isDisplayReviewForm}
             style={{ textAlign: 'center' }}
           >
             <option value="">Select Status</option>
@@ -80,7 +88,7 @@ const ActivityDetails = ({
             className="previous-quarter-button"
             onClick={togglePreviousQuarterVisibility}
             style={{
-              backgroundColor: previousStatusStyles[activity.PreviousQuarterData?.Status || 'NotFound'], // Ensure fallback is 'NotFound'
+              backgroundColor: previousStatusStyles[activity.PreviousQuarterData?.Status || 'NotFound'],
               cursor: 'pointer',
             }}
           >
@@ -92,9 +100,9 @@ const ActivityDetails = ({
       {/* Responsibility Section */}
       <div>
         <label>Responsibility:</label>
-        <select 
-          className="responsibility" 
-          value={responsibility} 
+        <select
+          className="responsibility"
+          value={responsibility}
           onChange={onResponsibilityChange}
           disabled={isDisplayReviewForm}
         >
@@ -117,49 +125,53 @@ const ActivityDetails = ({
           className="remarks"
           placeholder="Enter Remarks"
           value={remarks}
-          onChange={(e) => handleRemarksChange(e.target.value)} 
-          disabled={isDisplayReviewForm} 
+          onChange={(e) => handleRemarksChange(e.target.value)}
+          disabled={isDisplayReviewForm}
         />
       </div>
 
-      {/* Image Handling: Upload for New Entry Form */}
+      {/* Image Upload for New Entry Form */}
       {isNewEntryForm && (
         <div className="image-upload-section">
           <label>Upload Image:</label>
-          <input 
-            type="file" 
-            className="image-upload" 
-            onChange={onImageChange} 
-          />
-          {image && <img src={URL.createObjectURL(image)} alt="Uploaded Preview" className="image-preview" />}
-        </div>
-      )}
-      {isEditForm && (
-        <div className="image-upload-section">
-          <label>Upload Image:</label>
-          <input 
-            type="file" 
-            className="image-upload" 
-            onChange={onImageChange} 
-          />
-          {currentImagePath ? (
-            <img src={currentImagePath} alt="Image for this activity." className="image-preview" />
-          ) : (
-            <p>No image available for this activity.</p>
+          <input type="file" className="image-upload" onChange={onImageChange} />
+          {image && (
+            <div style={{ position: 'relative', display: 'inline-block' }}>
+              <img src={URL.createObjectURL(image)} alt="Uploaded Preview" className="image-preview" />
+              <button className="remove-image-cross" onClick={handleImageRemoveClick}>
+                &times;
+              </button>
+            </div>
           )}
         </div>
       )}
 
-      {/* Image Handling: Display for Display Review Form */}
-      {isDisplayReviewForm && (
-        <div className="image-display-section">
-          {currentImagePath ? (
-            <img src={currentImagePath} alt="Image for this activity." className="image-preview" />
-          ) : (
-            <p>No image available for this activity.</p>
-          )}
-        </div>
-      )}
+      {/* Image Handling for Edit Form */}
+      {isEditForm && (
+  <div className="image-upload-section">
+    <label>Upload Image:</label>
+    <input type="file" className="image-upload" onChange={onImageChange} />
+    {currentImagePath && !isImageRemoved? (
+      <div style={{ position: 'relative', display: 'inline-block' }}>
+        <img src={currentImagePath} alt="Image for this activity." className="image-preview" />
+        <button className="remove-image-cross" onClick={handleImageRemoveClick}>
+          &times;
+        </button>
+      </div>
+    ) : image ? ( // If there is no currentImagePath, but an image has been selected
+      <div style={{ position: 'relative', display: 'inline-block' }}>
+        <img src={URL.createObjectURL(image)} alt="Uploaded Preview" className="image-preview" />
+        <button className="remove-image-cross" onClick={handleImageRemoveClick}>
+          &times;
+        </button>
+      </div>
+    ) : (
+      <p>No image available, please upload a new one.</p>
+    )}
+  </div>
+)}
+
+
     </div>
   );
 };

@@ -81,8 +81,7 @@ const DisplayReviewForm = () => {
       const { success, message, data } = response.data;
       if (success) {
         const groupedData = groupActivitiesByCategory(data);
-       
-        // Initialize activityState
+               // Initialize activityState
         const initialActivityState = {};
         data.forEach((activity) => {
           initialActivityState[activity.Code] = {
@@ -95,7 +94,7 @@ const DisplayReviewForm = () => {
         
         setData(groupedData);
         setActivityState(initialActivityState);
-        setFormGenerated(true);
+                setFormGenerated(true);
 
         if (data.length > 0) {
           setVisitDate(data[0]?.Visit_Date || '');
@@ -121,14 +120,7 @@ const DisplayReviewForm = () => {
       reviewedBy,
       year,
       quarter,
-      activities: Object.values(data).flat().map(item => ({
-        Code: item.Code,
-        Status: activityState[item.Code]?.status || '',
-        Responsibility: activityState[item.Code]?.responsibility || '',
-        Remarks: activityState[item.Code]?.remarks || '',
-        Activity: item.Activity,
-        Category: item.Category,
-      }))
+     
     };
 
     try {

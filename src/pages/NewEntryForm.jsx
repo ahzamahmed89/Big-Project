@@ -31,7 +31,7 @@ const NewEntryForm = () => {
   const [statusOptions, setStatusOptions] = useState(['Yes', 'No', 'NA']);  // Default initial status options
   const [responsibilityOptions, setResponsibilityOptions] = useState(['Admin', 'HR', 'IT', 'Operations']);  // Default initial responsibility options
   const [categories, setCategories] = useState([]);
-
+  const [forceUpdate, setForceUpdate] = useState(false);
   // Initialize the selectors for visit date, quarter, and month
   useEffect(() => {
     initializeSelectors();
@@ -159,12 +159,22 @@ const NewEntryForm = () => {
   };
 
   const handleImageChange = (file, code) => {
+    const imageURL = URL.createObjectURL(file);
     setImages((prevImages) => ({
       ...prevImages,
       [code]: file,
     }));
+    updateActivityState(code, 'image', file);
   };
-
+  const handleImageRemove = (code) => {
+    console.log('Before removing:', images);
+    setImages((prevImages) => ({
+      ...prevImages,
+      [code]: null,
+    }));
+    updateActivityState(code, 'image', null);
+    setForceUpdate(!forceUpdate);
+  };
   // Handle status, responsibility, remarks updates in activityState
   const updateActivityState = useCallback((code, field, value) => {
     setActivityState((prevState) => ({
@@ -478,6 +488,7 @@ const NewEntryForm = () => {
           <ActivityForm
             data={filteredData}
             handleImageChange={handleImageChange}
+            handleImageRemove={handleImageRemove}
             handleSubmitFormClick={handleSubmitFormClick}
             submitDisabled={submitDisabled}
             isNewEntryForm={true}
