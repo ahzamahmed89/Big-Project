@@ -53,6 +53,7 @@ const ActivityDetails = ({
   const currentImagePath = activity.Images
     ? `/images/${activity.Images.split('Images\\')[1]?.replace(/\\/g, '/')}`
     : null;
+    
     const handleImageRemoveClick = (e) => {
       e.preventDefault(); // Prevent form submit or page refresh
   e.stopPropagation(); // Stop the event from bubbling up

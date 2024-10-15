@@ -9,6 +9,8 @@ import displayRoutes from './Routes/displayRoutes.js';
 import updateReviewStatus from './Routes/updateReviewStatus.js'
 import fs from 'fs';
 import fetchAllActivitiesRoutes from './Routes/fetchAllActivitiesRoutes.js'; // Ensure file name matches the actual file
+import editFormRoutes from './Routes/editFormRoutes.js';
+import fileUpload from 'express-fileupload';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -41,9 +43,9 @@ app.use(cors({
   }
 }));
 
-
+app.use(fileUpload());
 app.use('/images', express.static(path.join(__dirname, 'images')));
-
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '50mb' }));
 
 // Serve Images
@@ -113,6 +115,9 @@ app.use('/update-review-status', updateReviewStatus);
 // Use the imported routes for /check-entry and /submit-form
 app.use('/check-entry', checkEntryRoutes);
 app.use('/submit-form', upload, submitFormRoute);
+
+app.use(editFormRoutes);
+
 app.use(displayRoutes);
 app.listen(PORT, () => {
   logger.info(`Server started on port ${PORT}`);

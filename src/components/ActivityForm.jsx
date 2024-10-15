@@ -22,7 +22,7 @@ const ActivityForm = ({ data, handleImageRemove, handleSubmitFormClick, activity
       ) : (
         <p>No activities available to display.</p> // Fallback when there's no data
      ) }
-     {!isDisplayReviewForm && (
+     {!isDisplayReviewForm  && (
         <button
           type="button"
           className="submit-button"

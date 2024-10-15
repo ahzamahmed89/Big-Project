@@ -10,9 +10,7 @@ header {
   width: 100%;
   top: 0;
   z-index: 1000;
-
-
-}
+  }
 
 .branding {
   margin-left: auto;
@@ -178,7 +176,7 @@ main {
   border-radius: 4px;
   overflow-y: auto;
   width: 100%;
-
+  overflow-y: auto;
   max-height: 100%;
   text-align: center;
   margin-top: 55px;
@@ -301,6 +299,7 @@ input[type="file" i] {
 .category-section {
   width: 100%;
   display: inline-block;
+  overflow-y: auto;
 }
 
 .activities-container {
@@ -337,6 +336,7 @@ input[type="file" i] {
   border-radius: 5px;
   box-shadow: 0px 0px 1px 1px #00000055;
   text-shadow: 2px 2px 4px #e4d55ce8;
+  
 }
 
 .activity {

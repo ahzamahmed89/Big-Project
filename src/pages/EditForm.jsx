@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import axios from 'axios';
 import BranchDetails from '../components/BranchDetails';
 import DateSelector from '../components/DateSelector';
@@ -36,7 +36,7 @@ const EditForm = () => {
     const [year, setYear] = useState(new Date().getFullYear());
     const [quarter, setQuarter] = useState(getCurrentQuarter(new Date().getMonth() + 1));
     const [visitDate, setVisitDate] = useState(new Date().toISOString().split('T')[0]);
-    const [Visit_Time, setVisitTime] = useState('');
+    const [visitTime, setVisitTime] = useState('');
     const [visitedBy, setVisitedBy] = useState('');
     const [reviewedBy, setReviewedBy] = useState('');
     const [formDisabled, setFormDisabled] = useState(true);
@@ -67,7 +67,30 @@ const EditForm = () => {
         }));
       }, []);
     const handleQuarterChange = (newQuarter) => setQuarter(newQuarter || '');
-
+    useEffect(() => {
+        initializeSelectors();
+      }, []);
+    
+      const initializeSelectors = () => {
+        const currentDay = currentDate.getDate();
+        const currentMonth = currentDate.getMonth();
+        const currentYear = currentDate.getFullYear();
+      
+        let minDate;
+        if (currentDay >= 11) {
+          minDate = new Date(currentYear, currentMonth, 1);
+        } else {
+          minDate = currentMonth === 0 ? new Date(currentYear - 1, 11, 1) : new Date(currentYear, currentMonth - 1, 1);
+        }
+      
+        const formattedMinDate = minDate.toISOString().split('T')[0];
+        const formattedMaxDate = currentDate.toISOString().split('T')[0];
+      
+        document.querySelector('#visitDate').min = formattedMinDate;
+        document.querySelector('#visitDate').max = formattedMaxDate;
+      
+     
+      };
     const handleResponsibilityChange = (responsibility, code) => {
         setActivityState(prevState => ({
             ...prevState,
@@ -146,35 +169,65 @@ const EditForm = () => {
 
     // Submit function
     const handleSubmitFormClick = async () => {
+        const newVisitTime = prompt("Please enter the Visit Time:", visitTime || new Date().toLocaleTimeString());
+    
+    // If the user provides a time, update the state
+    if (newVisitTime) {
+      setVisitTime(newVisitTime);
+    }
         const formDetails = {
-            branchCode,
-            visitDate,
-            visitedBy,
-            reviewedBy,
-            year,
-            quarter,
-            activities: Object.values(data).flat(),
+          branchCode,
+          visitDate,
+          visitedBy,
+          reviewedBy,
+          year,
+          quarter,
+          visitTime: newVisitTime, 
+          activities: Object.keys(activityState).map((code) => ({
+            Code: code,
+            Status: activityState[code].status,
+            Responsibility: activityState[code].responsibility,
+            Remarks: activityState[code].remarks,
+            Images: activityState[code].image || '',
+          })),
         };
-        Object.values(data).flat().forEach(item => {
-            const fileInput = document.querySelector(`[data-code="${item.Code}"] .image-upload`);
+      
+        const formData = new FormData();
+        formData.append('branchCode', formDetails.branchCode);
+        formData.append('visitDate', formDetails.visitDate);
+        formData.append('visitedBy', formDetails.visitedBy);
+        formData.append('reviewedBy', formDetails.reviewedBy);
+        formData.append('year', formDetails.year);
+        formData.append('quarter', formDetails.quarter);
+        formData.append('visitTime', formDetails.visitTime);
+        formData.append('activities', JSON.stringify(formDetails.activities)); // Pass the updated activities
+        Object.keys(activityState).forEach((code) => {
+            const fileInput = document.querySelector(`[data-code="${code}"] .image-upload`);
+        
             if (fileInput && fileInput.files[0]) {
-                formData.append(`Images-${item.Code}`, fileInput.files[0], fileInput.files[0].name); // Ensure the field name includes the activity code
-            } else {
-                console.log(`No file found for activity code: ${item.Code}`);
+              // Append the selected image file to FormData
+              formData.append(`Images-${code}`, fileInput.files[0], fileInput.files[0].name);
+              console.log(`Appending file for activity code: ${code}`);
             }
-        });
+          });
         try {
-            const response = await axios.post('http://localhost:5000/submit-edit', formDetails);
-            if (response.data.success) {
-                alert('Changes saved successfully');
-            } else {
-                alert('Failed to save changes');
-            }
+          const response = await axios.post('http://localhost:5000/submit-edit', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+          if (response.data.success) {
+            alert('Changes saved successfully');
+          } else {
+            alert('Failed to save changes');
+          }
         } catch (error) {
-            console.error('Submit error:', error);
-            alert('An error occurred while saving changes.');
+          console.error('Submit error:', error);
+          alert('An error occurred while saving changes.');
         }
-    };
+      };
+      
+    
 
     const flatActivities = useMemo(() => {
         return Object.keys(data).flatMap(category => data[category].map(activity => ({
@@ -220,7 +273,7 @@ const EditForm = () => {
       
       
     return (
-        <div className="new-entry-form-container" style={{ flex: '2', display: 'flex', flexDirection: 'column', position: 'fixed' }}>
+        <div className="new-entry-form-container" >
             <div className="form-container" style={{ marginBottom: '5px' }}>
                 <div style={{ display: 'flex', gap: '10px' }}>
                     <div style={{ flex: '1' }}>
@@ -322,8 +375,11 @@ const EditForm = () => {
                         isEditForm={true}  // Enable fields for editing
 
                     />
+                    
                 </div>
+               
             )}
+           
         </div>
     );
 };

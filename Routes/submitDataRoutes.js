@@ -4,7 +4,8 @@ import path from 'path';
 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+// Function to handle both new entry and update logic
+async function handleDataSubmission(req, res, createNew = false) {
   try {
     if (!req.body.data) {
       throw new Error('Missing data in the request');
@@ -21,35 +22,37 @@ router.post('/', async (req, res) => {
     const collection = req.db.collection(collectionName);
 
     const newEntries = Activities.map(activity => {
-      // Match the file to the specific activity code
       const file = req.files.find(f => {
-          const [fileCode] = f.filename.split('_'); // Extract the code from the file name
-          return fileCode === activity.Code; // Ensure an exact match
+        const [fileCode] = f.filename.split('_');
+        return fileCode === activity.Code;
       });
-  
-      // Construct the full file path
-      const year = Year.toString();  // Convert Year to string
+
+      const year = Year.toString();
       const filePath = file ? path.join(process.cwd(), 'Images', year, file.filename) : null;
-      
+
       return {
-          ...activity,
-          Branch_Code,
-          Branch_Name,
-          Region_Name,
-          Qtr,
-          Month,
-          Year,
-          Visited_By,
-          Visit_Date,
-          Visit_Time,
-          Reviewed_By_OM_BM,
-          Images: filePath,  // Save the full file path to the Images field
+        ...activity,
+        Branch_Code,
+        Branch_Name,
+        Region_Name,
+        Qtr,
+        Month,
+        Year,
+        Visited_By,
+        Visit_Date,
+        Visit_Time,
+        Reviewed_By_OM_BM,
+        Images: filePath,
       };
-  });
-    
-  // Insert the new entries into the database
-  await collection.insertMany(newEntries);
-  
+    });
+
+    if (createNew) {
+      await collection.insertMany(newEntries); // Create new entries
+    } else {
+      // Logic to update existing entries goes here
+      // For example, using `updateMany` or `updateOne` depending on the need
+    }
+
     const logCollection = req.db.collection('Logs');
     const currentDate = new Date();
     const logEntry = {
@@ -59,7 +62,7 @@ router.post('/', async (req, res) => {
       Year,
       Qtr,
       Month,
-      Entry_Status: 'Enter',
+      Entry_Status: createNew ? 'Enter' : 'Update',
       Last_Edit_By: Visited_By,
       Last_Edit_Date: currentDate.toLocaleDateString('en-US'),
       Last_Edit_Time: currentDate.toLocaleTimeString('en-US'),
@@ -71,12 +74,18 @@ router.post('/', async (req, res) => {
 
     await logCollection.insertOne(logEntry);
 
-    res.json({ success: true, message: 'Data successfully submitted and stored', insertedCount: newEntries.length });
+    res.json({ success: true, message: createNew ? 'New entry successfully created' : 'Data successfully updated', insertedCount: newEntries.length });
   } catch (err) {
     winston.error('Error in /submit-form:', err);
     res.status(500).json({ success: false, message: 'Error inserting data', error: err.message });
   }
+}
+
+// POST route for form submission (either create or update)
+router.post('/', async (req, res) => {
+  // Call the common logic with createNew = false for updates
+  await handleDataSubmission(req, res, false);
 });
 
-
+export { handleDataSubmission };
 export default router;
