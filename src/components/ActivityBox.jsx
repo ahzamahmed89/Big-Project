@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import ActivityDetails from './ActivityDetails';
 
-const ActivityBox = ({
-  activity,
-  status,
-  setStatus,
-  responsibility,
-  setResponsibility,
-  remarks,
-  setRemarks,
-  image,
-  setImage, // Persist image
-  isNewEntryForm,
-  isDisplayReviewForm,
+const ActivityBox = ({ 
+  activity, 
+  status, 
+  setStatus, 
+  responsibility, 
+  setResponsibility, 
+  remarks, 
+  setRemarks, 
+  image, 
+  setImage,  // Persist image
+  isNewEntryForm, 
+  isDisplayReviewForm, 
   isEditForm,
   handleImageChange,
-  handleImageRemove, // Prop for removing images
+  handleImageRemove
 }) => {
   const previousStatusStyles = {
     Yes: 'green',
@@ -26,9 +26,26 @@ const ActivityBox = ({
 
   const [previousQuarterVisible, setPreviousQuarterVisible] = useState(false);
 
+  // Log image for debugging
+  
+
   const togglePreviousQuarterVisibility = (e) => {
     e.preventDefault();
-    setPreviousQuarterVisible(!previousQuarterVisible);
+    setPreviousQuarterVisible(!previousQuarterVisible);  
+  };
+
+  const imagePath = activity.PreviousQuarterData?.Images
+  ? `/images/${activity.PreviousQuarterData.Images.split('Images\\')[1]?.replace(/\\/g, '/')}`
+  : null;
+
+
+
+
+
+  // Handle image change
+  const onImageChange = (file) => {
+    setImage(file);  // Update the current image in the state
+    handleImageChange(file, activity.Code);  // Call global handler to manage the image state
   };
 
   return (
@@ -36,20 +53,39 @@ const ActivityBox = ({
       <ActivityDetails
         activity={activity}
         handleStatusChange={setStatus}
-        handleImageChange={handleImageChange} // Persist image through onImageChange
-        handleImageRemove={handleImageRemove} // Pass image removal function
-        togglePreviousQuarterVisibility={togglePreviousQuarterVisibility}
+        handleImageChange={onImageChange}  // Persist image through onImageChange
+        togglePreviousQuarterVisibility={togglePreviousQuarterVisibility}  
         previousStatusStyles={previousStatusStyles}
-        isNewEntryForm={isNewEntryForm}
-        isDisplayReviewForm={isDisplayReviewForm}
+        isNewEntryForm={isNewEntryForm}  
+        handleImageRemove={handleImageRemove}  
+        isDisplayReviewForm={isDisplayReviewForm} 
         isEditForm={isEditForm}
         status={status}
         responsibility={responsibility}
         remarks={remarks}
         handleResponsibilityChange={setResponsibility}
         handleRemarksChange={setRemarks}
-        image={image} // Pass the current image
+        image={image}  // Pass the current image
       />
+
+      {previousQuarterVisible && activity.PreviousQuarterData && (
+        <div className="previous-quarter-data">
+          <h6>Last Visit Status</h6>
+          <p className="prev-activity">{activity.Activity}</p>
+          <p className="prev-status">Status: {activity.PreviousQuarterData.Status}</p>
+          <p className="prev-responsibility">Responsibility: {activity.PreviousQuarterData.Responsibility}</p>
+          <p className="prev-remarks">Remarks: {activity.PreviousQuarterData.Remarks}</p>
+          <div className="prev-img">
+            {imagePath && (
+              <img
+                src={imagePath}
+                alt="Previous Quarter"
+                className="image-preview"
+              />
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

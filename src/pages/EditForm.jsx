@@ -59,38 +59,38 @@ const EditForm = () => {
     const handleYearChange = (newYear) => setYear(newYear || new Date().getFullYear());
     const updateActivityState = useCallback((code, field, value) => {
         setActivityState((prevState) => ({
-          ...prevState,
-          [code]: {
-            ...prevState[code],
-            [field]: value,
-          },
+            ...prevState,
+            [code]: {
+                ...prevState[code],
+                [field]: value,
+            },
         }));
-      }, []);
+    }, []);
     const handleQuarterChange = (newQuarter) => setQuarter(newQuarter || '');
     useEffect(() => {
         initializeSelectors();
-      }, []);
-    
-      const initializeSelectors = () => {
+    }, []);
+
+    const initializeSelectors = () => {
         const currentDay = currentDate.getDate();
         const currentMonth = currentDate.getMonth();
         const currentYear = currentDate.getFullYear();
-      
+
         let minDate;
         if (currentDay >= 11) {
-          minDate = new Date(currentYear, currentMonth, 1);
+            minDate = new Date(currentYear, currentMonth, 1);
         } else {
-          minDate = currentMonth === 0 ? new Date(currentYear - 1, 11, 1) : new Date(currentYear, currentMonth - 1, 1);
+            minDate = currentMonth === 0 ? new Date(currentYear - 1, 11, 1) : new Date(currentYear, currentMonth - 1, 1);
         }
-      
+
         const formattedMinDate = minDate.toISOString().split('T')[0];
         const formattedMaxDate = currentDate.toISOString().split('T')[0];
-      
+
         document.querySelector('#visitDate').min = formattedMinDate;
         document.querySelector('#visitDate').max = formattedMaxDate;
-      
-     
-      };
+
+
+    };
     const handleResponsibilityChange = (responsibility, code) => {
         setActivityState(prevState => ({
             ...prevState,
@@ -102,17 +102,17 @@ const EditForm = () => {
     };
     const handleImageChange = (file, code) => {
         const imageURL = URL.createObjectURL(file);
-        
-      
+
+
         setImages((prevImages) => ({
-          ...prevImages,
-          [code]: file,
+            ...prevImages,
+            [code]: file,
         }));
         updateActivityState(code, 'image', file);
-      };
-      
+    };
 
-      
+
+
 
     const handleGenerateFormClick = async (event) => {
         event.preventDefault();
@@ -129,7 +129,13 @@ const EditForm = () => {
             });
 
             const { success, message, data } = response.data;
+
             if (success) {
+                if (message === 'Authorized data') {
+                    // Display an alert if authorized data is found and prevent further processing
+                    alert('Editing for authorized data is not allowed.');
+                    return; // Stop execution here, preventing the rest of the code from running
+                }
                 const groupedData = groupActivitiesByCategory(data);
                 const initialActivityState = {};
                 data.forEach((activity) => {
@@ -142,10 +148,10 @@ const EditForm = () => {
                     };
 
                 });
-               
+
                 setData(groupedData);
                 setActivityState(initialActivityState);
-                
+
                 setFormGenerated(true);
                 setFormDisabled(true);
 
@@ -170,64 +176,73 @@ const EditForm = () => {
     // Submit function
     const handleSubmitFormClick = async () => {
         const newVisitTime = prompt("Please enter the Visit Time:", visitTime || new Date().toLocaleTimeString());
-    
-    // If the user provides a time, update the state
-    if (newVisitTime) {
-      setVisitTime(newVisitTime);
-    }
+
+        // If the user provides a time, update the state
+        if (newVisitTime) {
+            setVisitTime(newVisitTime);
+        }
         const formDetails = {
-          branchCode,
-          visitDate,
-          visitedBy,
-          reviewedBy,
-          year,
-          quarter,
-          visitTime: newVisitTime, 
-          activities: Object.keys(activityState).map((code) => ({
-            Code: code,
-            Status: activityState[code].status,
-            Responsibility: activityState[code].responsibility,
-            Remarks: activityState[code].remarks,
-            Images: activityState[code].image || '',
-          })),
+            branchCode,
+            branchName,
+            regionName,
+            visitDate,
+            visitedBy,
+            reviewedBy,
+            year,
+            month,
+            quarter,
+            visitTime: newVisitTime,
+            activities: Object.keys(activityState).map((code) => ({
+                Code: code,
+                Status: activityState[code].status,
+                Responsibility: activityState[code].responsibility,
+                Remarks: activityState[code].remarks,
+                Images: activityState[code].image || '',
+            })),
         };
-      
+
         const formData = new FormData();
         formData.append('branchCode', formDetails.branchCode);
+        formData.append('branchName', formDetails.branchName);
+        formData.append('regionName', formDetails.regionName);
         formData.append('visitDate', formDetails.visitDate);
         formData.append('visitedBy', formDetails.visitedBy);
         formData.append('reviewedBy', formDetails.reviewedBy);
         formData.append('year', formDetails.year);
         formData.append('quarter', formDetails.quarter);
+        formData.append('month', formDetails.month);
         formData.append('visitTime', formDetails.visitTime);
         formData.append('activities', JSON.stringify(formDetails.activities)); // Pass the updated activities
         Object.keys(activityState).forEach((code) => {
             const fileInput = document.querySelector(`[data-code="${code}"] .image-upload`);
-        
+
             if (fileInput && fileInput.files[0]) {
-              // Append the selected image file to FormData
-              formData.append(`Images-${code}`, fileInput.files[0], fileInput.files[0].name);
-              console.log(`Appending file for activity code: ${code}`);
+                // Append the selected image file to FormData
+                formData.append(`Images-${code}`, fileInput.files[0], fileInput.files[0].name);
+                
             }
-          });
+        });
+        
+          
         try {
-          const response = await axios.post('http://localhost:5000/submit-edit', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          });
-          if (response.data.success) {
-            alert('Changes saved successfully');
-          } else {
-            alert('Failed to save changes');
-          }
+            const response = await axios.post('http://localhost:5000/submit-edit', formData, {
+                
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            if (response.data.success) {
+                alert('Changes saved successfully');
+            } else {
+                alert('Failed to save changes');
+            }
         } catch (error) {
-          console.error('Submit error:', error);
-          alert('An error occurred while saving changes.');
+            console.error('Submit error:', error);
+            alert('An error occurred while saving changes.');
         }
-      };
-      
-    
+    };
+
+
 
     const flatActivities = useMemo(() => {
         return Object.keys(data).flatMap(category => data[category].map(activity => ({
@@ -260,23 +275,23 @@ const EditForm = () => {
         }, {});
     }, [data, selectedCategory, selectedActivity, selectedStatus, selectedResponsibility, activityState]);
 
-   const handleImageRemove = (code) => {
-  console.log('Before removing:', images);
-  setImages((prevImages) => ({
-    ...prevImages,
-    [code]: null,
-  }));
-  updateActivityState(code, 'image', null);
-  setForceUpdate(!forceUpdate);
-};
+    const handleImageRemove = (code) => {
+       
+        setImages((prevImages) => ({
+            ...prevImages,
+            [code]: null,
+        }));
+        updateActivityState(code, 'image', null);
+        setForceUpdate(!forceUpdate);
+    };
 
-      
-      
+
+
     return (
         <div className="new-entry-form-container" >
             <div className="form-container" style={{ marginBottom: '5px' }}>
                 <div style={{ display: 'flex', gap: '10px' }}>
-                    <div style={{ flex: '1' }}>
+                    <div className="bannerdiv" >
                         <FeatureItem
                             title="Edit Form"
                             description="Edit branch data here!"
@@ -375,11 +390,11 @@ const EditForm = () => {
                         isEditForm={true}  // Enable fields for editing
 
                     />
-                    
+
                 </div>
-               
+
             )}
-           
+
         </div>
     );
 };

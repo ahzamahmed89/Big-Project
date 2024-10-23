@@ -10,7 +10,7 @@ header {
   width: 100%;
   top: 0;
   z-index: 1000;
-  }
+}
 
 .branding {
   margin-left: auto;
@@ -165,9 +165,24 @@ main {
   /* Rotate arrow when submenu is open */
 }
 
+
+.form-group.small-input #branchCode {
+  width: 150%;
+}
+
+.form-group.small-input label {
+  width: 155%;
+}
+
 .firstForm {
-  margin-right: 20%;
+  margin-right: 5%;
   padding-left: 0;
+}
+
+.new-entry-form {
+  margin: 1%;
+  width: 100%;
+  padding-right: none;
 }
 
 .new-entry-form-container {
@@ -206,14 +221,17 @@ main {
   font-weight: bold;
   color: rgba(3, 5, 3, 0.936);
   text-align: center;
+  width: 145%;
 }
 
 .form-group.small-input {
-  width: calc(25% + 0px);
+  width: calc(25%);
   /* max-width: calc(25.333% - 20px); */
 }
 
-
+#branchCode {
+  width: 150%;
+}
 
 .form-group.date {
   display: flex;
@@ -228,7 +246,7 @@ main {
   font-size: calc(0.5em + 1vw);
   font-weight: bold;
   white-space: nowrap;
-  /* Prevent the label from wrapping */
+
 }
 
 
@@ -255,12 +273,13 @@ select {
   padding: auto;
   cursor: pointer;
   font-size: calc(0.4em + 0.8vw);
-  margin-left: 20px;
+  margin-left: 4px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   align-self: flex-start;
   /* Keep the button aligned to the left */
-  height: 7vh;
-  width: 40%;
+  min-height: 4vh;
+  min-width: 20vw;
+
   box-shadow: #333 2px 2px;
   margin-top: auto;
 }
@@ -336,7 +355,7 @@ input[type="file" i] {
   border-radius: 5px;
   box-shadow: 0px 0px 1px 1px #00000055;
   text-shadow: 2px 2px 4px #e4d55ce8;
-  
+
 }
 
 .activity {
@@ -617,13 +636,21 @@ body {
   background: var(--bgColor);
 }
 
+.bannerdiv {
+  width: 40%;
+  height: 25%;
+  margin-right: 2%;
+  margin-left: 1%;
+}
+
+
 
 .banner {
   --col-gap: 2rem;
   --barH: 1rem;
   --roleH: 2rem;
   --flapH: 2rem;
-  width: min(60rem, 90%);
+
   margin-left: 15%;
   display: flex;
   flex-wrap: wrap;
@@ -632,11 +659,13 @@ body {
   /* justify-content: center; */
   align-items: flex-start;
   list-style: none;
-
+  width: 100%;
+  max-width: 210px;
 }
 
 .banner li {
-  width: 10em;
+  width: 95%;
+  height: 20vh;
   display: grid;
   grid-template-areas:
     "role"
@@ -656,7 +685,7 @@ body {
       calc(100% + var(--col-gap) / 2 + 5px) calc(100% - var(--flapH)),
       50% 100%,
       calc(var(--col-gap) / -2 - 5px) calc(100% - var(--flapH)));
-  height: 35vh;
+
 }
 
 /* bar */
@@ -664,8 +693,8 @@ body {
   content: "";
   grid-area: role;
   height: var(--barH);
-  width: calc(100% + var(--col-gap));
-  margin-left: calc(var(--col-gap) / -2);
+  width: calc(85% + var(--col-gap));
+  margin-left: calc(var(--col-gap) / -3);
   margin-top: calc(var(--roleH) / 2 - var(--barH) / 2);
   background: grey;
   z-index: -1;
@@ -680,11 +709,12 @@ body {
 
 /* role */
 .banner li::after {
+  
   content: "";
   grid-area: role;
   background: var(--accent-color);
   background-image: linear-gradient(rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.2) 30%,
+      rgba(141, 18, 18, 0.2) 30%,
       rgba(255, 255, 255, 0.1) 40%,
       rgba(0, 0, 0, 0.1) 60%,
       rgba(0, 0, 0, 0.2) 70%,
@@ -695,7 +725,7 @@ body {
 
 .banner li .title,
 .banner li .descr {
-  padding-inline: 1rem;
+  padding-inline: 0.5rem;
   color: white;
   text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 }
@@ -703,12 +733,14 @@ body {
 
 
 .banner li .title {
-  font-size: 1.10rem;
+  font-size: calc(0.5em + 1.1vw);
+ 
   font-weight: 700;
 }
 
 .banner li .descr {
-  font-size: 0.7rem;
+  font-size: calc(0.5em + 0.4vw);
+  ;
 }
 
 .image-preview-container {
@@ -747,4 +779,49 @@ body {
 
 .remove-image-cross:hover {
   background-color: darkred;
+}
+
+
+
+@media screen and (min-width: 550px) {
+  .generate-form-button {
+    font-size: calc(0.4em + 0.9vw);
+    margin-left: 5px;
+    height: 7vh;
+    width: 30vw;
+  }
+
+  .form-row {
+    width: 100%;
+  }
+
+  .form-group {
+    padding: 0 8px;
+    box-sizing: border-box;
+    font-size: calc(0.3em + 1vw);
+    font-weight: bold;
+    color: rgba(3, 5, 3, 0.936);
+    text-align: center;
+    width: 100%;
+  }
+
+  #branchCode label {
+    width: 240%;
+  }
+
+  .form-group.small-input #branchCode {
+    width: 110%;
+  }
+
+  .form-group.small-input label {
+    width: 130%;
+  }
+
+  .banner li {
+    height: 48%;
+  }
+  .banner li::before {
+        width: calc(100% + var(--col-gap));
+    margin-left: calc(var(--col-gap) / -2);
+  }
 }

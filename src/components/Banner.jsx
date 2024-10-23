@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FeatureItem = ({ icon, title, description, accentColor }) => {
+const FeatureItem = ({  title, description, accentColor }) => {
   return (
     <ul className="banner">
       <li style={{ '--accent-color': accentColor }}>

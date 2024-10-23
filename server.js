@@ -29,7 +29,9 @@ logger.info('Logger initialized successfully');
 const allowedOrigins = [
   'http://127.0.0.1:5173',
   'http://localhost:5173',
-  'https://rhsk3l6j-5173.inc1.devtunnels.ms',
+  'https://jk2vw2qg-5000.inc1.devtunnels.ms/',
+  'https://jk2vw2qg-5173.inc1.devtunnels.ms/',
+  'https://jk2vw2qg-27017.inc1.devtunnels.ms/'
 ];
 
 app.use(cors({

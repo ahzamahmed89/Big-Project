@@ -163,7 +163,7 @@ const DisplayReviewForm = () => {
     <div className="new-entry-form-container" >
       <div className="form-container" style={{ marginBottom: '5px' }}>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <div style={{ flex: '1' }}>
+          <div className="bannerdiv" style={{ flex: '1' }}>
             <FeatureItem
               title="Display/Review"
               description="Display or Review branch data here!"

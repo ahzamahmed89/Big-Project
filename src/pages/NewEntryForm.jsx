@@ -110,6 +110,7 @@ const NewEntryForm = () => {
 
     axios.get(`http://localhost:5000/check-entry?branchCode=${branchCodeValue}&year=${year}&quarter=${quarterValue}&month=${monthValue}`)
       .then(response => {
+        console.log('API Response:', response.data);
         const data = response.data;
         if (data.success) {
           alert(data.message);
@@ -387,7 +388,7 @@ const NewEntryForm = () => {
     <div className="new-entry-form-container" >
       <div className="form-container" style={{ marginBottom: '5px' }}>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <div style={{ flex: '1' }}>
+          <div className="bannerdiv">
             <FeatureItem
               title="New Entry Form"
               description="Enter new branch data here!"
