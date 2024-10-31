@@ -55,7 +55,7 @@ router.get('/', async (req, res) => {
 
       console.log(`Found ${previousQuarterData.length} records in the previous quarter collection.`);
 
-      const currentPmsfDocs = await mainFileCollection.find({}, { projection: { Code: 1, Category: 1, Activity: 1, Weightage: 1, Status: 1, seq: 1 } }).toArray();
+      const currentPmsfDocs = await mainFileCollection.find({}, { projection: { Code: 1, Category: 1, Activity: 1, Weightage: 1, Status: 1, Seq: 1 } }).toArray();
 
       // Sort documents by the 'seq' field
       const sortedDocs = currentPmsfDocs.sort((a, b) => a.seq - b.seq);
@@ -72,7 +72,7 @@ router.get('/', async (req, res) => {
           Activity: currentDoc.Activity,
           Weightage: currentDoc.Weightage ? currentDoc.Weightage.toString() : null,
           Status: currentDoc.Status,
-          seq: currentDoc.seq,
+          Seq: currentDoc.Seq,
           PreviousQuarterData: previousDoc ? {
             Status: previousDoc.Status,
             Responsibility: previousDoc.Responsibility,
@@ -83,9 +83,11 @@ router.get('/', async (req, res) => {
       });
 
       console.log('Returning processed documents from previous quarter');
+      
       res.json({
         success: false,
         data: processedDocs
+        
       });
     }
   } catch (err) {

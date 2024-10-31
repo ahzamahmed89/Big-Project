@@ -48,7 +48,7 @@ const ActivityDetails = ({
   const onStatusChange = (e) => {
     handleStatusChange(e.target.value, activity.Code); // Ensure correct activity.Code is passed
   };
-  // console.log(handleImageRemove); // Add this line to check if the function is passed
+  
 
   const currentImagePath = activity.Images
     ? `/images/${activity.Images.split('Images\\')[1]?.replace(/\\/g, '/')}`

@@ -1,91 +1,127 @@
 import express from 'express';
-import winston from 'winston';
+import fs from 'fs';
 import path from 'path';
 
 const router = express.Router();
 
-// Function to handle both new entry and update logic
-async function handleDataSubmission(req, res, createNew = false) {
+// Helper function to delete an image from the filesystem
+const deleteImageFromFileSystem = (imagePath) => {
+  if (fs.existsSync(imagePath)) {
+    fs.unlinkSync(imagePath);
+  }
+};
+
+router.post('/', async (req, res) => {
   try {
-    if (!req.body.data) {
-      throw new Error('Missing data in the request');
+    const { branchCode, branchName, regionName,Entry_Status, month, year, quarter, visitDate, visitedBy, reviewedBy, visitTime, snqrev } = req.body;
+    const activities = JSON.parse(req.body.activities);
+
+    // Basic validation
+    if (!branchCode || !year || !quarter || !activities) {
+      return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
 
-    const parsedData = JSON.parse(req.body.data);
-    const { Branch_Code, Branch_Name, Region_Name, Qtr, Month, Year, Visited_By, Visit_Date, Visit_Time, Reviewed_By_OM_BM, Activities } = parsedData;
+    const collectionName = `PMSF_Collection_${year}`;
+    const db = req.db;
+    const collection = db.collection(collectionName);
 
-    if (!Branch_Code || !Branch_Name || !Region_Name || !Qtr || !Month || !Year || !Visited_By || !Visit_Date || !Visit_Time || !Reviewed_By_OM_BM || !Activities) {
-      throw new Error('Missing required fields in the request body');
-    }
+    // Loop through each activity and insert or update fields
+    await Promise.all(
+      activities.map(async (activity) => {
+        const query = {
+          Branch_Code: branchCode,
+          Year: parseInt(year, 10),
+          Qtr: quarter,
+          Code: activity.Code,
+        };
 
-    const collectionName = `PMSF_Collection_${Year}`;
-    const collection = req.db.collection(collectionName);
+        // Check for existing activity
+        const existingActivity = await collection.findOne(query);
 
-    const newEntries = Activities.map(activity => {
-      const file = req.files.find(f => {
-        const [fileCode] = f.filename.split('_');
-        return fileCode === activity.Code;
-      });
+        const activityData = {
+          Branch_Code: branchCode,
+          Branch_Name: branchName,
+          Region_Name: regionName,
+          Year: parseInt(year, 10),
+          Qtr: quarter,
+          Month: month,
+          Code: activity.Code,
+          Visited_By: visitedBy,
+          Visit_Date: visitDate,
+          Visit_Time: visitTime,
+          Reviewed_By_OM_BM: reviewedBy,
+          Status: activity.Status || null,
+          Responsibility: activity.Responsibility || null,
+          Remarks: activity.Remarks || null,
+          Weightage: activity.Weightage ,
+          Activity: activity.Activity ,
+          Category: activity.Category ,
+          Seq: activity.Seq,
+          Images: existingActivity ? existingActivity.Images : null, // Preserve existing image path unless modified
+        };
 
-      const year = Year.toString();
-      const filePath = file ? path.join(process.cwd(), 'Images', year, file.filename) : null;
+        // Handle image upload if provided
+        const file = req.files?.[`Images-${activity.Code}`];
+        if (file) {
+          const imageName = `${activity.Code}_${branchCode}_${quarter}_${year}.jpg`;
+          const imagesDir = path.join(process.cwd(), 'Images', year.toString());
+          if (!fs.existsSync(imagesDir)) {
+            fs.mkdirSync(imagesDir, { recursive: true });
+          }
+          const imagePath = path.join(imagesDir, imageName);
+          await file.mv(imagePath);
+          activityData.Images = imagePath;
+        } else if (!activity.Images && existingActivity?.Images) {
+          // Remove existing image if not included in the update
+          const existingImagePath = existingActivity.Images;
+          deleteImageFromFileSystem(existingImagePath);
+          activityData.Images = null;
+        }
 
-      return {
-        ...activity,
-        Branch_Code,
-        Branch_Name,
-        Region_Name,
-        Qtr,
-        Month,
-        Year,
-        Visited_By,
-        Visit_Date,
-        Visit_Time,
-        Reviewed_By_OM_BM,
-        Images: filePath,
-      };
-    });
+        // Insert or update activity
+        if (existingActivity) {
+          await collection.updateOne(query, { $set: activityData });
+        } else {
+          await collection.insertOne(activityData);
+        }
+      })
+    );
 
-    if (createNew) {
-      await collection.insertMany(newEntries); // Create new entries
-    } else {
-      // Logic to update existing entries goes here
-      // For example, using `updateMany` or `updateOne` depending on the need
-    }
-
-    const logCollection = req.db.collection('Logs');
+    // Log entry after successful update or insert
+    const logCollection = db.collection('Logs');
     const currentDate = new Date();
+    let reviewstatus;
+    console.log(snqrev)
+    if (snqrev !==""){
+      reviewstatus="Yes"
+    }else{
+     reviewstatus="No"
+    }
     const logEntry = {
-      Branch_Code,
-      Branch_Name,
-      Region_Name,
-      Year,
-      Qtr,
-      Month,
-      Entry_Status: createNew ? 'Enter' : 'Update',
-      Last_Edit_By: Visited_By,
+      Branch_Code: branchCode,
+      Branch_Name: branchName,
+      Region_Name: regionName,
+      Year: parseInt(year, 10),
+      Qtr: quarter,
+      Month: month,
+      Entry_Status: Entry_Status,
+      Last_Edit_By: visitedBy,
       Last_Edit_Date: currentDate.toISOString().split('T')[0],
       Last_Edit_Time: currentDate.toISOString().split('T')[1].split('.')[0],
-      Reviewer_Name: Reviewed_By_OM_BM,
+      Reviewer_Name: reviewedBy,
       Review_Status: 'No',
-      SnQ_Reviewer: '',
-      SnQ_Review_Status: 'No',
+      SnQ_Reviewer: snqrev,
+      SnQ_Review_Status: reviewstatus,
     };
 
     await logCollection.insertOne(logEntry);
 
-    res.json({ success: true, message: createNew ? 'New entry successfully created' : 'Data successfully updated', insertedCount: newEntries.length });
-  } catch (err) {
-    winston.error('Error in /submit-form:', err);
-    res.status(500).json({ success: false, message: 'Error inserting data', error: err.message });
+    console.log('Activities successfully updated or created');
+    return res.json({ success: true, message: 'Data successfully updated or created and log entry created' });
+  } catch (error) {
+    console.error('Error in /submit-edit route:', error);
+    return res.status(500).json({ success: false, message: 'An error occurred while processing your request' });
   }
-}
-
-// POST route for form submission (either create or update)
-router.post('/', async (req, res) => {
-  // Call the common logic with createNew = false for updates
-  await handleDataSubmission(req, res, false);
 });
 
-export { handleDataSubmission };
 export default router;

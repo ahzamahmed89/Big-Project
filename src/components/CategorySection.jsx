@@ -11,7 +11,7 @@ const CategorySection = ({
   handleImageChange,
   handleImageRemove,
   isEditForm,
-  
+  handleResponsibilityChange,
 }) => {
   // Memoize activities to avoid unnecessary re-renders
   const memoizedActivities = useMemo(() => activities, [activities]);
@@ -47,6 +47,7 @@ const CategorySection = ({
                 setImage={(newImage) => updateActivityState(activity.Code, 'image', newImage)}
                 handleImageChange={handleImageChange}
                 handleImageRemove={handleImageRemove}
+                handleResponsibilityChange={handleResponsibilityChange}
               />
             );
           })

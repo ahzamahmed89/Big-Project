@@ -94,9 +94,9 @@ main {
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   padding-top: 20px;
   z-index: 999;
-  /* Higher z-index to ensure it appears above other elements */
+  
   transition: left 0.3s ease;
-  /* Smooth transition */
+ 
 }
 
 .sidebar.open {
@@ -187,11 +187,11 @@ main {
 
 .new-entry-form-container {
   background: none;
-  padding: 1vw;
+  padding: 0.2vw;
   border-radius: 4px;
   overflow-y: auto;
   width: 100%;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   max-height: 100%;
   text-align: center;
   margin-top: 55px;
@@ -318,13 +318,13 @@ input[type="file" i] {
 .category-section {
   width: 100%;
   display: inline-block;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .activities-container {
   margin-top: 0px;
   width: 100%;
-  padding: 10px;
+  padding: 2px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -332,7 +332,7 @@ input[type="file" i] {
   border-radius: 6px;
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+
   flex-basis: 300px;
   flex-grow: 1;
   flex-shrink: 0;
@@ -824,4 +824,83 @@ body {
         width: calc(100% + var(--col-gap));
     margin-left: calc(var(--col-gap) / -2);
   }
+}
+
+
+/* *************Login page************ */
+
+/* Container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140VH;
+  max-height: 100%;
+  background: linear-gradient(135deg, #e2ebf0, #cfdce5);
+ 
+}
+
+/* Form */
+.login-form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-top: 15%;
+  
+}
+
+/* Title */
+.login-form h2 {
+  margin-bottom: 1rem;
+  color: #022347ce;
+}
+
+/* Input Group */
+.input-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  color: #555;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Error Message */
+.error {
+  color: #d9534f;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* Button */
+.login-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #129905ce;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #01142d;
 }

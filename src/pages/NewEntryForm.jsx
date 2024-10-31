@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useMemo } from 'react';
+import React, { useCallback, useState, useEffect, useMemo, useContext, } from 'react';
 import axios from 'axios';
 import BranchDetails from '../components/BranchDetails';
 import DateSelector from '../components/DateSelector';
@@ -7,6 +7,7 @@ import FormButton from '../components/FormButton';
 import SearchBar from '../components/SearchBar';
 import ActivityForm from '../components/ActivityForm';
 import FeatureItem from '../components/Banner';
+import { UserContext } from '../components/UserContext';
 
 const NewEntryForm = () => {
   const [branchCode, setBranchCode] = useState('');
@@ -32,7 +33,13 @@ const NewEntryForm = () => {
   const [responsibilityOptions, setResponsibilityOptions] = useState(['Admin', 'HR', 'IT', 'Operations']);  // Default initial responsibility options
   const [categories, setCategories] = useState([]);
   const [forceUpdate, setForceUpdate] = useState(false);
-  // Initialize the selectors for visit date, quarter, and month
+  const { userID } = useContext(UserContext); // Get the global userID
+ 
+
+  useEffect(() => {
+    // Automatically set visitedBy with userID when component loads
+    setVisitedBy(userID);
+  }, [userID]);
   useEffect(() => {
     initializeSelectors();
   }, []);
@@ -110,7 +117,7 @@ const NewEntryForm = () => {
 
     axios.get(`http://localhost:5000/check-entry?branchCode=${branchCodeValue}&year=${year}&quarter=${quarterValue}&month=${monthValue}`)
       .then(response => {
-        console.log('API Response:', response.data);
+        
         const data = response.data;
         if (data.success) {
           alert(data.message);
@@ -124,7 +131,11 @@ const NewEntryForm = () => {
               status: activity.Status || '',  // Set initial status
               responsibility: activity.Responsibility || '',  // Set initial responsibility
               remarks: activity.Remarks || '',  // Set initial remarks
-              image: activity.Images || '',  // Set image if available
+              image: activity.Images || '', // Set image if available
+              weightage: activity.Weightage,
+              activity: activity.Activity,
+              category: activity.Category,
+              seq: activity.Seq,
             };
           });
 
@@ -168,7 +179,7 @@ const NewEntryForm = () => {
     updateActivityState(code, 'image', file);
   };
   const handleImageRemove = (code) => {
-    console.log('Before removing:', images);
+   
     setImages((prevImages) => ({
       ...prevImages,
       [code]: null,
@@ -266,61 +277,80 @@ const NewEntryForm = () => {
 
   const submitForm = (visitTime) => {
     const formDetails = {
-      Branch_Code: branchCode.trim(),
-      Branch_Name: branchName.trim(),
-      Region_Name: regionName.trim(),
-      Month: month.trim(),
-      Qtr: quarter.trim(),
-      Year: new Date(visitDate).getFullYear(),
-      Visited_By: visitedBy.trim(),
-      Visit_Date: visitDate.trim(),
-      Visit_Time: visitTime,
-      Reviewed_By_OM_BM: reviewedBy.trim(),
-      Activities: Object.values(data).flat().map(item => ({
-        Code: item.Code,
-        Status: activityState[item.Code]?.status || '',  // Use persisted state for status
-        Responsibility: activityState[item.Code]?.responsibility || '',  // Use persisted state for responsibility
-        Remarks: activityState[item.Code]?.remarks || '',  // Use persisted state for remarks
-        Weightage: item.Weightage,
-        Activity: item.Activity,
-        Category: item.Category,
-      })),
+        branchCode: branchCode.trim(),
+        Entry_Status: "Enter",
+        branchName: branchName.trim(),
+        regionName: regionName.trim(),
+        visitDate: visitDate.trim(),
+        visitedBy: visitedBy.trim(),
+        reviewedBy: reviewedBy.trim(),
+        year: new Date(visitDate).getFullYear(),
+        month: month.trim(),
+        quarter: quarter.trim(),
+        visitTime: visitTime,
+        activities: Object.keys(activityState).map((code) => ({
+            Code: code,
+            Status: activityState[code]?.status || '',
+            Responsibility: activityState[code]?.responsibility || '',
+            Remarks: activityState[code]?.remarks || '',
+            Weightage: activityState[code]?.weightage , // Ensure weightage is included
+            Activity: activityState[code]?.activity, // Ensure activity is included
+            Category: activityState[code]?.category , // Ensure category is included
+            Seq:activityState[code]?.seq,
+        })),
     };
 
     const formData = new FormData();
-    formData.append('data', JSON.stringify(formDetails));
+    formData.append('branchCode', formDetails.branchCode);
+    formData.append('branchName', formDetails.branchName);
+    formData.append('regionName', formDetails.regionName);
+    formData.append('visitDate', formDetails.visitDate);
+    formData.append('visitedBy', formDetails.visitedBy);
+    formData.append('reviewedBy', formDetails.reviewedBy);
+    formData.append('year', formDetails.year);
+    formData.append('quarter', formDetails.quarter);
+    formData.append('month', formDetails.month);
+    formData.append('visitTime', formDetails.visitTime);
+    formData.append('Entry_Status', formDetails.Entry_Status);
+    // Add activities as a JSON string
+    formData.append('activities', JSON.stringify(formDetails.activities));
 
     // Append images to FormData
-    Object.values(data).flat().forEach(item => {
-      const fileInput = document.querySelector(`[data-code="${item.Code}"] .image-upload`);
-      if (fileInput && fileInput.files[0]) {
-        formData.append(`Images-${item.Code}`, fileInput.files[0], fileInput.files[0].name); // Ensure the field name includes the activity code
-      }
+    Object.keys(activityState).forEach((code) => {
+        const fileInput = document.querySelector(`[data-code="${code}"] .image-upload`);
+        if (fileInput && fileInput.files[0]) {
+            formData.append(`Images-${code}`, fileInput.files[0], fileInput.files[0].name);
+        }
     });
 
+
+
+
     axios.post('http://localhost:5000/submit-form', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
     })
-      .then(response => {
+    .then(response => {
         if (response.data.success) {
-          alert('Form submitted successfully!');
-          resetForm();
+            alert('Form submitted successfully!');
+            resetForm();
         } else {
-          alert('Failed to submit form: ' + response.data.message);
+            alert('Failed to submit form: ' + response.data.message);
         }
-      })
-      .catch(error => {
+    })
+    .catch(error => {
         console.error('Submit error:', error);
         if (error.response) {
-          console.error('Data:', error.response.data);
-          console.error('Status:', error.response.status);
-          console.error('Headers:', error.response.headers);
+            console.error('Data:', error.response.data);
+            console.error('Status:', error.response.status);
+            console.error('Headers:', error.response.headers);
         }
         alert('An error occurred while submitting the form. Please try again.');
-      });
-  };
+    });
+};
+
+
 
   const resetForm = () => {
     setBranchCode('');

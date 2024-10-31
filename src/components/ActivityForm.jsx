@@ -1,7 +1,10 @@
-import React from 'react';
-import CategorySection from './CategorySection';
 
-const ActivityForm = ({ data, handleImageRemove, handleSubmitFormClick, activityState, updateActivityState,isEditForm, handleImageChange, isNewEntryForm,isDisplayReviewForm }) => {
+import React, { useContext } from 'react';
+import CategorySection from './CategorySection';
+import { UserContext } from '../components/UserContext';
+
+const ActivityForm = ({ data, handleResponsibilityChange, handleImageRemove, handleSubmitFormClick, activityState, updateActivityState,isEditForm, handleImageChange, isNewEntryForm, isDisplayReviewForm, visitedBy }) => {
+  const { userID } = useContext(UserContext);
   return (
     <form id="activityForm" style={{ width: '100%' }}>
       {Object.keys(data).length > 0 ? (
@@ -17,10 +20,11 @@ const ActivityForm = ({ data, handleImageRemove, handleSubmitFormClick, activity
           isDisplayReviewForm={isDisplayReviewForm}
           isEditForm={isEditForm}
           handleImageChange={handleImageChange}
+          handleResponsibilityChange={handleResponsibilityChange}
         />
       )) 
       ) : (
-        <p>No activities available to display.</p> // Fallback when there's no data
+        <p>...</p> // Fallback when there's no data
      ) }
      {!isDisplayReviewForm  && (
         <button
@@ -29,7 +33,7 @@ const ActivityForm = ({ data, handleImageRemove, handleSubmitFormClick, activity
           onClick={handleSubmitFormClick}
           disabled={isDisplayReviewForm}
         >
-          Submit
+         {userID === visitedBy ? "Edit" : "Authorize"}
         </button>
       )}
     </form>

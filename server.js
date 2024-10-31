@@ -3,14 +3,16 @@ import cors from 'cors';
 import { MongoClient } from 'mongodb';
 import logger from './Utils/logger.js'; 
 import upload from './upload.js'; 
-import submitFormRoute from './Routes/submitDataRoutes.js';
+import submitDataRoutes from './Routes/submitDataRoutes.js';
 import checkEntryRoutes from './Routes/checkEntryRoute.js';
 import displayRoutes from './Routes/displayRoutes.js';
-import updateReviewStatus from './Routes/updateReviewStatus.js'
-import fs from 'fs';
-import fetchAllActivitiesRoutes from './Routes/fetchAllActivitiesRoutes.js'; // Ensure file name matches the actual file
+import updateReviewStatus from './Routes/updateReviewStatus.js';
+import fetchAllActivitiesRoutes from './Routes/fetchAllActivitiesRoutes.js'; 
 import editFormRoutes from './Routes/editFormRoutes.js';
 import fileUpload from 'express-fileupload';
+import dotenv from 'dotenv'; // For environment variables
+
+dotenv.config(); // Load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,11 +21,11 @@ const url = 'mongodb+srv://ahmedahxam:1234@cluster0.3fs3r1f.mongodb.net/?retryWr
 const client = new MongoClient(url);
 import path from 'path';
 import { fileURLToPath } from 'url';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 logger.info('Logger initialized successfully');
-
 
 // CORS setup
 const allowedOrigins = [
@@ -35,9 +37,9 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: function (origin, callback) {
+  origin: (origin, callback) => {
     if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
+    if (!allowedOrigins.includes(origin)) {
       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
       return callback(new Error(msg), false);
     }
@@ -46,21 +48,28 @@ app.use(cors({
 }));
 
 app.use(fileUpload());
-app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '50mb' }));
 
+// Middleware to log received files and body data
+app.use((req, res, next) => {
+  logger.info('Received files:', req.files);
+  logger.info('Received body:', req.body);
+  next();
+});
+
 // Serve Images
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.get('/images/:year/:imageName', (req, res) => {
   const { year, imageName } = req.params;
   const imagePath = path.join(process.cwd(), 'Images', year, imageName);
-  console.log('Full Image Path:', imagePath);
+  logger.info('Full Image Path:', imagePath);
 
   if (fs.existsSync(imagePath)) {
-    console.log('Image exists.');
+    logger.info('Image exists.');
     res.sendFile(imagePath);
   } else {
-    console.log('Image does not exist.');
+    logger.warn('Image does not exist.');
     res.status(404).send('Image not found');
   }
 });
@@ -75,13 +84,12 @@ async function mongoMiddleware(req, res, next) {
       dbInstance = db.db(dbName);  // Cache the database instance
     } catch (err) {
       logger.error('Database connection error:', err);
-      return res.status(500).json({ success: false, message: err.message });
+      return res.status(500).json({ success: false, message: 'Database connection error: ' + err.message });
     }
   }
   req.db = dbInstance;
   next();
 }
-
 
 app.use(mongoMiddleware);
 
@@ -108,19 +116,19 @@ async function fetchBranchByCode(req, res) {
     }
   } catch (err) {
     logger.error('Error in /branch/:code:', err);
-    res.status(500).json({ success: false, message: err.message });
+    res.status(500).json({ success: false, message: 'Error fetching branch: ' + err.message });
   }
 }
+
+// Register routes
 app.use(fetchAllActivitiesRoutes);
 app.get('/branch/:code', fetchBranchByCode);
 app.use('/update-review-status', updateReviewStatus); 
-// Use the imported routes for /check-entry and /submit-form
 app.use('/check-entry', checkEntryRoutes);
-app.use('/submit-form', upload, submitFormRoute);
-
+app.use('/submit-form', submitDataRoutes);
 app.use(editFormRoutes);
-
 app.use(displayRoutes);
+
 app.listen(PORT, () => {
   logger.info(`Server started on port ${PORT}`);
 });

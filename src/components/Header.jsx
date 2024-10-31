@@ -25,7 +25,7 @@ const Header = () => {
       </div>
       <div className="branding">Service & Quality</div>
       <div className="right-container">
-        <Link to="/"><img src={logo} alt="Logo" id="navbar-logo" /></Link>
+        <Link to="/Home"><img src={logo} alt="Logo" id="navbar-logo" /></Link>
       </div>
 
       {/* Sidebar Component */}

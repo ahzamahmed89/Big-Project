@@ -1,7 +1,7 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
-import winston from 'winston'; // Use for logging errors
+
 const router = express.Router();
 
 // Helper function to delete an image from the filesystem

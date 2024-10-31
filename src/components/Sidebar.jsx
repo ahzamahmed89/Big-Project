@@ -37,9 +37,9 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
           Physical Mystery Shopping Form
           <ul className={`submenu ${isSubmenuOpen ? 'show' : ''}`}>
             <li><Link to="/newentry" onClick={() => toggleSidebar(false)}>New Entry</Link></li>
-            <li><Link to="/edit" onClick={() => toggleSidebar(false)}>Edit</Link></li>
+            <li><Link to="/edit" onClick={() => toggleSidebar(false)}>Edit/Authorize</Link></li>
             <li><Link to="/display-review" onClick={() => toggleSidebar(false)}>Display/Review</Link></li>
-            <li><Link to="/authorize" onClick={() => toggleSidebar(false)}>Authorize</Link></li>
+            
           </ul>
         </li>
       </ul>

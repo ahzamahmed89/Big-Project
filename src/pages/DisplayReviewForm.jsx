@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useContext, useEffect } from 'react';
 import axios from 'axios';
 import BranchDetails from '../components/BranchDetails';
 import DateSelector from '../components/DateSelector';
@@ -10,6 +10,7 @@ import YearDropdown from '../components/YearDropdown';
 import QuarterDropdown from '../components/QuarterDropdown';
 import FeatureItem from '../components/Banner';
 import ReviewButton from '../components/ReviewButton'; // Import ReviewButton
+import { UserContext } from '../components/UserContext';
 
 const groupActivitiesByCategory = (data) => {
   return data.reduce((acc, activity) => {
@@ -47,7 +48,11 @@ const DisplayReviewForm = () => {
   const [responsibilityOptions, setResponsibilityOptions] = useState(['Admin', 'HR', 'IT', 'Operations']);
   const [selectedStatus, setSelectedStatus] = useState([]);
   const [selectedResponsibility, setSelectedResponsibility] = useState([]);
+  const [isReviewButtonEnabled, setIsReviewButtonEnabled] = useState(false); // New state for button
+  const { userID } = useContext(UserContext); // Get the global userID
 
+
+  
 
   // Dynamically update activityState
   const updateActivityState = useCallback((code, field, value) => {
@@ -81,7 +86,7 @@ const DisplayReviewForm = () => {
       const { success, message, data } = response.data;
       if (success) {
         const groupedData = groupActivitiesByCategory(data);
-               // Initialize activityState
+        // Initialize activityState
         const initialActivityState = {};
         data.forEach((activity) => {
           initialActivityState[activity.Code] = {
@@ -91,10 +96,13 @@ const DisplayReviewForm = () => {
             image: activity.Images || '',  // Fetch image URL from database
           };
         });
-        
+
         setData(groupedData);
         setActivityState(initialActivityState);
-                setFormGenerated(true);
+        setFormGenerated(true);
+
+        const isButtonEnabled = userID === data[0]?.Reviewed_By_OM_BM;
+        setIsReviewButtonEnabled(isButtonEnabled);
 
         if (data.length > 0) {
           setVisitDate(data[0]?.Visit_Date || '');
@@ -104,7 +112,9 @@ const DisplayReviewForm = () => {
         }
       } else {
         alert(message);
+
         setFormGenerated(false);
+
       }
     } catch (error) {
       console.error('Fetch error:', error);
@@ -120,7 +130,6 @@ const DisplayReviewForm = () => {
       reviewedBy,
       year,
       quarter,
-     
     };
 
     try {
@@ -145,7 +154,7 @@ const DisplayReviewForm = () => {
           // Use updated state for status, responsibility, and remarks
           const updatedStatus = activityState[activity.Code]?.status || activity.Status;
           const updatedResponsibility = activityState[activity.Code]?.responsibility || activity.Responsibility || '';
-          
+
           const matchesStatus = selectedStatus.length === 0 || selectedStatus.includes(updatedStatus);
           const matchesResponsibility = selectedResponsibility.length === 0 || selectedResponsibility.includes(updatedResponsibility);
 
@@ -251,18 +260,19 @@ const DisplayReviewForm = () => {
             updateActivityState={updateActivityState}
             isDisplayReviewForm={true}
           />
-          
-        </div>
-        )}
-      <div className="reviewbutton">
-          <ReviewButton
-            branchCode={branchCode}
-            year={year}
-            quarter={quarter}
-            month={month}
-            handleSubmitFormClick={handleSubmitFormClick}
-          />
+          <div className="reviewbutton">
+            <ReviewButton
+              branchCode={branchCode}
+              year={year}
+              quarter={quarter}
+              month={month}
+              handleSubmitFormClick={handleSubmitFormClick}
+            />
           </div>
+        </div>
+
+      )}
+
     </div>
   );
 };

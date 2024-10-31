@@ -18,7 +18,7 @@
     "cors": "^2.8.5",
     "curl": "^0.1.4",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
+    "express": "^4.21.1",
     "express-fileupload": "^1.5.1",
     "mongoose": "^8.4.5",
     "multer": "^1.4.5-lts.1",
@@ -28,7 +28,7 @@
     "react-draggable": "^4.4.6",
     "react-router-dom": "^6.24.1",
     "react-select": "^5.8.0",
-    "winston": "^3.13.0"
+    "winston": "^3.15.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

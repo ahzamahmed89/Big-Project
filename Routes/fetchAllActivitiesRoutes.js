@@ -74,7 +74,7 @@ router.get('/fetch-all-activities', async (req, res) => {
           Status: currentDoc.Status,
           Responsibility: currentDoc.Responsibility,
           Remarks: currentDoc.Remarks,
-          seq: currentDoc.seq,
+          Seq: currentDoc.Seq,
           Images: currentDoc.Images,
           Month: currentDoc.Month,
           Visited_By: currentDoc.Visited_By,
