@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Route to fetch all activities for EditForm based on branch code, year, and quarter
 router.get('/fetch-all-activities', async (req, res) => {
-  const { branchCode, year, quarter } = req.query;
+  const { branchCode, year, quarter, MS_Type } = req.query;
   const collectionName = `PMSF_Collection_${year}`; // Create collection name dynamically
 
   try {
@@ -15,7 +15,7 @@ router.get('/fetch-all-activities', async (req, res) => {
       Branch_Code: String(branchCode),
       Year: parseInt(year, 10),
       Qtr: quarter,
-      
+      MS_Type: MS_Type,
     };
     const logOptions = { sort: { Last_Edit_Date: -1, Last_Edit_Time: -1 }, limit: 1 };
 
@@ -26,8 +26,7 @@ router.get('/fetch-all-activities', async (req, res) => {
       const log = logs[0];
       if (['Authorize', 'Deleted'].includes(log.Entry_Status)){
       // If an authorized log exists, return a message and do not process further
-      console.log(`Data already ${log.Entry_Status} for Branch_Code: ${branchCode}, Year: ${year}, Quarter: ${quarter}.`);
-      return res.json({ success: true, message: 'Authorized data' });
+           return res.json({ success: true, message: 'Authorized data' });
     }};
 
     // If no authorized log exists, continue to fetch activities
@@ -41,8 +40,7 @@ router.get('/fetch-all-activities', async (req, res) => {
     }).toArray();
 
     if (activities.length > 0) {
-      console.log(`Current quarter data found for Branch_Code: ${branchCode}. Fetching previous quarter data...`);
-
+      
       // Logic to fetch previous quarter data
       const previousQuarter = (parseInt(quarter.charAt(1)) - 1) || 4;
       const previousYear = previousQuarter === 4 ? year - 1 : year;
@@ -57,7 +55,7 @@ router.get('/fetch-all-activities', async (req, res) => {
 
       const previousQuarterData = await previousCollection.find(previousQuarterQuery).toArray();
 
-      console.log(`Found ${previousQuarterData.length} records in the previous quarter collection.`);
+      
 
       // Combine current and previous quarter data
       const processedDocs = activities.map(currentDoc => {

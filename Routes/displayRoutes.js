@@ -20,8 +20,7 @@ router.get('/fetch-activities', async (req, res) => {
 
     // If current quarter data is found, fetch previous quarter data
     if (activities.length > 0) {
-      console.log(`Current quarter data found for Branch_Code: ${branchCode}. Fetching previous quarter data...`);
-
+     
       // Logic to fetch previous quarter data
       const previousQuarter = (parseInt(quarter.charAt(1)) - 1) || 4;
       const previousYear = previousQuarter === 4 ? year - 1 : year;
@@ -37,9 +36,7 @@ router.get('/fetch-activities', async (req, res) => {
 
       const previousQuarterData = await previousCollection.find(previousQuarterQuery).toArray();
 
-      console.log(`Found ${previousQuarterData.length} records in the previous quarter collection.`);
-
-      // Combine current and previous quarter data
+         // Combine current and previous quarter data
       const processedDocs = activities.map(currentDoc => {
         // Match current quarter docs with previous quarter based on Code
         

@@ -4,13 +4,13 @@ const router = express.Router();
 
 router.get('/:code', async (req, res) => {
   const branchCode = req.params.code;
-  console.log('Received branch code:', branchCode);
+
 
   try {
     const collection = req.db.collection('Branches');
     const branch = await collection.findOne({ 'Branch_Code': branchCode });
 
-    console.log('Branch found:', branch);
+  
     if (branch) {
       res.json({
         success: true,

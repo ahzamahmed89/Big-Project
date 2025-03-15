@@ -13,7 +13,7 @@ const deleteImageFromFileSystem = (imagePath) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { branchCode, branchName, regionName,Entry_Status, month, year, quarter, visitDate, visitedBy, reviewedBy, visitTime, snqrev } = req.body;
+    const { branchCode, branchName, regionName,Entry_Status, month, year, quarter, visitDate, visitedBy, reviewedBy, MS_Type, visitTime, snqrev } = req.body;
     const activities = JSON.parse(req.body.activities);
 
     // Basic validation
@@ -50,6 +50,7 @@ router.post('/', async (req, res) => {
           Visit_Date: visitDate,
           Visit_Time: visitTime,
           Reviewed_By_OM_BM: reviewedBy,
+          
           Status: activity.Status || null,
           Responsibility: activity.Responsibility || null,
           Remarks: activity.Remarks || null,
@@ -91,7 +92,7 @@ router.post('/', async (req, res) => {
     const logCollection = db.collection('Logs');
     const currentDate = new Date();
     let reviewstatus;
-    console.log(snqrev)
+   
     if (snqrev !==""){
       reviewstatus="Yes"
     }else{
@@ -105,6 +106,7 @@ router.post('/', async (req, res) => {
       Qtr: quarter,
       Month: month,
       Entry_Status: Entry_Status,
+      MS_Type: MS_Type,
       Last_Edit_By: visitedBy,
       Last_Edit_Date: currentDate.toISOString().split('T')[0],
       Last_Edit_Time: currentDate.toISOString().split('T')[1].split('.')[0],
