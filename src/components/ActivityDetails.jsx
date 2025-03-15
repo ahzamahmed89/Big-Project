@@ -1,4 +1,5 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import ImageUploadComponent from './ImageCapture'; // Importing the image upload component
 
 const ActivityDetails = ({
   activity,
@@ -7,7 +8,7 @@ const ActivityDetails = ({
   responsibility,
   handleResponsibilityChange,
   remarks,
-  image, // Use the image prop passed from the parent
+  image, // Image prop passed from parent
   handleRemarksChange,
   handleImageChange,
   togglePreviousQuarterVisibility,
@@ -15,16 +16,17 @@ const ActivityDetails = ({
   isNewEntryForm,
   isDisplayReviewForm,
   isEditForm,
-  handleImageRemove, // New prop for handling image removal
+  handleImageRemove, // Prop for handling image removal
 }) => {
-  // Status styles
   const statusStyles = {
     Yes: { backgroundColor: 'lightgreen' },
     No: { backgroundColor: 'lightcoral' },
     NA: { backgroundColor: 'rgb(234, 234, 172)' },
   };
 
-  // Clean up object URL when the component unmounts
+  const [isImageRemoved, setIsImageRemoved] = useState(false);
+
+  // Clean up object URLs when the component unmounts
   useEffect(() => {
     return () => {
       if (image) {
@@ -32,13 +34,9 @@ const ActivityDetails = ({
       }
     };
   }, [image]);
-  const [isImageRemoved, setIsImageRemoved] = useState(false); // New state
 
-  const onImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      handleImageChange(file, activity.Code); // Pass the file and activity code to the parent handler
-    }
+  const onImageChange = (file) => {
+    handleImageChange(file, activity.Code); // Pass file and activity code to parent
   };
 
   const onResponsibilityChange = (e) => {
@@ -46,22 +44,23 @@ const ActivityDetails = ({
   };
 
   const onStatusChange = (e) => {
-    handleStatusChange(e.target.value, activity.Code); // Ensure correct activity.Code is passed
+    handleStatusChange(e.target.value, activity.Code); // Pass status and activity code
   };
-  
 
   const currentImagePath = activity.Images
     ? `/images/${activity.Images.split('Images\\')[1]?.replace(/\\/g, '/')}`
     : null;
-    
-    const handleImageRemoveClick = (e) => {
-      e.preventDefault(); // Prevent form submit or page refresh
-  e.stopPropagation(); // Stop the event from bubbling up
-  setIsImageRemoved(true);
-      handleImageRemove(activity.Code); // Call the function to remove the image
-    };
+
+  const handleImageRemoveClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsImageRemoved(true);
+    handleImageRemove(activity.Code); // Trigger image removal logic
+  };
+
   return (
     <div className="activity-details">
+      {/* Activity Header */}
       <h3
         className="activity"
         style={{ ...statusStyles[status], padding: '6px', fontWeight: 'bold' }}
@@ -69,7 +68,7 @@ const ActivityDetails = ({
         {activity.Activity}
       </h3>
 
-      {/* Status Section */}
+      {/* Status Selection */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <label>Status:</label>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -98,7 +97,7 @@ const ActivityDetails = ({
         </div>
       </div>
 
-      {/* Responsibility Section */}
+      {/* Responsibility Selection */}
       <div>
         <label>Responsibility:</label>
         <select
@@ -131,48 +130,18 @@ const ActivityDetails = ({
         />
       </div>
 
-      {/* Image Upload for New Entry Form */}
-      {isNewEntryForm && (
-        <div className="image-upload-section">
-          <label>Upload Image:</label>
-          <input type="file" className="image-upload" onChange={onImageChange} />
-          {image && (
-            <div style={{ position: 'relative', display: 'inline-block' }}>
-              <img src={URL.createObjectURL(image)} alt="Uploaded Preview" className="image-preview" />
-              <button className="remove-image-cross" onClick={handleImageRemoveClick}>
-                &times;
-              </button>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Image Handling for Edit Form */}
-      {isEditForm && (
-  <div className="image-upload-section">
-    <label>Upload Image:</label>
-    <input type="file" className="image-upload" onChange={onImageChange} />
-    {currentImagePath && !isImageRemoved? (
-      <div style={{ position: 'relative', display: 'inline-block' }}>
-        <img src={currentImagePath} alt="Image for this activity." className="image-preview" />
-        <button className="remove-image-cross" onClick={handleImageRemoveClick}>
-          &times;
-        </button>
-      </div>
-    ) : image ? ( // If there is no currentImagePath, but an image has been selected
-      <div style={{ position: 'relative', display: 'inline-block' }}>
-        <img src={URL.createObjectURL(image)} alt="Uploaded Preview" className="image-preview" />
-        <button className="remove-image-cross" onClick={handleImageRemoveClick}>
-          &times;
-        </button>
-      </div>
-    ) : (
-      <p>No image available, please upload a new one.</p>
-    )}
-  </div>
-)}
-
-
+      {/* Use ImageUploadComponent for Image Upload */}
+      <ImageUploadComponent
+        image={image}
+        onImageChange={onImageChange}
+        onImageRemove={handleImageRemoveClick}
+        isNewEntryForm={isNewEntryForm}
+        isEditForm={isEditForm}
+        currentImagePath={currentImagePath}
+        isImageRemoved={isImageRemoved}
+        setIsImageRemoved={setIsImageRemoved}
+        handleImageRemove={handleImageRemove}
+      />
     </div>
   );
 };

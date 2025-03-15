@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import CategorySection from './CategorySection';
 import { UserContext } from '../components/UserContext';
@@ -26,14 +25,24 @@ const ActivityForm = ({ data, handleResponsibilityChange, handleImageRemove, han
       ) : (
         <p>...</p> // Fallback when there's no data
      ) }
-     {!isDisplayReviewForm  && (
+     {(!isDisplayReviewForm  && !isNewEntryForm)&&(
         <button
           type="button"
           className="submit-button"
           onClick={handleSubmitFormClick}
           disabled={isDisplayReviewForm}
         >
-         {userID === visitedBy ? "Edit" : "Authorize"}
+          {userID === visitedBy ? "Edit" : "Authorize"}
+        </button>
+      )}
+      {(isNewEntryForm && !isDisplayReviewForm)&&(
+        <button
+          type="button"
+          className="submit-button"
+          onClick={handleSubmitFormClick}
+          disabled={isDisplayReviewForm }
+        >
+          Submit
         </button>
       )}
     </form>

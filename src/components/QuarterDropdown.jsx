@@ -4,7 +4,7 @@ const QuarterDropdown = ({ selectedQuarter, onQuarterChange, disabled }) => {
   const quarters = ["Q1", "Q2", "Q3", "Q4"];
 
   return (
-    <div className="form-group small-input">
+    <div className="form-input">
       <label htmlFor="quarter">Quarter</label>
       <select
         id="quarter"

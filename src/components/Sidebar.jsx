@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'; // Import your sidebar CSS file where styles are defined
+import '../App.css';
 
 const Sidebar = ({ showSidebar, toggleSidebar }) => {
-  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false); // State for submenu open/close
+  const [openMenu, setOpenMenu] = useState(null); // Track which menu is open
   const sidebarRef = useRef(null);
 
   // Close the sidebar if clicked outside of it
@@ -14,17 +14,14 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
       }
     };
 
-    // Add event listener for clicks
     document.addEventListener('mousedown', handleClickOutside);
-
-    // Cleanup the event listener when the component is unmounted
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [showSidebar, toggleSidebar]);
 
-  const toggleSubmenu = () => {
-    setIsSubmenuOpen(!isSubmenuOpen); // Toggle submenu open/close state
+  const toggleSubmenu = (menuName) => {
+    setOpenMenu(openMenu === menuName ? null : menuName); // Toggle the specific menu open/close
   };
 
   return (
@@ -33,13 +30,19 @@ const Sidebar = ({ showSidebar, toggleSidebar }) => {
       ref={sidebarRef} 
     >
       <ul>
-        <li className="submenu-toggle" onClick={toggleSubmenu}>
+        <li className="submenu-toggle" onClick={() => toggleSubmenu('physical')}>
           Physical Mystery Shopping Form
-          <ul className={`submenu ${isSubmenuOpen ? 'show' : ''}`}>
+          <ul className={`submenu ${openMenu === 'physical' ? 'show' : ''}`}>
             <li><Link to="/newentry" onClick={() => toggleSidebar(false)}>New Entry</Link></li>
             <li><Link to="/edit" onClick={() => toggleSidebar(false)}>Edit/Authorize</Link></li>
             <li><Link to="/display-review" onClick={() => toggleSidebar(false)}>Display/Review</Link></li>
-            
+          </ul>
+        </li>
+        
+        <li className="submenu-toggle" onClick={() => toggleSubmenu('transactional')}>
+          Transactional Mystery Shopping Form
+          <ul className={`submenu ${openMenu === 'transactional' ? 'show' : ''}`}>
+            <li><Link to="/trentry" onClick={() => toggleSidebar(false)}>Transactional Entry</Link></li>
           </ul>
         </li>
       </ul>

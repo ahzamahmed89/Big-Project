@@ -6,7 +6,7 @@ const YearDropdown = ({ selectedYear, onYearChange, disabled }) => {
   const yearOptions = Array.from({ length: currentYear - 2022 + 1 }, (_, i) => 2022 + i);
 
   return (
-    <div className="form-group small-input">
+    <div className="form-input">
       <label htmlFor="year">Year</label>
       <select
         id="year"
