@@ -8,8 +8,10 @@ import DisplayReviewForm from './pages/DisplayReviewForm';
 import LoginPage from './pages/LoginPage.jsx';
 import { UserProvider } from '../src/components/UserContext.jsx';
 import EditForm from './pages/EditForm';
+import TrEntry from './pages/TrEntry.jsx';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TrForm from './pages/TrForm.jsx';
 
 function App() {
   const location = useLocation(); // Get the current route location
@@ -26,6 +28,8 @@ function App() {
         <Route path="/display-review" element={<DisplayReviewForm />} />
         <Route path="/edit" element={<EditForm />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/trentry" element={<TrEntry />} />
+        <Route path="/transaction-feedback" element={<TrForm />} />
       </Routes>
      
     </div>
