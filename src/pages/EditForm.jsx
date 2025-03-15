@@ -150,7 +150,7 @@
 
             try {
                 const response = await axios.get(`http://localhost:5000/fetch-all-activities`, {
-                    params: { branchCode: branchCodeValue, year, quarter }
+                    params: { branchCode: branchCodeValue, year, quarter, MS_Type: "Physical", }
                 });
 
                 const { success, message, data } = response.data;
@@ -211,7 +211,7 @@
             }
             const entryStatus = userID === visitedBy ? "Update" : "Authorize";
             const snqrev = userID === visitedBy ? "" : userID;
-            console.log(snqrev)
+            
             const formDetails = {
                 branchCode,
                 branchName,
@@ -222,7 +222,7 @@
                 year,
                 Entry_Status: entryStatus,
                 month,
-                
+                MS_Type: "Physical",
                 snqrev,
                 quarter,
                 visitTime: newVisitTime,
@@ -247,6 +247,7 @@
             formData.append('visitedBy', formDetails.visitedBy);
             formData.append('reviewedBy', formDetails.reviewedBy);
             formData.append('Entry_Status', formDetails.Entry_Status);
+            formData.append('MS_Type', formDetails.MS_Type);
             formData.append('year', formDetails.year);
             formData.append('quarter', formDetails.quarter);
             formData.append('month', formDetails.month);
@@ -385,7 +386,7 @@
                                             onChange={(e) => setVisitedBy(e.target.value)}
                                         />
                                         <FormInput
-                                            label="Reviewed By"
+                                            label="Reviewed By OM/BM"
                                             type="text"
                                             id="reviewedBy"
                                             value={reviewedBy || ''}

@@ -219,7 +219,7 @@ const DisplayReviewForm = () => {
                     readOnly={true}
                   />
                   <FormInput
-                    label="Reviewed By"
+                    label="Reviewed By OM/BM"
                     type="text"
                     id="reviewedBy"
                     value={reviewedBy || ''}

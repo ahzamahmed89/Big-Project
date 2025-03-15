@@ -115,7 +115,7 @@ const NewEntryForm = () => {
       return;
     }
 
-    axios.get(`http://localhost:5000/check-entry?branchCode=${branchCodeValue}&year=${year}&quarter=${quarterValue}&month=${monthValue}`)
+    axios.get(`http://localhost:5000/check-entry?branchCode=${branchCodeValue}&year=${year}&quarter=${quarterValue}&month=${monthValue}&MS_Type=Physical`)
       .then(response => {
         
         const data = response.data;
@@ -281,6 +281,7 @@ const NewEntryForm = () => {
         Entry_Status: "Enter",
         branchName: branchName.trim(),
         regionName: regionName.trim(),
+        MS_Type: "Physical",
         visitDate: visitDate.trim(),
         visitedBy: visitedBy.trim(),
         reviewedBy: reviewedBy.trim(),
@@ -307,6 +308,7 @@ const NewEntryForm = () => {
     formData.append('visitDate', formDetails.visitDate);
     formData.append('visitedBy', formDetails.visitedBy);
     formData.append('reviewedBy', formDetails.reviewedBy);
+    formData.append('MS_Type', formDetails.MS_Type);
     formData.append('year', formDetails.year);
     formData.append('quarter', formDetails.quarter);
     formData.append('month', formDetails.month);
@@ -478,7 +480,7 @@ const NewEntryForm = () => {
                   </div>
                   <div className="form-group">
                     <FormInput
-                      label="Reviewed By"
+                      label="Reviewed By OM/BM"
                       type="text"
                       id="reviewedBy"
                       value={reviewedBy}
